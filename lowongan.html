@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang Kami - Worklab Insight</title>
+    <title>Lowongan Kerja - Dashboard Ketenagakerjaan Nasional</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assete/css/style.css">
-    <link rel="stylesheet" href="assete/js/app.js">
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-gray-50">
     <!-- Header -->
     <header class="header-bg relative">
         <div class="container mx-auto px-4 py-4">
@@ -19,9 +18,6 @@
                 <div class="flex items-center mb-4 md:mb-0">
                     <div>
                         <h1 class="text-2xl font-bold text-white">Dashboard Ketenagakerjaan Nasional</h1>
-                        <p class="text-sm text-blue-200">
-                            Menggambarkan dinamika ketenagakerjaan dan pertumbuhan ekonomi Indonesia
-                        </p>
                     </div>
                 </div>
 
@@ -36,13 +32,13 @@
                     <a href="dashboard.html" class="nav-item">
                         <i class="fas fa-home mr-2"></i> Dashboard
                     </a>
-                    <a href="lowongan.html" class="nav-item">
+                    <a href="lowongan.html" class="nav-item nav-active">
                         <i class="fas fa-briefcase mr-2"></i> Lowongan Kerja
                     </a>
                     <a href="analisis.html" class="nav-item">
                         <i class="fas fa-chart-line mr-2"></i> Analisis Ekonomi
                     </a>
-                    <a href="aboutme.html" class="nav-item nav-active">
+                    <a href="aboutme.html" class="nav-item">
                         <i class="fas fa-info-circle mr-2"></i> Tentang Kami
                     </a>
                 </nav>
@@ -56,7 +52,96 @@
         <div class="header-shape"></div>
     </header>
 
-   
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex items-center mb-8">
+            <h2 class="text-3xl font-bold text-gray-800 mr-4">Portal Lowongan Kerja dan Magang</h2>
+            <div class="h-1 w-12 bg-blue-600 rounded-full"></div>
+        </div>
+        
+        <!-- Search and Filter Section -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <div class="flex flex-col md:flex-row gap-4 mb-6">
+                <div class="flex-1">
+                    <input type="text" id="searchInput" placeholder="Cari lowongan berdasarkan judul atau perusahaan..." class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="flex gap-2">
+                    <select id="sectorFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">Semua Sektor</option>
+                        <option value="Teknologi Informasi">Teknologi Informasi</option>
+                        <option value="Manufaktur">Manufaktur</option>
+                        <option value="Jasa Keuangan">Jasa Keuangan</option>
+                        <option value="Pendidikan">Pendidikan</option>
+                        <option value="Kesehatan">Kesehatan</option>
+                    </select>
+                    <select id="locationFilter" class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">Semua Lokasi</option>
+                        <option value="Jakarta">Jakarta</option>
+                        <option value="Yogyakarta">Yogyakarta</option>
+                        <option value="Surabaya">Surabaya</option>
+                        <option value="Bandung">Bandung</option>
+                        <option value="Medan">Medan</option>
+                    </select>
+                    <button id="searchButton" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                        <i class="fas fa-search mr-2"></i>Cari
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Job Listings -->
+            <div id="jobListings" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Job listings will be populated here by JavaScript -->
+            </div>
+            
+            <div class="mt-6 text-center">
+                <button id="viewAllJobs" class="text-blue-600 hover:text-blue-800 font-medium">Lihat semua lowongan →</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Job Detail Modal -->
+    <div id="jobDetailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg max-w-2xl w-full max-h-screen overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <h3 id="modalJobTitle" class="text-xl font-bold text-gray-800"></h3>
+                    <button id="closeModal" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="flex items-center mb-3">
+                    <div id="modalCompanyLogo" class="w-10 h-10 rounded-md bg-gray-200 flex items-center justify-center font-bold text-blue-600 mr-3"></div>
+                    <div>
+                        <div id="modalCompanyName" class="font-semibold text-gray-800"></div>
+                        <div id="modalLocation" class="text-sm text-gray-600 flex items-center">
+                            <i class="fas fa-map-marker-alt mr-1"></i>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <span id="modalJobType" class="inline-block px-3 py-1 rounded-full text-sm font-medium"></span>
+                </div>
+                <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Deskripsi Pekerjaan</h4>
+                    <p id="modalDescription" class="text-gray-600"></p>
+                </div>
+                <div class="mb-4">
+                    <h4 class="font-semibold text-gray-800 mb-2">Detail Pekerjaan</h4>
+                    <p id="modalDetails" class="text-gray-600"></p>
+                </div>
+                <div class="mb-6">
+                    <h4 class="font-semibold text-gray-800 mb-2">Kualifikasi yang Dibutuhkan</h4>
+                    <ul id="modalRequirements" class="list-disc list-inside text-gray-600 space-y-1"></ul>
+                </div>
+                <div class="flex gap-3">
+                    <button id="modalApplyButton" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition flex-1">
+                        Lamar Sekarang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer-bg mt-12">
@@ -132,7 +217,10 @@
         </div>
     </footer>
 
-    <!-- Load JS File -->
-    <script src="js/app.js"></script>
+    <script src="assete/js/app.js"></script>
 </body>
 </html>
+
+
+              
+                    
