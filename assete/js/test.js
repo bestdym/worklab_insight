@@ -440,16 +440,21 @@ function updateDashboard() {
 
 // INITIAL RUN
 document.addEventListener('DOMContentLoaded', () => {
-    // Default load data 2023
-    const initialData = dummyData['2023']['All'];
-    
-    initAgeChart(initialData.age);
-    initGenderChart(initialData.gender);
-    initEduChart(initialData.edu);
+    const ageEl = document.getElementById('ageChart');
+    const genderEl = document.getElementById('genderChart');
+    const eduEl = document.getElementById('educationChart');
+    const regionFilterEl = document.getElementById('regionFilter');
+    const yearFilterEl = document.getElementById('yearFilter');
 
-    // Event Listeners
-    document.getElementById('regionFilter').addEventListener('change', updateDashboard);
-    document.getElementById('yearFilter').addEventListener('change', updateDashboard);
+    if (ageEl && genderEl && eduEl) {
+        const initialData = dummyData['2023']['All'];
+        initAgeChart(initialData.age);
+        initGenderChart(initialData.gender);
+        initEduChart(initialData.edu);
+    }
+
+    if (regionFilterEl) regionFilterEl.addEventListener('change', updateDashboard);
+    if (yearFilterEl) yearFilterEl.addEventListener('change', updateDashboard);
 });
 
 

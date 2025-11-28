@@ -1,12 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const desktopMenu = document.getElementById('desktopMenu');
+    const mobileDropdown = document.getElementById('mobileDropdown');
 
-    if (mobileMenuBtn && desktopMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-            desktopMenu.classList.toggle('hidden');
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (mobileDropdown) {
+                mobileDropdown.classList.toggle('hidden');
+            } else if (desktopMenu) {
+                desktopMenu.classList.toggle('hidden');
+            }
         });
     }
+
+    // Set active nav link based on current page
+    const currentFile = window.location.pathname.split('/').pop();
+    document.querySelectorAll('.nav-links a').forEach((link) => {
+        const href = link.getAttribute('href') || '';
+        const file = href.split('/').pop();
+        if (file === currentFile) {
+            link.classList.add('nav-active');
+        } else {
+            link.classList.remove('nav-active');
+        }
+    });
 
     document.querySelectorAll('.nav-item').forEach(item => {
         item.addEventListener('click', function () {
@@ -14,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
             this.classList.add('nav-active');
         });
     });
-
+    
     let jobsData = [];
     let selectedJob = null;
 
@@ -199,6 +217,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupDropdown('btnLokasi', 'listLokasi', 'labelLokasi', 'locationFilter');
     document.addEventListener('click', () => {
         document.querySelectorAll('[id^="list"]').forEach(el => el.classList.add('hidden'));
+        if (mobileDropdown && !mobileDropdown.classList.contains('hidden')) mobileDropdown.classList.add('hidden');
     });
 
     function openModal(job) {

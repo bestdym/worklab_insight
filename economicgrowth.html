@@ -9,13 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
-    <nav class="navbar animate-fade-down">
+<body class="bg-gray-50">
+    <nav class="navbar animate-fade-down relative">
         <div class="logo">
             <img src="/assete/img/logo.png" alt="Logo">
             <span>WorkLab Insight</span>
         </div>
-        <ul class="nav-links">
+        <ul class="nav-links hidden md:flex" id="desktopMenu">
             <a href="dashboard.html" class="nav-item">
                      Home
                 </a>
@@ -80,16 +80,25 @@
             </a>
         </ul>
         
-        <div class="flex items-center gap-4">
-        
+        <div class="flex items-center gap-4">    
         <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200">
             <i class="fas fa-moon text-xl" id="themeIcon"></i>
         </button>
-        <button class="btn-login">Login</button>
+        <div class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <div id="mobileDropdown" class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50">
+            <a href="dashboard.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Home</a>
+            <a href="analisis.html" class="block px-4 py-3 nav-item hover:bg-blue-50">National Employment Data</a>
+            <a href="lowongan.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Job Portal</a>
+            <a href="economicgrowth.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Economic growth Analysis</a>
+        </div>
     </div>
     </nav>
 
-    <div class="main-wrapper">
+    <main class="container mx-auto px-4 relative z-10">
+        <div class="max-w-6xl mx-auto">
+        <div class="main-wrapper">
         <div class="container">
             <header class="page-header">
                 <h1>Economic Growth Analysis</h1>
@@ -193,8 +202,24 @@
                 </aside> 
             </main>
         </div>
+        </div>
     </div>
-
-    <script src="assete/js/test.js"></script> 
+    </main>
+     <footer class="mt-auto">
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="aboutme.html">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="social-icons">
+                <span>🐦</span> <span>🔗</span> <span>fb</span>
+            </div>
+            <p class="copyright">© 2024 Indonesia Employment Watch. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="assete/js/test.js"></script>
+    <script src="assete/js/app.js"></script>
 </body>
-</html> 
+</html>
