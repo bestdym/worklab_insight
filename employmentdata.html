@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Employment Data - Worklab Insight</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="assete/css/tes.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="c"></script>
+</head>
+<body>
+
+    <nav>
+        </nav>
+
+    <main class="dashboard-wrapper">
+        
+        <div class="dashboard-header">
+            <h2>Statistik Ketenagakerjaan Nasional</h2>
+            <p class="subtitle">Data tren tenaga kerja 5 tahun terakhir & wawasan berbasis sektor.</p>
+        </div>
+
+        <section class="grid-cards">
+            <div class="card">
+                <div class="metric-header">
+                    <span class="metric-title">Unemployment Rate</span>
+                    <i class="fas fa-chart-line metric-icon"></i>
+                </div>
+                <div class="metric-value">5.8%</div>
+                <div class="metric-trend trend-down">
+                    <i class="fas fa-arrow-down"></i> 0.2% <span class="text-muted">vs last year</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="metric-header">
+                    <span class="metric-title">Labor Participation</span>
+                    <i class="fas fa-users metric-icon"></i>
+                </div>
+                <div class="metric-value">62.3%</div>
+                <div class="metric-trend trend-up">
+                    <i class="fas fa-arrow-up"></i> 0.5% <span class="text-muted">vs last year</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="metric-header">
+                    <span class="metric-title">Youth Workforce</span>
+                    <i class="fas fa-graduation-cap metric-icon"></i>
+                </div>
+                <div class="metric-value">12.5%</div>
+                <div class="metric-trend trend-down">
+                    <i class="fas fa-arrow-down"></i> 1.1% <span class="text-muted">vs last year</span>
+                </div>
+            </div>
+            <div class="card">
+                <div class="metric-header">
+                    <span class="metric-title">Informal Workers</span>
+                    <i class="far fa-id-badge metric-icon"></i>
+                </div>
+                <div class="metric-value">21.7%</div>
+                <div class="metric-trend trend-up">
+                    <i class="fas fa-arrow-up"></i> 0.8% <span class="text-muted">vs last year</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid-charts-mid">
+            <div class="card">
+                <div class="chart-header">
+                    <span class="chart-title">Unemployment Trend (5 Years)</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="unemploymentChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <div class="chart-header">
+                    <span class="chart-title">Labor Force Participation</span>
+                </div>
+                <div class="chart-container">
+                    <canvas id="laborChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid-bottom">
+            <div class="card">
+                <div class="chart-header">
+                    <span class="chart-title">Employment by Sector</span>
+                    <select class="sector-select" id="sectorSelect">
+                        <option value="Manufacturing">Manufacturing</option>
+                        <option value="Digital & ICT" selected>Digital & ICT</option>
+                        <option value="Agriculture">Agriculture</option>
+                        <option value="Mining">Mining</option>
+                        <option value="Retail">Retail</option>
+                        <option value="Finance">Finance</option> 
+                    </select>
+                </div>
+                <div class="chart-container large-chart-container">
+                    <canvas id="sectorChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card info-section">
+                <h3>Impact of Digital Transformation</h3>
+                <div class="info-block">
+                    <h4>Young Workers & Opportunities</h4>
+                    <p>Digitalization creates new roles in tech, requiring new skill sets from the youth workforce.</p>
+                </div>
+                <div class="info-block">
+                    <h4>The Gig Economy</h4>
+                    <p>Rise of platforms fuels freelance work, increasing flexibility but impacting job security.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        </footer>
+
+    <script src="assete/js/test.js"></script>
+
+</body>
+</html>
