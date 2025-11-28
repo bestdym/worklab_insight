@@ -1908,3 +1908,43 @@ input:checked + .slider:before {
         height: 300px; 
     }
 }
+
+body.dark-mode .card {
+    background-color: #1e293b !important; 
+    border-color: #334155 !important;
+    color: #f8fafc !important; 
+}
+
+body.dark-mode .chart-header h3,
+body.dark-mode #chartTitle,
+body.dark-mode .big-stat {
+    color: #f8fafc !important;
+}
+
+body.dark-mode .sub-text,
+body.dark-mode .stat-val {
+    color: #94a3b8 !important;
+}
+
+body.dark-mode .dropdown {
+    background-color: #0f172a;
+    color: #fff;
+    border-color: #334155;
+}
+
+body.dark-mode .controls-container {
+    background-color: #1e293b !important; 
+    border: 1px solid #334155 !important;
+    color: #f8fafc !important;
+    box-shadow: none !important;
+}
+
+body.dark-mode .range-labels, 
+body.dark-mode .range-years span,
+body.dark-mode .toggle-switch span {
+    color: #cbd5e1 !important; 
+}
+
+body.dark-mode .range-input {
+    background: #334155 !important;
+}
