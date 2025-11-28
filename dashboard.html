@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WorkLab Insight - Labor Market Simulator</title>
     <link rel="stylesheet" href="/assete/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -23,19 +26,26 @@
         </div>
         <ul class="nav-links">
             <a href="dashboard.html" class="nav-item">
-                    <i class="fas fa-home mr-2"></i> Home
+                     Home
                 </a>
                 <a href="analisis.html" class="nav-item">
-                    <i class="fas fa-chart-line mr-2"></i> National Employment Data
+                     National Employment Data
                 </a>
                 <a href="lowongan.html" class="nav-item">
-                    <i class="fas fa-briefcase mr-2"></i> Job Portal
+                     Job Portal
                 </a>
-                <a href="aboutme.html" class="nav-item">
-                    <i class="fas fa-info-circle mr-2"></i> Economic growth Analysis
+                <a href="economicgrowth.html" class="nav-item">
+                     Economic growth Analysis
                 </a>
         </ul>
+        
+        <div class="flex items-center gap-4">
+        
+        <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200">
+            <i class="fas fa-moon text-xl" id="themeIcon"></i>
+        </button>
         <button class="btn-login">Login</button>
+    </div>
     </nav>
     <header class="hero">
         <div class="container hero-container">

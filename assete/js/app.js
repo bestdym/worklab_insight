@@ -339,3 +339,47 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     initNewsLogic();
 });
+
+
+// ==========================================
+    // 7. DARK MODE LOGIC
+    // ==========================================
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const body = document.body;
+
+    // Cek Local Storage (Apakah user pernah pilih dark mode?)
+    const currentTheme = localStorage.getItem('theme');
+    
+    // Fungsi Update Icon
+    const updateIcon = (isDark) => {
+        if (isDark) {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun'); // Ganti jadi matahari
+        } else {
+            themeIcon.classList.remove('fa-sun');
+            themeIcon.classList.add('fa-moon'); // Ganti jadi bulan
+        }
+    };
+
+    // Terapkan tema saat load
+    if (currentTheme === 'dark') {
+        body.classList.add('dark-mode');
+        updateIcon(true);
+    }
+
+    // Event Listener Klik Tombol
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            // Cek apakah sekarang dark mode
+            const isDark = body.classList.contains('dark-mode');
+            
+            // Update Icon
+            updateIcon(isDark);
+
+            // Simpan ke Local Storage
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        });
+    }

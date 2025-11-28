@@ -4,29 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InsightDashboard - Economic Growth</title>
-    <link rel="stylesheet" href="assete/css/tes.css"> <!-- Fixed typo: assete -> assets, tes.css -> style.css -->
+    <link rel="stylesheet" href="assete/css/style.css"> <!-- Fixed typo: assete -> assets, tes.css -> style.css -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-left">
-                <div class="logo">
-                    <span class="logo-icon"></span> InsightDashboard
-                </div>
-                <ul class="nav-links">
-                    <li><a href="#" class="active">Reports</a></li>
-                    <li><a href="#">Sectors</a></li>
-                    <li><a href="#">Regions</a></li>
-                </ul>
-            </div>
-            <div class="nav-right">
-                <button class="btn-download">Download</button>
-                <div class="icon-btn">🔔</div>
-                <div class="user-avatar"></div>
-            </div>
+    <nav class="navbar animate-fade-down">
+        <div class="logo">
+            <img src="https://via.placeholder.com/40x40/1e3a8a/ffffff?text=W" alt="Logo">
+            <span>WorkLab Insight</span>
         </div>
+        <ul class="nav-links">
+            <a href="dashboard.html" class="nav-item">
+                     Home
+                </a>
+                <a href="analisis.html" class="nav-item">
+                     National Employment Data
+                </a>
+                <a href="lowongan.html" class="nav-item">
+                     Job Portal
+                </a>
+                <a href="economicgrowth.html" class="nav-item">
+                     Economic growth Analysis
+                </a>
+        </ul>
+        
+        <div class="flex items-center gap-4">
+        
+        <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200">
+            <i class="fas fa-moon text-xl" id="themeIcon"></i>
+        </button>
+        <button class="btn-login">Login</button>
+    </div>
     </nav>
 
     <div class="main-wrapper">

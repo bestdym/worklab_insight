@@ -6,7 +6,7 @@
     <title>Lowongan Kerja - Dashboard Ketenagakerjaan Nasional</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assete/css/style.css">
 </head>
 <body class="bg-gray-50">
@@ -25,18 +25,25 @@
             <a href="dashboard.html" class="nav-item">Home</a>
             <a href="analisis.html" class="nav-item">National Employment Data</a>
             <a href="lowongan.html" class="nav-item nav-active">Job Portal</a>
-            <a href="aboutme.html" class="nav-item">Economic Growth Analysis</a>
+            <a href="economicgrowth.html" class="nav-item">Economic Growth Analysis</a>
         </ul>
 
         <div class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer" id="mobileMenuBtn">
             <i class="fas fa-bars"></i>
         </div>
 
+        <div class="flex items-center gap-4">
+        
+        <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200">
+            <i class="fas fa-moon text-xl" id="themeIcon"></i>
+        </button>
+
         <button class="btn-login">Login</button>
+    </div>
     </nav>
 
-    <main class="container mx-auto px-4 py-8 relative z-10">
-        <main class="container mx-auto px-4 py-8 relative z-10">
+    <main class="container mx-auto px-4 relative z-10">
+        <main class="container mx-auto px-4 relative z-10">
             <div class="flex items-center mb-8 mt-4 animate-fade-in-up">
             <h2 class="text-3xl font-bold text-gray-800 mr-4">Portal Lowongan Kerja dan Magang</h2>
         <div class="h-1 w-12 bg-blue-600 rounded-full"></div>
