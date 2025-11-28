@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Set active nav link based on current page
+    
     const currentFile = window.location.pathname.split('/').pop();
     document.querySelectorAll('.nav-links a').forEach((link) => {
         const href = link.getAttribute('href') || '';
@@ -149,8 +149,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const searchInput = document.getElementById('searchInput');
-    const sectorFilter = document.getElementById('sectorFilter'); // Hidden Select
-    const locationFilter = document.getElementById('locationFilter'); // Hidden Select
+    const sectorFilter = document.getElementById('sectorFilter'); 
+    const locationFilter = document.getElementById('locationFilter'); 
     const searchButton = document.getElementById('searchButton');
 
     function filterJobs() {
@@ -435,45 +435,298 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ==========================================
-    // 7. DARK MODE LOGIC
-    // ==========================================
     const themeToggleBtn = document.getElementById('themeToggle');
     const themeIcon = document.getElementById('themeIcon');
     const body = document.body;
 
-    // Cek Local Storage (Apakah user pernah pilih dark mode?)
     const currentTheme = localStorage.getItem('theme');
     
-    // Fungsi Update Icon
     const updateIcon = (isDark) => {
         if (isDark) {
             themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun'); // Ganti jadi matahari
+            themeIcon.classList.add('fa-sun'); 
         } else {
             themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon'); // Ganti jadi bulan
+            themeIcon.classList.add('fa-moon'); 
         }
     };
 
-    // Terapkan tema saat load
+    
     if (currentTheme === 'dark') {
         body.classList.add('dark-mode');
         updateIcon(true);
     }
 
-    // Event Listener Klik Tombol
+    
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
             body.classList.toggle('dark-mode');
             
-            // Cek apakah sekarang dark mode
+            
             const isDark = body.classList.contains('dark-mode');
             
-            // Update Icon
+            
             updateIcon(isDark);
 
-            // Simpan ke Local Storage
+            
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+    
+    const fullRegionalData = [
+        { region: "DKI Jakarta", umr: "Rp 5.067.381", unemp: "6.5%", sector: "Jasa & Keuangan", color: "purple", status: "Tumbuh", statusColor: "green" },
+        { region: "Jawa Barat", umr: "Rp 2.057.495", unemp: "7.8%", sector: "Manufaktur", color: "blue", status: "Stabil", statusColor: "yellow" },
+        { region: "Jawa Tengah", umr: "Rp 2.043.992", unemp: "5.1%", sector: "Pertanian & Industri", color: "orange", status: "Stabil", statusColor: "yellow" },
+        { region: "Jawa Timur", umr: "Rp 2.165.244", unemp: "4.8%", sector: "Perdagangan", color: "blue", status: "Tumbuh", statusColor: "green" },
+        { region: "Banten", umr: "Rp 2.927.512", unemp: "7.5%", sector: "Industri Berat", color: "gray", status: "Waspada", statusColor: "red" },
+        { region: "Bali", umr: "Rp 2.813.672", unemp: "2.6%", sector: "Pariwisata", color: "orange", status: "Pulih", statusColor: "blue" },
+        { region: "DI Yogyakarta", umr: "Rp 2.125.897", unemp: "3.6%", sector: "Pendidikan & Wisata", color: "purple", status: "Stabil", statusColor: "yellow" },
+        { region: "Sumatera Utara", umr: "Rp 2.809.915", unemp: "5.8%", sector: "Perkebunan", color: "green", status: "Tumbuh", statusColor: "green" },
+        { region: "Kalimantan Timur", umr: "Rp 3.360.858", unemp: "5.7%", sector: "Pertambangan", color: "gray", status: "Booming", statusColor: "green" },
+        { region: "Sulawesi Selatan", umr: "Rp 3.434.298", unemp: "4.5%", sector: "Maritim & Pangan", color: "blue", status: "Stabil", statusColor: "yellow" },
+        { region: "Papua", umr: "Rp 4.024.270", unemp: "2.8%", sector: "Pertambangan", color: "gray", status: "Stabil", statusColor: "yellow" }
+    ];
+
+    window.showRegionalData = function() {
+        const modal = document.getElementById('regionalDataModal');
+        const tbody = document.getElementById('fullRegionalDataBody');
+        
+        tbody.innerHTML = '';
+
+        fullRegionalData.forEach(item => {
+            const row = document.createElement('tr');
+            row.className = "hover:bg-blue-50/50 transition duration-150";
+            
+            let statusClass = item.statusColor === 'green' ? 'bg-green-100 text-green-700' : 
+                              (item.statusColor === 'yellow' ? 'bg-yellow-100 text-yellow-700' : 
+                              (item.statusColor === 'blue' ? 'bg-blue-100 text-blue-700' : 'bg-red-100 text-red-700'));
+
+            let sectorClass = `bg-${item.color}-100 text-${item.color}-700`;
+
+            row.innerHTML = `
+                <td class="px-6 py-4 font-bold text-gray-800">${item.region}</td>
+                <td class="px-6 py-4 font-mono text-gray-600">${item.umr}</td>
+                <td class="px-6 py-4 font-semibold text-gray-700">${item.unemp}</td>
+                <td class="px-6 py-4"><span class="${sectorClass} px-3 py-1 rounded-lg text-xs font-semibold">${item.sector}</span></td>
+                <td class="px-6 py-4"><span class="${statusClass} px-3 py-1 rounded-full text-xs font-bold">${item.status}</span></td>
+            `;
+            tbody.appendChild(row);
+        });
+
+        modal.classList.remove('hidden');
+    }
+
+    window.closeRegionalData = function() {
+        document.getElementById('regionalDataModal').classList.add('hidden');
+    }
+
+    document.getElementById('regionalDataModal').addEventListener('click', (e) => {
+        if(e.target.id === 'regionalDataModal') closeRegionalData();
+    });
+    
+    
+    const sectorData = {
+        "Technology": {
+            growth: "15.2%", growthBadge: "+2.1% YoY", growthDesc: "Didorong oleh AI & Digitalisasi",
+            wage: "12,500,000", wageBadge: "High Paid",
+            jobs: "14,205", jobsBadge: "Tinggi", jobsDesc: "Di seluruh portal terdaftar",
+            skill: "Data Analysis", skillDesc: "Dibutuhkan di 70% lowongan",
+            chartData: [1.2, 2.5, 3.8, 5.5, 7.8], chartColor: '#3b82f6'
+        },
+        "Finance": {
+            growth: "8.5%", growthBadge: "+1.4% YoY", growthDesc: "Stabil pasca pandemi",
+            wage: "10,200,000", wageBadge: "Competitive",
+            jobs: "8,450", jobsBadge: "Sedang", jobsDesc: "Fokus pada Fintech",
+            skill: "Risk Mgmt", skillDesc: "Sertifikasi FRM diutamakan",
+            chartData: [4.0, 4.2, 4.5, 4.8, 5.1], chartColor: '#8b5cf6'
+        },
+        "Healthcare": {
+            growth: "10.1%", growthBadge: "+3.5% YoY", growthDesc: "Kebutuhan tenaga medis naik",
+            wage: "8,800,000", wageBadge: "Rising",
+            jobs: "12,100", jobsBadge: "Sangat Tinggi", jobsDesc: "Kekurangan suplai perawat",
+            skill: "Patient Care", skillDesc: "STR aktif wajib",
+            chartData: [3.0, 3.5, 4.2, 5.0, 6.2], chartColor: '#10b981'
+        },
+        "Manufacturing": {
+            growth: "-1.8%", growthBadge: "Menurun", growthDesc: "Dampak otomatisasi",
+            wage: "5,400,000", wageBadge: "Standard",
+            jobs: "6,200", jobsBadge: "Rendah", jobsDesc: "Pabrik padat karya berkurang",
+            skill: "Machine Ops", skillDesc: "Operasional mesin CNC",
+            chartData: [6.0, 5.8, 5.5, 5.2, 5.0], chartColor: '#ef4444'
+        },
+        "Retail": {
+            growth: "3.1%", growthBadge: "+0.2% YoY", growthDesc: "Peralihan ke E-commerce",
+            wage: "4,200,000", wageBadge: "Entry Level",
+            jobs: "22,500", jobsBadge: "Masif", jobsDesc: "Turnover karyawan tinggi",
+            skill: "Sales", skillDesc: "Komunikasi & Negosiasi",
+            chartData: [4.5, 4.0, 4.1, 4.3, 4.5], chartColor: '#f59e0b'
+        },
+        "Agriculture": {
+            growth: "2.4%", growthBadge: "Stabil", growthDesc: "Musim panen raya",
+            wage: "3,500,000", wageBadge: "Low",
+            jobs: "15,000", jobsBadge: "Tinggi", jobsDesc: "Musiman",
+            skill: "Farming", skillDesc: "Pengalaman lapangan",
+            chartData: [3.0, 3.1, 3.2, 3.4, 3.5], chartColor: '#84cc16'
+        },
+        "Construction": {
+            growth: "5.5%", growthBadge: "Naik", growthDesc: "Proyek IKN & Infrastruktur",
+            wage: "4,800,000", wageBadge: "Medium",
+            jobs: "9,000", jobsBadge: "Sedang", jobsDesc: "Proyek pemerintah",
+            skill: "Civil Eng", skillDesc: "Sertifikasi K3",
+            chartData: [2.0, 2.5, 3.5, 4.0, 5.0], chartColor: '#f97316'
+        }
+    };
+
+    
+    const ctx = document.getElementById('employmentTrendChart').getContext('2d');
+    let employmentChart;
+
+    function initChart(data, color) {
+        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, color + '80'); 
+        gradient.addColorStop(1, color + '00'); 
+
+        if (employmentChart) employmentChart.destroy();
+
+        employmentChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['2019', '2020', '2021', '2022', '2023'],
+                datasets: [{
+                    label: 'Employment (Millions)',
+                    data: data,
+                    borderColor: color,
+                    backgroundColor: gradient,
+                    borderWidth: 4,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: color,
+                    pointBorderWidth: 2,
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                    fill: true,
+                    tension: 0.4 
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { grid: { borderDash: [5, 5], color: '#f1f5f9' }, beginAtZero: false },
+                    x: { grid: { display: false } }
+                },
+                animation: { duration: 1500, easing: 'easeOutQuart' }
+            }
+        });
+    }
+
+    
+    function replayAnimations() {
+        const cards = document.querySelectorAll('.stat-card');
+        
+        cards.forEach((card, index) => {
+            
+            card.classList.remove('animate-slide-left');
+            
+            
+            card.classList.add('opacity-0');
+            
+            
+            card.style.opacity = ''; 
+            card.style.transform = '';
+            
+            
+            void card.offsetWidth;
+
+            
+            setTimeout(() => {
+                card.classList.remove('opacity-0'); 
+                card.classList.add('animate-slide-left'); 
+            }, index * 150); 
+        });
+
+        
+        const chartWrapper = document.querySelector('.chart-wrapper');
+        if(chartWrapper) {
+            chartWrapper.classList.remove('animate-slide-left');
+            chartWrapper.classList.add('opacity-0');
+            
+            chartWrapper.style.opacity = ''; 
+            
+            void chartWrapper.offsetWidth;
+            
+            setTimeout(() => {
+                chartWrapper.classList.remove('opacity-0');
+                chartWrapper.classList.add('animate-slide-left');
+            }, 600); 
+        }
+    }
+
+    function updateDashboard(sector) {
+        const data = sectorData[sector];
+        
+        if(!data) {
+            return; 
+        }
+
+        replayAnimations();
+
+        const ids = [
+            { id: 'valGrowth', val: data.growth }, { id: 'badgeGrowth', val: data.growthBadge }, { id: 'descGrowth', val: data.growthDesc },
+            { id: 'valWage', val: data.wage }, { id: 'badgeWage', val: data.wageBadge },
+            { id: 'valJobs', val: data.jobs }, { id: 'badgeJobs', val: data.jobsBadge }, { id: 'descJobs', val: data.jobsDesc },
+            { id: 'valSkill', val: data.skill }, { id: 'descSkill', val: data.skillDesc },
+            { id: 'sectorTitle', val: sector }
+        ];
+
+        ids.forEach(item => {
+            const el = document.getElementById(item.id);
+            if(el) {
+                el.textContent = item.val;
+                    
+                if(item.id === 'badgeGrowth') {
+                    if(data.growth.includes('-')) {
+                        el.className = "text-xs font-bold text-red-600 bg-red-100 px-2 py-1 rounded";
+                    } else {
+                        el.className = "text-xs font-bold text-orange-600 bg-orange-100 px-2 py-1 rounded";
+                    }
+                }
+            }
+        });
+
+        initChart(data.chartData, data.chartColor);
+    }
+
+    
+    const btn = document.getElementById('btnSektorAnalysis');
+    const list = document.getElementById('listSektorAnalysis');
+    const label = document.getElementById('labelSektorAnalysis');
+
+    if(btn && list) {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            list.classList.toggle('hidden');
+        });
+
+        list.querySelectorAll('.option-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const val = item.getAttribute('data-value');
+                label.textContent = val; 
+                list.classList.add('hidden');
+                  
+                updateDashboard(val);
+            });
+        });
+
+        document.addEventListener('click', () => list.classList.add('hidden'));
+    }
+
+    
+    initChart(sectorData['Technology'].chartData, sectorData['Technology'].chartColor);
+    replayAnimations();
+
+});

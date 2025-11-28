@@ -393,7 +393,6 @@ body {
     color: #666;
 }
 
-/* Filter Controls */
 .controls-container {
     background: white;
     padding: 20px;
@@ -428,7 +427,7 @@ body {
 .dropdown:hover {
     border-color: #007bff;
 }
-/* Khusus untuk <select> agar terlihat seperti dropdown */
+
 .dropdown select {
     background: transparent;
     border: none;
