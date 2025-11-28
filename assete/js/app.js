@@ -15,111 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    const jobsData = [
-        { id: 1, 
-        title: 
-        "Frontend Developer", 
-        company: "PT Teknologi Maju", 
-        location: "Jakarta", 
-        type: "Full-time", 
-        posted: "2 days ago", 
-        skills: ["React", "Tailwind"], 
-        salary: "IDR 8-12 Juta", 
-        logo: "TM" 
-    },
-        { id: 2, 
-            title: "Digital Marketing", 
-            company: "CV Inovasi", 
-            location: "Yogyakarta", 
-            type: "Magang", 
-            posted: "5 days ago", 
-            skills: ["SEO", "Ads"], 
-            salary: "IDR 2-3 Juta", 
-            logo: "ID" 
-        },
-        { id: 3, 
-            title: "Data Analyst", 
-            company: "Bank Finansial", 
-            location: "Surabaya", 
-            type: "Full-time", 
-            posted: "1 week ago", 
-            skills: ["Python", "SQL"], 
-            salary: "IDR 10-15 Juta", 
-            logo: "BFI" 
-        },
-        { id: 4, 
-            title: "Backend Developer", 
-            company: "Startup Digital", 
-            location: "Bandung", 
-            type: "Full-time", 
-            posted: "3 days ago", 
-            skills: ["Node.js", "MongoDB"], 
-            salary: "IDR 9-13 Juta", 
-            logo: "SDI" 
-        },
-        { id: 5, 
-            title: "UX Designer", 
-            company: "Design Studio", 
-            location: "Jakarta", 
-            type: "Part-time", 
-            posted: "1 day ago", 
-            skills: ["Figma", "UI/UX"], 
-            salary: "IDR 6-8 Juta", 
-            logo: "DSC" 
-        },
-        { id: 6, 
-            title: "Project Manager", 
-            company: "Consulting Group", 
-            location: "Medan", 
-            type: "Full-time", 
-            posted: "1 week ago", 
-            skills: ["Agile", "Scrum"], 
-            salary: "IDR 15-20 Juta", 
-            logo: "CGI" 
-        },
-        { id: 7, 
-            title: "Content Writer", 
-            company: "Media Kreatif", 
-            location: "Bandung", 
-            type: "Part-time", 
-            posted: "2 days ago", 
-            skills: ["Copywriting", "SEO"], 
-            salary: "IDR 4-5 Juta", 
-            logo: "MK" 
-        },
-        { id: 8, 
-            title: "DevOps Engineer", 
-            company: "Cloud System", 
-            location: "Jakarta", 
-            type: "Full-time", 
-            posted: "3 days ago", 
-            skills: ["AWS", "Docker"], 
-            salary: "IDR 18-25 Juta", 
-            logo: "CS" 
-        },
-        { id: 9, 
-            title: "HR Staff", 
-            company: "Retail Indo", 
-            location: "Surabaya", 
-            type: "Full-time", 
-            posted: "4 days ago", 
-            skills: ["Recruitment", "Psychology"], 
-            salary: "IDR 5-7 Juta", 
-            logo: "RI" 
-        },
-        { id: 10, 
-            title: "Sales Executive", 
-            company: "Auto Mobil", 
-            location: "Jakarta", 
-            type: "Full-time", 
-            posted: "1 day ago", 
-            skills: ["Sales", "Negotiation"], 
-            salary: "IDR 5-8 Juta", 
-            logo: "AM" 
-        }
-    ];
+    let jobsData = [];
 
-    const itemsPerPage = 6;
+    const itemsPerPage = 9;
     let currentPage = 1;
     let filteredJobs = [...jobsData]; 
 
@@ -162,15 +60,28 @@ document.addEventListener("DOMContentLoaded", () => {
         const pageData = filteredJobs.slice(start, end);
         const totalPages = Math.ceil(filteredJobs.length / itemsPerPage);
 
+        function getTypeClass(type) {
+            const t = (type || '').toLowerCase();
+            if (t === 'full-time') return 'full-time';
+            if (t === 'magang' || t === 'intern') return 'magang';
+            if (t === 'part-time') return 'part-time';
+            if (t === 'contract' || t === 'kontak' || t === 'contact') return 'contract';
+            if (t === 'remote') return 'remote';
+            if (t === 'freelance') return 'freelance';
+            if (t === 'commission') return 'commission';
+            if (t === 'project') return 'project';
+            if (t === 'partnership' || t === 'partner sip' || t === 'partnerships') return 'partnership';
+            return 'part-time';
+        }
+
         pageData.forEach((job, index) => {
             const card = document.createElement('div');
             card.className = 'job-card bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-300 relative group job-card-animate';
             card.style.animationDelay = `${index * 100}ms`;
-
-            let badgeClass = job.type === 'Full-time' ? 'bg-blue-100 text-blue-700' : (job.type === 'Magang' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700');
+            const typeClass = getTypeClass(job.type);
 
             card.innerHTML = `
-                <div class="absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold ${badgeClass}">${job.type}</div>
+                <div class="job-type-badge ${typeClass}">${job.type}</div>
                 <div class="flex items-start mb-4 pr-16">
                     <div class="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center font-bold text-blue-600 mr-3 text-sm">${job.logo}</div>
                     <div>
@@ -180,17 +91,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <div class="text-sm text-gray-500 space-y-2 mb-4">
                     <div class="flex items-center gap-2"><i class="fas fa-map-marker-alt w-4"></i> ${job.location}</div>
-                    <div class="flex items-center gap-2"><i class="far fa-clock w-4"></i> Posted ${job.posted}</div>
+                    <div class="flex items-center gap-2"><i class="far fa-clock w-4"></i> ${job.posted}</div>
                 </div>
                 <div class="flex flex-wrap gap-2 mb-4">
                     ${job.skills.map(skill => `<span class="px-2 py-1 bg-gray-50 text-gray-600 text-xs rounded-md border border-gray-100">${skill}</span>`).join('')}
                 </div>
                 <div class="mt-auto pt-4 border-t border-gray-100 flex items-center justify-between">
                     <span class="font-bold text-gray-800 text-sm">${job.salary}</span>
-                    <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition" onclick="alert('Lamar ${job.title}')">Lamar</button>
+                    <div class="flex gap-2">
+                        <button class="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition btn-detail flex items-center gap-2" data-id="${job.id}"><i class="fas fa-eye"></i> Lihat Detail</button>
+                        <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition btn-apply flex items-center gap-2" data-id="${job.id}"><i class="fas fa-paper-plane"></i> Lamar</button>
+                    </div>
                 </div>
             `;
             container.appendChild(card);
+            const detailBtn = card.querySelector('.btn-detail');
+            if(detailBtn) detailBtn.addEventListener('click', () => openModal(job));
+            const applyBtn = card.querySelector('.btn-apply');
+            if(applyBtn) applyBtn.addEventListener('click', () => openApply(job));
         });
 
         if (totalPages > 1 && pagination) {
@@ -282,7 +200,66 @@ document.addEventListener("DOMContentLoaded", () => {
         document.querySelectorAll('[id^="list"]').forEach(el => el.classList.add('hidden'));
     });
 
-    renderDisplay();
+    function openModal(job) {
+        const modal = document.getElementById('jobDetailModal');
+        const titleEl = document.getElementById('modalJobTitle');
+        const logoEl = document.getElementById('modalCompanyLogo');
+        const nameEl = document.getElementById('modalCompanyName');
+        const locEl = document.querySelector('#modalLocation span');
+        const typeEl = document.getElementById('modalJobType');
+        const descEl = document.getElementById('modalDescription');
+        const detEl = document.getElementById('modalDetails');
+        const reqEl = document.getElementById('modalRequirements');
+        if(!modal) return;
+        if(titleEl) titleEl.textContent = job.title;
+        if(logoEl) logoEl.textContent = job.logo || '';
+        if(nameEl) nameEl.textContent = job.company || '';
+        if(locEl) locEl.textContent = job.location || '';
+        if(typeEl) {
+            typeEl.textContent = job.type || '';
+            typeEl.className = 'inline-block px-2.5 py-0.5 rounded-full text-xs font-medium ' + (job.type === 'Full-time' ? 'bg-blue-100 text-blue-700' : (job.type === 'Magang' ? 'bg-green-100 text-green-700' : 'bg-yellow-100 text-yellow-700'));
+        }
+        if(descEl) descEl.textContent = job.description || '';
+        if(detEl) detEl.textContent = job.details || '';
+        if(reqEl) {
+            reqEl.innerHTML = '';
+            const reqs = Array.isArray(job.requirements) ? job.requirements : [];
+            reqs.forEach(r => {
+                const li = document.createElement('li');
+                li.textContent = r;
+                reqEl.appendChild(li);
+            });
+        }
+        modal.classList.remove('hidden');
+    }
+
+    function openApply(job) {
+        alert('Lamar ' + job.title);
+    }
+
+    const closeBtn = document.getElementById('closeModal');
+    if(closeBtn) closeBtn.addEventListener('click', () => {
+        const modal = document.getElementById('jobDetailModal');
+        if(modal) modal.classList.add('hidden');
+    });
+    const modalOverlay = document.getElementById('jobDetailModal');
+    if(modalOverlay) modalOverlay.addEventListener('click', (e) => {
+        if(e.target.id === 'jobDetailModal') modalOverlay.classList.add('hidden');
+    });
+
+    async function loadJobs() {
+        try {
+            const res = await fetch('assete/data/jobs.json');
+            const data = await res.json();
+            jobsData = Array.isArray(data) ? data : [];
+            filteredJobs = [...jobsData];
+            renderDisplay();
+        } catch (e) {
+            filteredJobs = [];
+            renderDisplay();
+        }
+    }
+    loadJobs();
 
     const initAnimations = () => {
         const observer = new IntersectionObserver((entries) => {
@@ -296,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.hero-text, .section-title, .stats-title, .stat-card, .news-card, .hero-images, .animate-fade-in-up').forEach(el => observer.observe(el));
+        document.querySelectorAll('.hero-text, .section-title, .stats-title, .stat-card, .news-card, .hero-images, .animate-fade-in-up, .job-card').forEach(el => observer.observe(el));
     };
     initAnimations();
 
