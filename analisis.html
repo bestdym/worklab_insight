@@ -1,58 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tentang Kami - Worklab Insight</title>
+    <title>National Employment Data - Worklab Insight</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="assete/css/style.css">
+    <link rel="stylesheet" href="/assete/css/style.css">
 </head>
 <body class="bg-white text-gray-800">
-    <!-- Header -->
-    <header class="header-bg relative">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex flex-col md:flex-row items-center justify-between relative z-10">
-
-                <!-- Logo -->
-                <div class="flex items-center mb-4 md:mb-0">
-                    <div>
-                        <h1 class="text-2xl font-bold text-white">Worklab Insight</h1>
-                        <!-- <p class="text-sm text-blue-200">
-                            Menggambarkan dinamika ketenagakerjaan dan pertumbuhan ekonomi Indonesia
-                        </p> -->
-                    </div>
-                </div>
-
-                <!-- Navigation -->
-                <nav id="desktopMenu"
-                    class="desktop-menu hidden md:flex md:space-x-6 items-center bg-white md:bg-transparent
-                           md:static absolute top-16 left-0 w-full md:w-auto shadow md:shadow-none p-4 md:p-0">
-                    <a href="dashboard.html" class="nav-item">
-                        <i class="fas fa-home mr-2"></i> Home
-                    </a>
-                    <a href="analisis.html" class="nav-item">
-                        <i class="fas fa-chart-line mr-2"></i> National Employment Data
-                    </a>
-                    <a href="lowongan.html" class="nav-item">
-                        <i class="fas fa-briefcase mr-2"></i> Job Portal
-                    </a>
-                    <a href="aboutme.html" class="nav-item">
-                        <i class="fas fa-info-circle mr-2"></i> Economic growth Analysis
-                    </a>
-                </nav>
-
-                <!-- Mobile Menu Button -->
-                <button class="mobile-menu md:hidden text-white text-2xl" id="mobileMenuBtn">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+    <div class="bg-bubbles">
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+    </div>
+    <nav class="navbar animate-fade-down">
+        <div class="logo">
+            <img src="https://via.placeholder.com/40x40/1e3a8a/ffffff?text=W" alt="Logo">
+            <span>WorkLab Insight</span>
         </div>
-        <div class="header-shape"></div>
-    </header>
+        <ul class="nav-links" id="desktopMenu">
+            <a href="dashboard.html" class="nav-item">Home</a>
+            <a href="analisis.html" class="nav-item nav-active">National Employment Data</a>
+            <a href="lowongan.html" class="nav-item">Job Portal</a>
+            <a href="aboutme.html" class="nav-item">Economic Growth Analysis</a>
+        </ul>
+        <div class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </div>
+        <button class="btn-login">Login</button>
+    </nav>
 
-    <!-- Main Content -->
-   
+    <main class="container mx-auto px-4 py-8">
+    </main>
 
     <!-- Footer -->
     <footer class="footer-bg mt-12">
@@ -128,7 +106,6 @@
         </div>
     </footer>
 
-    <!-- Load JS File -->
-    <script src="js/app.js"></script>
+    <script src="assete/js/app.js"></script>
 </body>
 </html>
