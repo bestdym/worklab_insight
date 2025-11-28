@@ -8,8 +8,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-</head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"></head>
 <body>
     <div class="bg-bubbles">
         <li></li>
@@ -21,22 +22,72 @@
     </div>
     <nav class="navbar animate-fade-down">
         <div class="logo">
-            <img src="https://via.placeholder.com/40x40/1e3a8a/ffffff?text=W" alt="Logo">
+            <img src="/assete/img/logo.png" alt="Logo">
             <span>WorkLab Insight</span>
         </div>
         <ul class="nav-links">
             <a href="dashboard.html" class="nav-item">
                      Home
                 </a>
-                <a href="analisis.html" class="nav-item">
-                     National Employment Data
-                </a>
-                <a href="lowongan.html" class="nav-item">
-                     Job Portal
-                </a>
-                <a href="economicgrowth.html" class="nav-item">
-                     Economic growth Analysis
-                </a>
+                <li class="relative group">
+                <button class="nav-item flex items-center gap-1 focus:outline-none">
+                    <span>National Employment Data</span>
+                    <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                </button>
+
+                <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6">
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        
+                        <a href="employmentdata.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item">
+                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
+                                <i class="fas fa-chart-bar text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base mb-1">Employment Statistics</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">Data statistik tenaga kerja nasional terkini.</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item">
+                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors">
+                                <i class="fas fa-search-dollar text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base mb-1">Wage Analysis</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">Analisis tren gaji di berbagai sektor industri.</p>
+                            </div>
+                        </a>
+
+                        <a href="workforce.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item">
+                            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors">
+                                <i class="fas fa-users text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base mb-1">Demographics</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">Penyebaran tenaga kerja berdasarkan demografi.</p>
+                            </div>
+                        </a>
+
+                        <a href="#" class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item">
+                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors">
+                                <i class="fas fa-industry text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900 text-base mb-1">Sector Growth</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">Laporan pertumbuhan per sektor ekonomi.</p>
+                            </div>
+                        </a>
+
+                    </div>
+                </div>
+            </li>   
+            <a href="lowongan.html" class="nav-item">
+                 Job Portal
+            </a>
+            <a href="economicgrowth.html" class="nav-item">
+                 Economic growth Analysis
+            </a>
         </ul>
         
         <div class="flex items-center gap-4">
