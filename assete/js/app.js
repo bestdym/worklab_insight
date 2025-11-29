@@ -730,3 +730,70 @@ document.addEventListener("DOMContentLoaded", () => {
     replayAnimations();
 
 });
+
+    const detailData = {
+        'faktorPHK': {
+            title: "Analisis Mendalam: Pemicu PHK Massal",
+            icon: '<i class="fas fa-chart-line text-red-600"></i>',
+            headerColor: 'bg-red-50',
+            content: `
+                <p class="font-semibold text-gray-800 mb-2">1. Koreksi Pasar Pasca-Pandemi</p>
+                <p class="mb-4">Selama pandemi, perusahaan teknologi merekrut secara agresif ("overhiring") karena lonjakan permintaan digital. Saat kondisi normal kembali, pendapatan tidak sebanding dengan biaya operasional yang membengkak, memaksa perusahaan melakukan efisiensi ekstrem.</p>
+                
+                <p class="font-semibold text-gray-800 mb-2">2. Tekanan Investor & Suku Bunga Tinggi</p>
+                <p class="mb-4">Era "uang murah" (suku bunga rendah) telah berakhir. Investor kini menuntut profitabilitas nyata (profitability) daripada sekadar pertumbuhan pengguna (growth). Perusahaan yang "bakar uang" dipaksa memangkas biaya, dan beban gaji karyawan seringkali menjadi target utama.</p>
+                <p class="font-semibold text-gray-800 mb-2">3. Disrupsi AI Generatif</p>
+                <p>Adopsi teknologi AI seperti ChatGPT dan otomatisasi lainnya mulai menggantikan peran pekerjaan rutin, seperti customer service level 1, entry data, dan penulisan konten dasar, mengurangi kebutuhan jumlah staf.</p>
+            `
+        },
+        'magangIdeal': {
+            title: "Standar Program Magang Berkualitas",
+            icon: '<i class="fas fa-check-circle text-green-600"></i>',
+            headerColor: 'bg-green-50',
+            content: `
+                <p>Magang yang ideal harus memenuhi prinsip <strong>Learning by Doing</strong>, bukan sekadar <em>Cheap Labor</em>. Berikut indikator utamanya:</p>
+                <ul class="list-disc pl-5 space-y-2 mt-2">
+                    <li><strong>Mentorship Terstruktur:</strong> Pemagang didampingi oleh supervisor yang memberikan arahan, feedback, dan evaluasi berkala, bukan dibiarkan bekerja sendiri tanpa panduan.</li>
+                    <li><strong>Kurikulum Pembelajaran:</strong> Terdapat rencana kerja (workplan) yang jelas tentang skill apa yang akan dipelajari selama periode magang.</li>
+                    <li><strong>Kompensasi Layak:</strong> Meskipun statusnya belajar, pemagang berhak mendapatkan uang saku (transport & makan) sebagai bentuk apresiasi kontribusi mereka.</li>
+                    <li><strong>Konversi SKS:</strong> Untuk mahasiswa, program harus bisa dikonversi menjadi nilai akademik (seperti program MSIB Kampus Merdeka).</li>
+                </ul>
+            `
+        },
+        'eksploitasi': {
+            title: "Red Flags: Tanda Eksploitasi Magang",
+            icon: '<i class="fas fa-exclamation-triangle text-yellow-600"></i>',
+            headerColor: 'bg-yellow-50',
+            content: `
+                <p class="mb-4">Banyak perusahaan menyalahgunakan label "magang" untuk mendapatkan tenaga kerja gratis. Waspadai tanda-tanda berikut:</p>
+                
+                <div class="bg-red-50 p-4 rounded-lg border border-red-100 mb-4">
+                    <h5 class="font-bold text-red-700 mb-2">Modus Operandi Umum:</h5>
+                    <ul class="list-disc pl-5 text-red-600 text-sm space-y-1">
+                        <li>Menggantikan peran staff tetap yang resign (mengisi kekosongan posisi krusial).</li>
+                        <li>Beban kerja setara karyawan full-time (9-5 atau lembur) tapi tanpa upah/benefit.</li>
+                        <li>Pekerjaan bersifat repetitif/administrasi saja (fotokopi, buat kopi) tanpa transfer ilmu.</li>
+                        <li>Penahanan ijazah atau denda penalti jika berhenti di tengah jalan.</li>
+                    </ul>
+                </div>
+                <p>Jika Anda mengalami hal ini, segera konsultasikan dengan dosen pembimbing atau serikat pekerja terkait.</p>
+            `
+        }
+    };
+    function showDetail(key) {
+        const data = detailData[key];
+        if(!data) return;
+
+        document.getElementById('modalTitle').innerText = data.title;
+        document.getElementById('modalIconContainer').innerHTML = data.icon;
+        document.getElementById('modalBody').innerHTML = data.content;
+        
+        document.getElementById('detailModal').classList.remove('hidden');
+    }
+    function closeDetailModal() {
+        document.getElementById('detailModal').classList.add('hidden');
+    }
+
+    document.getElementById('detailModal').addEventListener('click', (e) => {
+        if(e.target.id === 'detailModal') closeDetailModal();
+    });
