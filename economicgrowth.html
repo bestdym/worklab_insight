@@ -5,129 +5,221 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InsightDashboard - Pertumbuhan Ekonomi</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="assete/css/style.css">
+    <style>
+        body, input, select, textarea, button {
+            font-family: 'Outfit', sans-serif !important;
+        }
+        
+        /* Layout Asli Anda (Dipertahankan) */
+        .filters-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #f1f5f9;
+        }
+        .filter-group { 
+            display: flex; 
+            gap: 1rem; 
+            flex-wrap: wrap; 
+            flex: 1; 
+        }
+        .toggle-switch { 
+            display: flex; 
+            align-items: center; 
+            gap: 0.5rem; 
+            font-size: 0.875rem; 
+            color: #4a5568; 
+            font-weight: 500; 
+        }
+        
+        /* Switch Style */
+        .switch { position: relative; display: inline-block; width: 44px; height: 24px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .4s; }
+        input:checked + .slider { background-color: #2196F3; }
+        input:focus + .slider { box-shadow: 0 0 1px #2196F3; }
+        input:checked + .slider:before { transform: translateX(20px); }
+        .slider.round { border-radius: 34px; }
+        .slider.round:before { border-radius: 50%; }
+
+        /* Custom Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #f1f1f1; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+
+        /* Additional Helper for Chart Headers */
+        .chart-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 1.5rem; }
+        .big-stat { font-size: 1.875rem; font-weight: 700; color: #1a202c; }
+        .growth.positive { color: #10b981; font-size: 0.875rem; background: #ecfdf5; padding: 0.25rem 0.5rem; border-radius: 0.375rem; margin-left: 0.5rem; }
+        .growth.negative { color: #ef4444; font-size: 0.875rem; background: #fef2f2; padding: 0.25rem 0.5rem; border-radius: 0.375rem; margin-left: 0.5rem; }
+    </style>
 </head>
 
-<body class="bg-gray-50">
-    <nav class="navbar animate-fade-down relative">
-        <div class="logo">
-            <img src="/assete/img/logo.png" alt="Logo">
-            <span>WorkLab Insight</span>
-        </div>
-        <ul class="nav-links hidden md:flex" id="desktopMenu">
-            <a href="dashboard.html" class="nav-item">Beranda</a>
-            <li class="relative group">
-                <button class="nav-item flex items-center gap-1 focus:outline-none">
-                    <span>Data Ketenagakerjaan Nasional</span>
-                    <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
-                </button>
-                <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6">
-                    <div class="grid grid-cols-2 gap-6">
-                        <a href="employmentdata.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-chart-bar text-xl"></i>
+<body class="bg-gray-50 flex flex-col min-h-screen">
+    <nav class="navbar animate-fade-down relative bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="logo flex items-center gap-2">
+                    <img src="/assete/img/logo.png" alt="Logo" class="h-8">
+                    <span class="font-bold text-xl text-gray-800">WorkLab Insight</span>
+                </div>
+                <ul class="nav-links hidden md:flex items-center gap-8" id="desktopMenu">
+                    <a href="dashboard.html" class="nav-item text-gray-600 hover:text-blue-600 font-medium">Beranda</a>
+                    <li class="relative group">
+                        <button class="nav-item flex items-center gap-1 focus:outline-none text-gray-600 hover:text-blue-600 font-medium">
+                            <span>Data Ketenagakerjaan Nasional</span>
+                            <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6">
+                            <div class="grid grid-cols-2 gap-6">
+                                <a href="employmentdata.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item">
+                                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
+                                        <i class="fas fa-chart-bar text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-base mb-1">Statistik Ketenagakerjaan</h4>
+                                        <p class="text-xs text-gray-500 leading-relaxed">Data statistik tenaga kerja nasional terkini.</p>
+                                    </div>
+                                </a>
+                                <a href="wageAnalysis.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item">
+                                    <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors">
+                                        <i class="fas fa-search-dollar text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-base mb-1">Analisis Upah</h4>
+                                        <p class="text-xs text-gray-500 leading-relaxed">Analisis tren gaji di berbagai sektor industri.</p>
+                                    </div>
+                                </a>
+                                <a href="workforce.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item">
+                                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors">
+                                        <i class="fas fa-users text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-base mb-1">Demografi</h4>
+                                        <p class="text-xs text-gray-500 leading-relaxed">Penyebaran tenaga kerja berdasarkan demografi.</p>
+                                    </div>
+                                </a>
+                                <a href="#" class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item">
+                                    <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors">
+                                        <i class="fas fa-industry text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-900 text-base mb-1">Pertumbuhan Sektor</h4>
+                                        <p class="text-xs text-gray-500 leading-relaxed">Laporan pertumbuhan per sektor ekonomi.</p>
+                                    </div>
+                                </a>
                             </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Statistik Ketenagakerjaan</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Data statistik tenaga kerja nasional terkini.</p>
-                            </div>
-                        </a>
-                        <a href="wageAnalysis.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-search-dollar text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Analisis Upah</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Analisis tren gaji di berbagai sektor industri.</p>
-                            </div>
-                        </a>
-                        <a href="workforce.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-users text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Demografi</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Penyebaran tenaga kerja berdasarkan demografi.</p>
-                            </div>
-                        </a>
-                        <a href="#" class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-industry text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Pertumbuhan Sektor</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Laporan pertumbuhan per sektor ekonomi.</p>
-                            </div>
-                        </a>
+                        </div>
+                    </li>   
+                    <a href="lowongan.html" class="nav-item text-gray-600 hover:text-blue-600 font-medium">Portal Lowongan Kerja</a>
+                    <a href="economicgrowth.html" class="nav-item text-blue-600 font-bold">Analisis Pertumbuhan Ekonomi</a>
+                </ul>
+                
+                <div class="flex items-center gap-4">    
+                    <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200">
+                        <i class="fas fa-moon text-xl" id="themeIcon"></i>
+                    </button>
+                    <div class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                    <div id="mobileDropdown" class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50">
+                        <a href="dashboard.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Beranda</a>
+                        <a href="analisis.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Data Ketenagakerjaan Nasional</a>
+                        <a href="lowongan.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Portal lapangan Kerja</a>
+                        <a href="economicgrowth.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Analisis Pertumbuhan Ekonomi</a>
                     </div>
                 </div>
-            </li>   
-            <a href="lowongan.html" class="nav-item">Portal Lowongan Kerja</a>
-            <a href="economicgrowth.html" class="nav-item">Analisis Pertumbuhan Ekonomi</a>
-        </ul>
-        
-        <div class="flex items-center gap-4">    
-            <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200">
-                <i class="fas fa-moon text-xl" id="themeIcon"></i>
-            </button>
-            <div class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </div>
-            <div id="mobileDropdown" class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50">
-                <a href="dashboard.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Beranda</a>
-                <a href="analisis.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Data Ketenagakerjaan Nasional</a>
-                <a href="lowongan.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Portal lapangan Kerja</a>
-                <a href="economicgrowth.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Analisis Pertumbuhan Ekonomi</a>
             </div>
         </div>
     </nav>
 
-    <main class="container mx-auto px-4 relative z-10">
-        <div class="max-w-6xl mx-auto">
+    <main class="container mx-auto px-4 relative z-10 py-8 flex-grow">
+        <div class="max-w-7xl mx-auto">
             <div class="main-wrapper">
                 <div class="container">
-                    <header class="page-header">
-                        <h1>Analisis Pertumbuhan Ekonomi</h1>
-                        <p>Menganalisis pertumbuhan ekonomi berbasis sektor dan dampaknya terhadap pasar tenaga kerja di Indonesia.</p>
+                    <header class="page-header mb-8 text-center md:text-left">
+                        <h1 class="text-3xl font-bold text-gray-900 mb-2">Analisis Pertumbuhan Ekonomi</h1>
+                        <p class="text-gray-600">Menganalisis pertumbuhan ekonomi berbasis sektor dan dampaknya terhadap pasar tenaga kerja di Indonesia.</p>
                     </header>
 
-                    <section class="controls-container">
+                    <section class="controls-container mb-8">
                         <div class="filters-row">
                             <div class="filter-group">
-                                <select id="metricSelect" class="dropdown">
-                                    <option value="GDP">PDB (GDP)</option>
-                                    <option value="Employment">Penyerapan Tenaga Kerja</option>
-                                </select>
+                                <!-- DROPDOWN 1: Metric -->
+                                <div class="relative min-w-[200px] flex-1">
+                                    <button id="btnMetricSelect" class="w-full bg-white border border-gray-300 text-gray-700 py-2.5 px-4 rounded-lg flex justify-between items-center cursor-pointer hover:border-blue-500 transition shadow-sm">
+                                        <span id="labelMetricSelect" class="truncate">PDB (GDP)</span>
+                                        <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+                                    </button>
+                                    <div id="listMetricSelect" class="hidden absolute z-30 mt-1 w-full bg-white border border-gray-100 rounded-lg shadow-xl overflow-hidden">
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer transition-colors" data-value="GDP">PDB (GDP)</div>
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer transition-colors" data-value="Employment">Penyerapan Tenaga Kerja</div>
+                                    </div>
+                                    <input type="hidden" id="metricSelect" value="GDP">
+                                </div>
                                 
-                                <select id="sectorSelect" class="dropdown">
-                                    <option value="Technology">Teknologi</option>
-                                    <option value="Manufacturing">Manufaktur</option>
-                                    <option value="Agriculture">Pertanian</option>
-                                    <option value="Mining">Pertambangan</option>
-                                    <option value="Retail">Ritel</option>
-                                    <option value="Finance">Keuangan</option>
-                                </select>
+                                <!-- DROPDOWN 2: Sector -->
+                                <div class="relative min-w-[200px] flex-1">
+                                    <button id="btnSectorSelect" class="w-full bg-white border border-gray-300 text-gray-700 py-2.5 px-4 rounded-lg flex justify-between items-center cursor-pointer hover:border-blue-500 transition shadow-sm">
+                                        <span id="labelSectorSelect" class="truncate">Teknologi</span>
+                                        <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+                                    </button>
+                                    <div id="listSectorSelect" class="hidden absolute z-30 mt-1 w-full bg-white border border-gray-100 rounded-lg shadow-xl overflow-hidden max-h-60 overflow-y-auto custom-scrollbar">
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer transition-colors" data-value="Technology">Teknologi</div>
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer transition-colors" data-value="Manufacturing">Manufaktur</div>
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer transition-colors" data-value="Agriculture">Pertanian</div>
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer transition-colors" data-value="Mining">Pertambangan</div>
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer transition-colors" data-value="Retail">Ritel</div>
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer transition-colors" data-value="Finance">Keuangan</div>
+                                    </div>
+                                    <input type="hidden" id="sectorSelect" value="Technology">
+                                </div>
 
-                                <select id="compareSectorSelect" class="dropdown" style="display: none; border-color: #28a745; color: #28a745;">
-                                    <option value="Technology">Banding: Teknologi</option>
-                                    <option value="Manufacturing" selected>Banding: Manufaktur</option>
-                                    <option value="Agriculture">Banding: Pertanian</option>
-                                    <option value="Mining">Banding: Pertambangan</option>
-                                    <option value="Retail">Banding: Ritel</option>
-                                    <option value="Finance">Banding: Keuangan</option>
-                                </select>
+                                <!-- DROPDOWN 3: Compare Sector (Hidden initially) -->
+                                <div id="containerCompareSelect" class="relative min-w-[200px] flex-1" style="display: none;">
+                                    <button id="btnCompareSectorSelect" class="w-full bg-green-50 border border-green-200 text-green-700 py-2.5 px-4 rounded-lg flex justify-between items-center cursor-pointer hover:border-green-500 transition shadow-sm">
+                                        <span id="labelCompareSectorSelect" class="truncate">Banding: Manufaktur</span>
+                                        <i class="fas fa-chevron-down text-green-600 text-xs"></i>
+                                    </button>
+                                    <div id="listCompareSectorSelect" class="hidden absolute z-30 mt-1 w-full bg-white border border-gray-100 rounded-lg shadow-xl overflow-hidden max-h-60 overflow-y-auto custom-scrollbar">
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-green-50 cursor-pointer transition-colors" data-value="Technology">Teknologi</div>
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-green-50 cursor-pointer transition-colors" data-value="Manufacturing">Manufaktur</div>
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-green-50 cursor-pointer transition-colors" data-value="Agriculture">Pertanian</div>
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-green-50 cursor-pointer transition-colors" data-value="Mining">Pertambangan</div>
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-green-50 cursor-pointer transition-colors" data-value="Retail">Ritel</div>
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-green-50 cursor-pointer transition-colors" data-value="Finance">Keuangan</div>
+                                    </div>
+                                    <input type="hidden" id="compareSectorSelect" value="Manufacturing">
+                                </div>
 
-                                <select id="regionSelect" class="dropdown">
-                                    <option value="Indonesia">Indonesia</option>
-                                    <option value="Asia">Asia</option>
-                                </select>
+                                <!-- DROPDOWN 4: Region -->
+                                <div class="relative min-w-[150px] flex-1">
+                                    <button id="btnRegionSelect" class="w-full bg-white border border-gray-300 text-gray-700 py-2.5 px-4 rounded-lg flex justify-between items-center cursor-pointer hover:border-blue-500 transition shadow-sm">
+                                        <span id="labelRegionSelect" class="truncate">Indonesia</span>
+                                        <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+                                    </button>
+                                    <div id="listRegionSelect" class="hidden absolute z-30 mt-1 w-full bg-white border border-gray-100 rounded-lg shadow-xl overflow-hidden">
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer transition-colors" data-value="Indonesia">Indonesia</div>
+                                        <div class="option-item px-4 py-2.5 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer transition-colors" data-value="Asia">Asia</div>
+                                    </div>
+                                    <input type="hidden" id="regionSelect" value="Indonesia">
+                                </div>
                             </div>
+
                             <div class="toggle-switch">
                                 <span>Mode Bandingkan</span>
                                 <label class="switch">
@@ -137,36 +229,33 @@
                             </div>
                         </div>
 
-                        <div class="range-slider-container">
-                            <div class="range-labels"><span>Rentang Tahun</span></div>
-                            <input type="range" min="2010" max="2024" value="2024" class="range-input" id="yearRange">
-                            <div class="range-years">
+                        <div class="range-slider-container bg-white p-4 rounded-xl border border-gray-100">
+                            <div class="range-labels mb-2 text-sm font-medium text-gray-700"><span>Rentang Tahun</span></div>
+                            <input type="range" min="2010" max="2024" value="2024" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600" id="yearRange">
+                            <div class="range-years flex justify-between text-xs text-gray-400 mt-2">
                                 <span>2010</span>
-                                <span id="currentYear">2024</span>
+                                <span id="currentYear" class="font-bold text-blue-600">2024</span>
                             </div>
                         </div>
                     </section>
 
-                    <main class="dashboard-grid">
-                        <div class="card chart-card">
-                            <div class="chart-header">
+                    <main class="dashboard-grid grid grid-cols-1 lg:grid-cols-3 gap-8">
+                        <!-- Chart Card -->
+                        <div class="card chart-card lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                            <div class="chart-header flex justify-between items-start mb-6">
                                 <div class="header-text">
-                                    <h3 id="chartTitle">Pertumbuhan PDB di Sektor Teknologi</h3>
-                                    <p class="sub-text" id="chartSubtitle">Nilai (dalam Triliun IDR)</p>
+                                    <h3 class="text-lg font-bold text-gray-800" id="chartTitle">Pertumbuhan PDB di Sektor Teknologi</h3>
+                                    <p class="text-sm text-gray-500" id="chartSubtitle">Nilai (dalam Triliun IDR)</p>
                                 </div>
-                                <div class="big-stat" id="bigStat">1650T IDR <span class="growth positive">↗ +120%</span></div>
+                                <div class="big-stat text-2xl font-bold text-gray-900" id="bigStat">1650T IDR <span class="growth positive">↗ +120%</span></div>
                             </div>
                             
-                            <div class="chart-wrapper">
+                            <div class="chart-wrapper relative h-80 w-full">
                                 <canvas id="growthChart"></canvas>
-                            </div>
-
-                            <div class="chart-x-axis">
-                                <span>2010</span><span>2012</span><span>2014</span><span>2016</span>
-                                <span>2018</span><span>2020</span><span>2022</span><span>2024</span>
                             </div>
                         </div> 
                         
+                        <!-- Sidebar Summary -->
                         <aside class="sidebar lg:col-span-1 flex flex-col gap-4">
                             <div class="bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col h-[320px]">
                                 <div class="p-5 border-b border-gray-100 bg-white rounded-t-xl z-10">
@@ -174,7 +263,7 @@
                                     <p class="text-xs text-gray-500 mt-1">Perbandingan Data Semua Sektor</p>
                                 </div>
                                 <div class="overflow-y-auto flex-1 p-5 custom-scrollbar">
-                                    <div id="summaryContent" class="space-y-5"></div>
+                                    <div id="summaryContent" class="space-y-4"></div>
                                 </div>
                             </div>
 
@@ -253,11 +342,15 @@
                         </div>
                     </section>
                     
+                    <!-- INFO MODAL -->
                     <div id="infoModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-                        <div class="flex items-center justify-center min-h-screen px-4 text-center sm:block sm:p-0">
-                            <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" aria-hidden="true" onclick="closeModal()"></div>
+                        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                            <!-- Overlay -->
+                            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="closeModal()"></div>
                             <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-                            <div class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full">
+                            
+                            <!-- Modal Content -->
+                            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full">
                                 <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                                     <div class="sm:flex sm:items-start">
                                         <div id="modalIconBg" class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
@@ -265,7 +358,7 @@
                                         </div>
                                         <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
                                             <h3 class="text-lg leading-6 font-medium text-gray-900" id="modalTitle">Judul Modal</h3>
-                                            <div class="mt-4">
+                                            <div class="mt-2">
                                                 <p class="text-sm text-gray-500 mb-4" id="modalDesc">
                                                     Deskripsi detail akan muncul di sini.
                                                 </p>
@@ -288,21 +381,28 @@
             </div>
         </div>
     </main>
-    <footer class="mt-auto">
-        <div class="container footer-content">
-            <div class="footer-links">
-                <a href="aboutme.html">Tentang Kami</a>
-                <a href="#">Kontak</a>
-                <a href="#">Kebijakan Privasi</a>
-                <a href="#">Syarat & Ketentuan</a>
+
+    <footer class="mt-auto bg-white border-t border-gray-200 py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="flex flex-col md:flex-row gap-6 text-sm text-gray-600 font-medium">
+                    <a href="aboutme.html" class="hover:text-blue-600 transition">Tentang Kami</a>
+                    <a href="#" class="hover:text-blue-600 transition">Kontak</a>
+                    <a href="#" class="hover:text-blue-600 transition">Kebijakan Privasi</a>
+                    <a href="#" class="hover:text-blue-600 transition">Syarat & Ketentuan</a>
+                </div>
+                
+                <div class="flex gap-4">
+                    <span class="text-2xl text-blue-400 hover:text-blue-600 cursor-pointer">🐦</span>
+                    <span class="text-2xl text-blue-400 hover:text-blue-600 cursor-pointer">🔗</span>
+                    <span class="text-2xl text-blue-400 hover:text-blue-600 cursor-pointer">fb</span>
+                </div>
             </div>
-            <div class="social-icons">
-                <span>🐦</span> <span>🔗</span> <span>fb</span>
+            <div class="mt-8 text-center text-xs text-gray-400 border-t border-gray-100 pt-8">
+                &copy; 2024 Indonesia Employment Watch. Hak Cipta Dilindungi Undang-Undang.
             </div>
-            <p class="copyright">© 2024 Indonesia Employment Watch. Hak Cipta Dilindungi Undang-Undang.</p>
         </div>
     </footer>
-    <script src="assete/js/test.js"></script>
     <script src="assete/js/app.js"></script>
 </body>
 </html>

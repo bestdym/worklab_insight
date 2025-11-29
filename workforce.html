@@ -91,20 +91,36 @@
             <p>Dasbor ini memberikan gambaran demografis angkatan kerja nasional, termasuk usia, jenis kelamin, dan tingkat pendidikan.</p>
             
             <div class="filters">
-                <select id="regionFilter" class="custom-select">
-                    <option value="All">Wilayah: Semua</option>
-                    <option value="Java">Wilayah: Jawa</option>
-                    <option value="Sumatra">Wilayah: Sumatera</option>
-                    <option value="Kalimantan">Wilayah: Kalimantan</option>
-                </select>
+                <div class="flex flex-wrap gap-4 mb-6">
+    <div class="relative w-48">
+        <button id="btnRegionFilter" class="w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg flex justify-between items-center cursor-pointer hover:border-blue-500 transition shadow-sm">
+            <span id="labelRegionFilter" class="font-medium">All Regions</span>
+            <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+        </button>
+        <div id="listRegionFilter" class="hidden absolute z-20 mt-1 w-full bg-white border border-gray-100 rounded-lg shadow-xl overflow-hidden">
+            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="All">All Regions</div>
+            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="Java">Jawa</div>
+            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="Sumatra">Sumatera</div>
+            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="Kalimantan">Kalimantan</div>
+        </div>
+        <input type="hidden" id="regionFilter" value="All"> 
+    </div>
 
-                <select id="yearFilter" class="custom-select">
-                    <option value="2025" selected>Tahun: 2025 (Prakiraan)</option>
-                    <option value="2024">Tahun: 2024</option> 
-                    <option value="2023">Tahun: 2023</option>
-                    <option value="2022">Tahun: 2022</option>
-                    <option value="2021">Tahun: 2021</option>
-                </select>
+    <div class="relative w-32">
+        <button id="btnYearFilter" class="w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg flex justify-between items-center cursor-pointer hover:border-blue-500 transition shadow-sm">
+            <span id="labelYearFilter" class="font-medium">2023</span>
+            <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+        </button>
+        <div id="listYearFilter" class="hidden absolute z-20 mt-1 w-full bg-white border border-gray-100 rounded-lg shadow-xl overflow-hidden">
+            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="2025">2025</div>
+            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="2024">2024</div>
+            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="2023">2023</div>
+            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="2022">2022</div>
+            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="2021">2021</div>
+        </div>
+        <input type="hidden" id="yearFilter" value="2023">
+    </div>
+</div>
             </div>
         </header>
 
@@ -165,6 +181,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
-    <script src="assete/js/test.js"></script>
+    <script src="assete/js/app.js"></script>
 </body>
 </html>
