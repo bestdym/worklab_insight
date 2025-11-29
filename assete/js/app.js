@@ -2852,6 +2852,52 @@ const initCoreUI = () => {
   }, 500);
 };
 
+const initNewsSlider = () => {
+    const slider = document.getElementById('newsSlider');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('sliderDots');
+    
+    if (!slider || !prevBtn || !nextBtn || !dotsContainer) return;
+
+    nextBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: slider.clientWidth, behavior: 'smooth' });
+    });
+    
+    prevBtn.addEventListener('click', () => {
+        slider.scrollBy({ left: -slider.clientWidth, behavior: 'smooth' });
+    });
+
+    const updateDots = () => {
+        const totalWidth = slider.scrollWidth; 
+        const viewportWidth = slider.clientWidth; 
+        const scrollLeft = slider.scrollLeft;
+        
+        const numPages = Math.ceil(totalWidth / viewportWidth);
+        let currentPage = Math.round(scrollLeft / viewportWidth);
+
+        dotsContainer.innerHTML = '';
+
+        for (let i = 0; i < numPages; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('dot');
+            if (i === currentPage) {
+                dot.classList.add('active');
+            }
+            dot.addEventListener('click', () => {
+                slider.scrollTo({ left: i * viewportWidth, behavior: 'smooth' });
+            });
+            dotsContainer.appendChild(dot);
+        }
+        
+        prevBtn.style.opacity = scrollLeft === 0 ? '0.3' : '1';
+        nextBtn.style.opacity = scrollLeft + viewportWidth >= totalWidth ? '0.3' : '1';
+    };
+
+    slider.addEventListener('scroll', updateDots);
+    updateDots(); 
+};
+
 document.addEventListener("DOMContentLoaded", () => {
   console.log("System Initializing...");
 
@@ -2862,6 +2908,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initDemographics();
   initMacroEconomics();
   initNationalStats();
+  initNewsSlider();
 
   window.openModal = (type) => {
     window.openModalInfo(type);
@@ -3149,3 +3196,4 @@ window.closeTrendModal = () => {
 document.getElementById("trendModal")?.addEventListener("click", (e) => {
   if (e.target.id === "trendModal") window.closeTrendModal();
 });
+

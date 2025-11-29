@@ -636,7 +636,7 @@ footer {
 .slider-arrow {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-60%) !important;
     background-color: white;
     width: 45px;
     height: 45px;
@@ -1297,10 +1297,6 @@ body.dark-mode #themeToggle {
 body.dark-mode #themeToggle:hover {
     background-color: rgba(255, 255, 255, 0.1);
 }
-
-
-
-/*ini section economoy*/
 
 html,
 body {
@@ -2675,7 +2671,6 @@ ul.feature-list li::before {
 
 .interactive-card:hover {
     transform: translateY(-5px);
-    /* Naik dikit */
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
 }
 
@@ -2860,7 +2855,6 @@ body.dark-mode .site-footer .footer-bottom {
     color: #94a3b8 !important;
 }
 
-/* Footer logo sizing to match header */
 .site-footer .logo {
     display: flex;
     align-items: center;
@@ -2881,3 +2875,4 @@ body.dark-mode .site-footer .footer-bottom {
 body.dark-mode .site-footer .logo span {
     color: #f8fafc !important;
 }
+
