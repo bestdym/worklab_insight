@@ -1,303 +1,529 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>WorkLab Insight - Labor Market Simulator</title>
-    <link rel="stylesheet" href="/assete/css/style.css">
+    <link rel="stylesheet" href="/assete/css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"></head>
-<body>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="bg-bubbles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
     </div>
-      <nav class="navbar animate-fade-down relative">
-        <div class="logo">
-            <img src="/assete/img/logo.png" alt="Logo">
-            <span>WorkLab Insight</span>
-        </div>
-        <ul class="nav-links hidden md:flex" id="desktopMenu">
-            <a href="dashboard.html" class="nav-item">Beranda</a>
-            <li class="relative group">
-                <button class="nav-item flex items-center gap-1 focus:outline-none">
-                    <span>Data Ketenagakerjaan Nasional</span>
-                    <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
-                </button>
-                <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6">
-                    <div class="grid grid-cols-2 gap-6">
-                        <a href="employmentdata.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-chart-bar text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Statistik Ketenagakerjaan</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Data statistik tenaga kerja nasional terkini.</p>
-                            </div>
-                        </a>
-                        <a href="wageAnalysis.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-search-dollar text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Analisis Upah</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Analisis tren gaji di berbagai sektor industri.</p>
-                            </div>
-                        </a>
-                        <a href="workforce.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-users text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Demografi</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Penyebaran tenaga kerja berdasarkan demografi.</p>
-                            </div>
-                        </a>
-                        <a href="laborissues.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-industry text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Isu Pekerja</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Laporan isu pekerja di indonesia.</p>
-                            </div>
-                        </a>
-                    </div>
+    <nav class="navbar animate-fade-down relative">
+      <div class="logo">
+        <img src="/assete/img/logo.png" alt="Logo" />
+        <span>WorkLab Insight</span>
+      </div>
+      <ul class="nav-links hidden md:flex" id="desktopMenu">
+        <a href="dashboard.html" class="nav-item">Beranda</a>
+        <li class="relative group">
+          <button class="nav-item flex items-center gap-1 focus:outline-none">
+            <span>Data Ketenagakerjaan Nasional</span>
+            <i
+              class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"
+            ></i>
+          </button>
+          <div
+            class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6"
+          >
+            <div class="grid grid-cols-2 gap-6">
+              <a
+                href="employmentdata.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-chart-bar text-xl"></i>
                 </div>
-            </li>   
-            <a href="lowongan.html" class="nav-item">Portal Lowongan Kerja</a>
-            <a href="economicgrowth.html" class="nav-item">Analisis Pertumbuhan Ekonomi</a>
-        </ul>
-        
-        <div class="flex items-center gap-4">    
-            <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200">
-                <i class="fas fa-moon text-xl" id="themeIcon"></i>
-            </button>
-            <div class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Statistik Ketenagakerjaan
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Data statistik tenaga kerja nasional terkini.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="wageAnalysis.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-search-dollar text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Analisis Upah
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Analisis tren gaji di berbagai sektor industri.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="workforce.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-users text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Demografi
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Penyebaran tenaga kerja berdasarkan demografi.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="laborissues.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-industry text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Isu Pekerja
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Laporan isu pekerja di indonesia.
+                  </p>
+                </div>
+              </a>
             </div>
-            <div id="mobileDropdown" class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50">
-                <a href="dashboard.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Beranda</a>
-                <a href="analisis.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Data Ketenagakerjaan Nasional</a>
-                <a href="lowongan.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Portal lapangan Kerja</a>
-                <a href="economicgrowth.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Analisis Pertumbuhan Ekonomi</a>
-            </div>
+          </div>
+        </li>
+        <a href="lowongan.html" class="nav-item">Portal Lowongan Kerja</a>
+        <a href="economicgrowth.html" class="nav-item"
+          >Analisis Pertumbuhan Ekonomi</a
+        >
+      </ul>
+
+      <div class="flex items-center gap-4">
+        <button
+          id="themeToggle"
+          class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200"
+        >
+          <i class="fas fa-moon text-xl" id="themeIcon"></i>
+        </button>
+        <div
+          class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer"
+          id="mobileMenuBtn"
+        >
+          <i class="fas fa-bars"></i>
         </div>
+        <div
+          id="mobileDropdown"
+          class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50"
+        >
+          <a
+            href="dashboard.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Beranda</a
+          >
+          <a
+            href="analisis.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Data Ketenagakerjaan Nasional</a
+          >
+          <a
+            href="lowongan.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Portal lapangan Kerja</a
+          >
+          <a
+            href="economicgrowth.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Analisis Pertumbuhan Ekonomi</a
+          >
+        </div>
+      </div>
     </nav>
     <header class="hero">
-        <div class="container hero-container">
-            <div class="hero-text">
-                <h1>WorkLab Insight-<br>Labor Market Simulator</h1>
-                <p>Navigate labor market dynamics with data-driven simulations and insights. Understand key national employment challenges, from youth unemployment and the digital skills gap to the rise of the gig economy.</p>
-            </div>
-            
-            <div class="hero-images">
-    <div class="hero-blob"></div>
- 
-    <img src="assete/img/gedung-belakang.png" alt="Building Back" class="img-building-back">
-    
-    <img src="assete/img/gedung-depan.png" alt="Building Front" class="img-building-front">
-    <img src="assete/img/Ellipse.png" alt="Figure" class="img-figure">
-</div>
-
+      <div class="container hero-container">
+        <div class="hero-text">
+          <h1>WorkLab Insight-<br />Labor Market Simulator</h1>
+          <p>
+            Navigate labor market dynamics with data-driven simulations and
+            insights. Understand key national employment challenges, from youth
+            unemployment and the digital skills gap to the rise of the gig
+            economy.
+          </p>
         </div>
+
+        <div class="hero-images">
+          <div class="hero-blob"></div>
+
+          <img
+            src="assete/img/gedung-belakang.png"
+            alt="Building Back"
+            class="img-building-back"
+          />
+
+          <img
+            src="assete/img/gedung-depan.png"
+            alt="Building Front"
+            class="img-building-front"
+          />
+          <img src="assete/img/Ellipse.png" alt="Figure" class="img-figure" />
+        </div>
+      </div>
     </header>
     <section class="stat-container">
-        <div class="stats-title">
-            <h2>Data Singkat Sektor dan Pekerja</h2>
-            <p>Stay informed on the latest and shifts in the national labor market</p>
-        </div>
-        <section class="stats container">
+      <div class="stats-title">
+        <h2>Data Singkat Sektor dan Pekerja</h2>
+        <p>
+          Stay informed on the latest and shifts in the national labor market
+        </p>
+      </div>
+      <section class="stats container">
         <div class="stat-card">
-            <div class="stat-header">
-                <span>Tingkat Pengangguran Nasional</span>
-                <span class="icon">👥</span>
-            </div>
-            <h2>5.2%</h2>
-            <div class="stat-footer">
-                <span class="subtext">Data for Q3 2023</span>
-                <a href="#">Lihat Detail</a>
-            </div>
+          <div class="stat-header">
+            <span>Tingkat Pengangguran Nasional</span>
+            <span class="icon">👥</span>
+          </div>
+          <h2>5.2%</h2>
+          <div class="stat-footer">
+            <span class="subtext">Data for Q3 2023</span>
+            <a href="#">Lihat Detail</a>
+          </div>
         </div>
 
         <div class="stat-card">
-            <div class="stat-header">
-                <span>Sektor Pertumbuhan Tertinggi</span>
-                <span class="icon">🚀</span>
-            </div>
-            <h2>Teknologi & Ekonomi Digital</h2>
-            <div class="stat-footer">
-                <span class="green-text">+15% Peningkatan Lowongan</span>
-                <a href="#">Lihat Detail</a>
-            </div>
+          <div class="stat-header">
+            <span>Sektor Pertumbuhan Tertinggi</span>
+            <span class="icon">🚀</span>
+          </div>
+          <h2>Teknologi & Ekonomi Digital</h2>
+          <div class="stat-footer">
+            <span class="green-text">+15% Peningkatan Lowongan</span>
+            <a href="#">Lihat Detail</a>
+          </div>
         </div>
 
         <div class="stat-card">
-            <div class="stat-header">
-                <span>Partisipasi Gig Economy</span>
-                <span class="icon">⚡</span>
-            </div>
-            <h2>2.5 Juta</h2>
-            <div class="stat-footer">
-                <span class="subtext">Peningkatan di kalangan 18-24 tahun</span>
-                <a href="#">Lihat Detail</a>
-            </div>
+          <div class="stat-header">
+            <span>Partisipasi Gig Economy</span>
+            <span class="icon">⚡</span>
+          </div>
+          <h2>2.5 Juta</h2>
+          <div class="stat-footer">
+            <span class="subtext">Peningkatan di kalangan 18-24 tahun</span>
+            <a href="#">Lihat Detail</a>
+          </div>
         </div>
+      </section>
     </section>
-    </section> 
 
-
-    <div class="section-title container text-center" style="margin: 5% 5%;">
-        <h2>Isu Strategis Ketenagakerjaan</h2>
-        <p>Tantangan utama yang membentuk masa depan tenaga kerja Indonesia saat ini</p>
+    <div class="section-title container text-center" style="margin: 5% 5%">
+      <h2>Isu Strategis Ketenagakerjaan</h2>
+      <p>
+        Tantangan utama yang membentuk masa depan tenaga kerja Indonesia saat
+        ini
+      </p>
     </div>
 
-    <section class="stats container" style="margin: 5% 5%;">
-        
-        <div class="stat-card">
-            <div class="stat-header">
-                <span>Kesenjangan Keahlian</span>
-                <span class="icon">🎓</span>
-            </div>
-            <h2>Skills Gap</h2>
-            <p class="text-sm text-gray-500 mt-3 leading-relaxed text-justify">
-                Ketidakcocokan antara kurikulum pendidikan dan kebutuhan industri teknologi yang bergerak cepat, menciptakan tantangan besar bagi lulusan baru untuk mendapatkan pekerjaan yang layak.
-            </p>
+    <section class="stats container">
+      <div class="stat-card">
+        <div class="stat-header">
+          <span>Kesenjangan Keahlian</span>
+          <span class="icon">🎓</span>
         </div>
+        <h2>Skills Gap</h2>
+        <p class="text-sm text-gray-500 mt-3 leading-relaxed text-justify">
+          Ketidakcocokan antara kurikulum pendidikan dan kebutuhan industri
+          teknologi yang bergerak cepat, menciptakan tantangan besar bagi
+          lulusan baru untuk mendapatkan pekerjaan yang layak.
+        </p>
+      </div>
 
-        <div class="stat-card">
-            <div class="stat-header">
-                <span>Bangkitnya Ekonomi Baru</span>
-                <span class="icon">⚡</span>
-            </div>
-            <h2>Gig Economy</h2>
-            <p class="text-sm text-gray-500 mt-3 leading-relaxed text-justify">
-                Pergeseran pola kerja dari karyawan tetap menjadi pekerja lepas (freelancer) yang menawarkan fleksibilitas tinggi, namun sering kali minim jaminan sosial dan stabilitas pendapatan.
-            </p>
+      <div class="stat-card">
+        <div class="stat-header">
+          <span>Bangkitnya Ekonomi Baru</span>
+          <span class="icon">⚡</span>
         </div>
+        <h2>Gig Economy</h2>
+        <p class="text-sm text-gray-500 mt-3 leading-relaxed text-justify">
+          Pergeseran pola kerja dari karyawan tetap menjadi pekerja lepas
+          (freelancer) yang menawarkan fleksibilitas tinggi, namun sering kali
+          minim jaminan sosial dan stabilitas pendapatan.
+        </p>
+      </div>
 
-        <div class="stat-card">
-            <div class="stat-header">
-                <span>Dampak Teknologi</span>
-                <span class="icon">🤖</span>
-            </div>
-            <h2>Otomatisasi & AI</h2>
-            <p class="text-sm text-gray-500 mt-3 leading-relaxed text-justify">
-                Transformasi digital dan kecerdasan buatan (AI) yang mulai menggantikan pekerjaan repetitif, menuntut tenaga kerja untuk melakukan upskilling dan reskilling agar tetap relevan.
-            </p>
+      <div class="stat-card">
+        <div class="stat-header">
+          <span>Dampak Teknologi</span>
+          <span class="icon">🤖</span>
         </div>
-
+        <h2>Otomatisasi & AI</h2>
+        <p class="text-sm text-gray-500 mt-3 leading-relaxed text-justify">
+          Transformasi digital dan kecerdasan buatan (AI) yang mulai
+          menggantikan pekerjaan repetitif, menuntut tenaga kerja untuk
+          melakukan upskilling dan reskilling agar tetap relevan.
+        </p>
+      </div>
     </section>
-    
-<section class="news-section container">
-    <div class="section-title">
+
+    <section class="news-section container">
+      <div class="section-title">
         <h2>Latest Employment News</h2>
-        <p>Stay informed on the latest and shifts in the national labor market</p>
-    </div>
+        <p>
+          Stay informed on the latest and shifts in the national labor market
+        </p>
+      </div>
 
-    <div class="news-slider-wrapper">
-        
+      <div class="news-slider-wrapper">
         <button class="slider-arrow slider-arrow-left" id="prevBtn">
-            &#10094; 
+          &#10094;
         </button>
-        
+
         <div class="news-slider" id="newsSlider">
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500&auto=format&fit=crop" alt="PHK sektor teknologi">
-                    <div class="news-content">
-                        <h3>Ancaman PHK Teknologi di Indonesia</h3>
-                        <p>Gelombang PHK global di sektor teknologi berdampak ke ekosistem startup Indonesia yang bergantung pada pendanaan.</p>
-                        <a href="https://money.kompas.com/read/2025/05/09/165412526/ancaman-phk-teknologi-di-indonesia" target="_blank" rel="noopener noreferrer">Baca Selengkapnya</a>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=500&auto=format&fit=crop" alt="Kesenjangan keterampilan digital">
-                    <div class="news-content">
-                        <h3>RI Krisis Talenta Digital</h3>
-                        <p>Kebutuhan talenta digital Indonesia masih tinggi; program Kominfo dorong peningkatan keterampilan.</p>
-                        <a href="https://www.cnbcindonesia.com/tech/20240912142201-37-571365/indonesia-krisis-talenta-digital-setahun-kurang-500000-orang" target="_blank" rel="noopener noreferrer">Baca Selengkapnya</a>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop" alt="Gig economy">
-                    <div class="news-content">
-                        <h3>Gig Economy dan Tantangan Kerja</h3>
-                        <p>Presiden menyoroti tren ekonomi serabutan yang semakin luas dan implikasinya pada peluang kerja.</p>
-                        <a href="https://nasional.kompas.com/read/2024/09/19/19254871/jokowi-hati-hati-dengan-ekonomi-serabutan-kesempatan-kerja-makin-kecil" target="_blank" rel="noopener noreferrer">Baca Selengkapnya</a>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=500&auto=format&fit=crop" alt="Kebijakan WFA/WFH">
-                    <div class="news-content">
-                        <h3>ASN Boleh WFA, Jam Kerja Fleksibel</h3>
-                        <p>Peraturan Menpan-RB terbaru memungkinkan ASN bekerja dari mana saja dengan pengaturan fleksibel.</p>
-                        <a href="https://nasional.kompas.com/read/2025/06/18/18362931/aturan-baru-asn-kini-boleh-wfa-dan-jam-kerja-fleksibel" target="_blank" rel="noopener noreferrer">Baca Selengkapnya</a>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&auto=format&fit=crop" alt="AI dalam rekrutmen">
-                    <div class="news-content">
-                        <h3>Dampak AI pada Proses Rekrutmen</h3>
-                        <p>Penggunaan AI dalam lamaran kerja meningkat, memicu kekhawatiran kecocokan kompetensi pelamar.</p>
-                        <a href="https://money.kompas.com/read/2025/03/27/143352326/banyak-lamaran-kerja-dibuat-dengan-ai-risiko-direkrutnya-pelamar-tak-kompeten" target="_blank" rel="noopener noreferrer">Baca Selengkapnya</a>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&auto=format&fit=crop" alt="Pengangguran pemuda">
-                    <div class="news-content">
-                        <h3>Gen Z Menganggur, Apa Akar Masalahnya?</h3>
-                        <p>Penurunan lapangan kerja formal dan mismatch keterampilan jadi faktor utama pengangguran pemuda.</p>
-                        <a href="https://money.kompas.com/read/2024/05/24/193945726/nyaris-10-juta-gen-z-pengangguran-ternyata-ini-akar-masalahnya" target="_blank" rel="noopener noreferrer">Baca Selengkapnya</a>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&auto=format&fit=crop" alt="Green jobs">
-                    <div class="news-content">
-                        <h3>Green Jobs dari Energi Terbarukan</h3>
-                        <p>Transisi energi mendorong kebutuhan tenaga kerja baru di sektor terbarukan (PLTS, PLTA, PLTP).</p>
-                        <a href="https://lestari.kompas.com/read/2024/03/13/160000386/sambut-green-jobs-ini-5-lapangan-kerja-dari-energi-terbarukan" target="_blank" rel="noopener noreferrer">Baca Selengkapnya</a>
-                    </div>
-                </div>
-                <div class="news-card">
-                    <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500&auto=format&fit=crop" alt="Upah dan inflasi">
-                    <div class="news-content">
-                        <h3>Inflasi Rendah dan Daya Beli</h3>
-                        <p>Pakar menilai inflasi 2024 yang rendah menandakan daya beli melemah dan tekanan upah riil.</p>
-                        <a href="https://www.kompas.com/tren/read/2025/01/04/193000465/inflasi-2024-terendah-sejak-tahun-1958-pertanda-apa-?page=all" target="_blank" rel="noopener noreferrer">Baca Selengkapnya</a>
-                    </div>
-                </div>
+          <div class="news-card">
+            <img
+              src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500&auto=format&fit=crop"
+              alt="PHK sektor teknologi"
+            />
+            <div class="news-content">
+              <h3>Ancaman PHK Teknologi di Indonesia</h3>
+              <p>
+                Gelombang PHK global di sektor teknologi berdampak ke ekosistem
+                startup Indonesia yang bergantung pada pendanaan.
+              </p>
+              <a
+                href="https://money.kompas.com/read/2025/05/09/165412526/ancaman-phk-teknologi-di-indonesia"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Baca Selengkapnya</a
+              >
             </div>
-            <button class="slider-arrow slider-arrow-right" id="nextBtn">
-            &#10095;
+          </div>
+          <div class="news-card">
+            <img
+              src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=500&auto=format&fit=crop"
+              alt="Kesenjangan keterampilan digital"
+            />
+            <div class="news-content">
+              <h3>RI Krisis Talenta Digital</h3>
+              <p>
+                Kebutuhan talenta digital Indonesia masih tinggi; program
+                Kominfo dorong peningkatan keterampilan.
+              </p>
+              <a
+                href="https://www.cnbcindonesia.com/tech/20240912142201-37-571365/indonesia-krisis-talenta-digital-setahun-kurang-500000-orang"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Baca Selengkapnya</a
+              >
+            </div>
+          </div>
+          <div class="news-card">
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop"
+              alt="Gig economy"
+            />
+            <div class="news-content">
+              <h3>Gig Economy dan Tantangan Kerja</h3>
+              <p>
+                Presiden menyoroti tren ekonomi serabutan yang semakin luas dan
+                implikasinya pada peluang kerja.
+              </p>
+              <a
+                href="https://nasional.kompas.com/read/2024/09/19/19254871/jokowi-hati-hati-dengan-ekonomi-serabutan-kesempatan-kerja-makin-kecil"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Baca Selengkapnya</a
+              >
+            </div>
+          </div>
+          <div class="news-card">
+            <img
+              src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=500&auto=format&fit=crop"
+              alt="Kebijakan WFA/WFH"
+            />
+            <div class="news-content">
+              <h3>ASN Boleh WFA, Jam Kerja Fleksibel</h3>
+              <p>
+                Peraturan Menpan-RB terbaru memungkinkan ASN bekerja dari mana
+                saja dengan pengaturan fleksibel.
+              </p>
+              <a
+                href="https://nasional.kompas.com/read/2025/06/18/18362931/aturan-baru-asn-kini-boleh-wfa-dan-jam-kerja-fleksibel"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Baca Selengkapnya</a
+              >
+            </div>
+          </div>
+          <div class="news-card">
+            <img
+              src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&auto=format&fit=crop"
+              alt="AI dalam rekrutmen"
+            />
+            <div class="news-content">
+              <h3>Dampak AI pada Proses Rekrutmen</h3>
+              <p>
+                Penggunaan AI dalam lamaran kerja meningkat, memicu kekhawatiran
+                kecocokan kompetensi pelamar.
+              </p>
+              <a
+                href="https://money.kompas.com/read/2025/03/27/143352326/banyak-lamaran-kerja-dibuat-dengan-ai-risiko-direkrutnya-pelamar-tak-kompeten"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Baca Selengkapnya</a
+              >
+            </div>
+          </div>
+          <div class="news-card">
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&auto=format&fit=crop"
+              alt="Pengangguran pemuda"
+            />
+            <div class="news-content">
+              <h3>Gen Z Menganggur, Apa Akar Masalahnya?</h3>
+              <p>
+                Penurunan lapangan kerja formal dan mismatch keterampilan jadi
+                faktor utama pengangguran pemuda.
+              </p>
+              <a
+                href="https://money.kompas.com/read/2024/05/24/193945726/nyaris-10-juta-gen-z-pengangguran-ternyata-ini-akar-masalahnya"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Baca Selengkapnya</a
+              >
+            </div>
+          </div>
+          <div class="news-card">
+            <img
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=500&auto=format&fit=crop"
+              alt="Green jobs"
+            />
+            <div class="news-content">
+              <h3>Green Jobs dari Energi Terbarukan</h3>
+              <p>
+                Transisi energi mendorong kebutuhan tenaga kerja baru di sektor
+                terbarukan (PLTS, PLTA, PLTP).
+              </p>
+              <a
+                href="https://lestari.kompas.com/read/2024/03/13/160000386/sambut-green-jobs-ini-5-lapangan-kerja-dari-energi-terbarukan"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Baca Selengkapnya</a
+              >
+            </div>
+          </div>
+          <div class="news-card">
+            <img
+              src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=500&auto=format&fit=crop"
+              alt="Upah dan inflasi"
+            />
+            <div class="news-content">
+              <h3>Inflasi Rendah dan Daya Beli</h3>
+              <p>
+                Pakar menilai inflasi 2024 yang rendah menandakan daya beli
+                melemah dan tekanan upah riil.
+              </p>
+              <a
+                href="https://www.kompas.com/tren/read/2025/01/04/193000465/inflasi-2024-terendah-sejak-tahun-1958-pertanda-apa-?page=all"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Baca Selengkapnya</a
+              >
+            </div>
+          </div>
+        </div>
+        <button class="slider-arrow slider-arrow-right" id="nextBtn">
+          &#10095;
         </button>
-        <div class="slider-dots" id="sliderDots">
-        </div>
-        </div>
+        <div class="slider-dots" id="sliderDots"></div>
+      </div>
     </section>
 
     <footer>
-        <div class="container footer-content">
-            <div class="footer-links">
-                <a href="aboutme.html">About Us</a>
-                <a href="#">Contact</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-            <div class="social-icons">
-                <span>🐦</span> <span>🔗</span> <span>fb</span>
-            </div>
-            <p class="copyright">© 2024 Indonesia Employment Watch. All Rights Reserved.</p>
+      <div class="container footer-content">
+        <div class="footer-links">
+          <a href="aboutme.html">About Us</a>
+          <a href="#" onclick="openFooterModal('contact')">Contact</a>
+          <a href="#" onclick="openFooterModal('privacy')">Privacy Policy</a>
+          <a href="#" onclick="openFooterModal('tnc')">Terms of Service</a>
         </div>
-        <script src="/assete/js/app.js"></script>
+        <div class="social-icons">
+          <span>🐦</span> <span>🔗</span> <span>fb</span>
+        </div>
+        <p class="copyright">
+          © 2024 Indonesia Employment Watch. All Rights Reserved.
+        </p>
+      </div>
+      <script src="/assete/js/app.js"></script>
     </footer>
+    <div
+      id="footerModal"
+      class="fixed inset-0 bg-black bg-opacity-60 hidden z-[99999] flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300 opacity-0"
+    >
+      <div
+        class="bg-white dark:bg-gray-800 rounded-xl w-full max-w-2xl shadow-2xl transform scale-95 transition-all duration-300 border border-gray-200 dark:border-gray-700"
+        id="footerModalContent"
+      >
+        <div
+          class="p-5 border-b border-gray-100 dark:border-gray-700 flex justify-between items-center bg-gray-50 dark:bg-gray-900 rounded-t-xl"
+        >
+          <h3
+            id="footerModalTitle"
+            class="text-xl font-bold text-gray-900 dark:text-white"
+          ></h3>
+          <button
+            onclick="closeFooterModal()"
+            class="text-gray-400 hover:text-red-500 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50 dark:hover:bg-red-900/50"
+          >
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
 
-</body>
+        <div
+          class="p-6 overflow-y-auto max-h-[70vh] text-gray-800 dark:text-gray-300 text-sm"
+          id="footerModalBody"
+        ></div>
+
+        <div
+          class="p-4 border-t border-gray-100 dark:border-gray-700 flex justify-end bg-gray-50 dark:bg-gray-900 rounded-b-xl"
+        >
+          <button
+            onclick="closeFooterModal()"
+            class="px-5 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-white rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition text-sm font-medium"
+          >
+            Tutup
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

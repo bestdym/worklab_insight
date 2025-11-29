@@ -1,265 +1,471 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NEDA - Demografi Tenaga Kerja</title>
-    
-    <link rel="stylesheet" href="assete/css/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
 
-     <nav class="navbar animate-fade-down relative">
-        <div class="logo">
-            <img src="/assete/img/logo.png" alt="Logo">
-            <span>WorkLab Insight</span>
-        </div>
-        <ul class="nav-links hidden md:flex" id="desktopMenu">
-            <a href="dashboard.html" class="nav-item">Beranda</a>
-            <li class="relative group">
-                <button class="nav-item flex items-center gap-1 focus:outline-none">
-                    <span>Data Ketenagakerjaan Nasional</span>
-                    <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
-                </button>
-                <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6">
-                    <div class="grid grid-cols-2 gap-6">
-                        <a href="employmentdata.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-chart-bar text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Statistik Ketenagakerjaan</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Data statistik tenaga kerja nasional terkini.</p>
-                            </div>
-                        </a>
-                        <a href="wageAnalysis.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-search-dollar text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Analisis Upah</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Analisis tren gaji di berbagai sektor industri.</p>
-                            </div>
-                        </a>
-                        <a href="workforce.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-users text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Demografi</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Penyebaran tenaga kerja berdasarkan demografi.</p>
-                            </div>
-                        </a>
-                        <a href="laborissues.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-industry text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Isu Pekerja</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Laporan isu pekerja di indonesia.</p>
-                            </div>
-                        </a>
-                    </div>
+    <link rel="stylesheet" href="assete/css/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav class="navbar animate-fade-down relative">
+      <div class="logo">
+        <img src="/assete/img/logo.png" alt="Logo" />
+        <span>WorkLab Insight</span>
+      </div>
+      <ul class="nav-links hidden md:flex" id="desktopMenu">
+        <a href="dashboard.html" class="nav-item">Beranda</a>
+        <li class="relative group">
+          <button class="nav-item flex items-center gap-1 focus:outline-none">
+            <span>Data Ketenagakerjaan Nasional</span>
+            <i
+              class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"
+            ></i>
+          </button>
+          <div
+            class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6"
+          >
+            <div class="grid grid-cols-2 gap-6">
+              <a
+                href="employmentdata.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-chart-bar text-xl"></i>
                 </div>
-            </li>   
-            <a href="lowongan.html" class="nav-item">Portal Lowongan Kerja</a>
-            <a href="economicgrowth.html" class="nav-item">Analisis Pertumbuhan Ekonomi</a>
-        </ul>
-        
-        <div class="flex items-center gap-4">    
-            <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200">
-                <i class="fas fa-moon text-xl" id="themeIcon"></i>
-            </button>
-            <div class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Statistik Ketenagakerjaan
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Data statistik tenaga kerja nasional terkini.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="wageAnalysis.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-search-dollar text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Analisis Upah
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Analisis tren gaji di berbagai sektor industri.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="workforce.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-users text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Demografi
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Penyebaran tenaga kerja berdasarkan demografi.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="laborissues.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-industry text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Isu Pekerja
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Laporan isu pekerja di indonesia.
+                  </p>
+                </div>
+              </a>
             </div>
-            <div id="mobileDropdown" class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50">
-                <a href="dashboard.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Beranda</a>
-                <a href="analisis.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Data Ketenagakerjaan Nasional</a>
-                <a href="lowongan.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Portal lapangan Kerja</a>
-                <a href="economicgrowth.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Analisis Pertumbuhan Ekonomi</a>
-            </div>
+          </div>
+        </li>
+        <a href="lowongan.html" class="nav-item">Portal Lowongan Kerja</a>
+        <a href="economicgrowth.html" class="nav-item"
+          >Analisis Pertumbuhan Ekonomi</a
+        >
+      </ul>
+
+      <div class="flex items-center gap-4">
+        <button
+          id="themeToggle"
+          class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200"
+        >
+          <i class="fas fa-moon text-xl" id="themeIcon"></i>
+        </button>
+        <div
+          class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer"
+          id="mobileMenuBtn"
+        >
+          <i class="fas fa-bars"></i>
         </div>
+        <div
+          id="mobileDropdown"
+          class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50"
+        >
+          <a
+            href="dashboard.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Beranda</a
+          >
+          <a
+            href="analisis.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Data Ketenagakerjaan Nasional</a
+          >
+          <a
+            href="lowongan.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Portal lapangan Kerja</a
+          >
+          <a
+            href="economicgrowth.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Analisis Pertumbuhan Ekonomi</a
+          >
+        </div>
+      </div>
     </nav>
 
     <main class="main-content">
-        <header class="header">
-            <h1 class="text-3xl font-bold text-gray-900">Demografi Tenaga Kerja & Wawasan Populasi</h1>
-            <p>Gambaran demografis angkatan kerja nasional berdasarkan kelompok usia, jenis kelamin, dan tingkat pendidikan.</p>
-            
-            <div class="filters">
-                <div class="flex flex-wrap gap-4 mb-6">
-    <div class="relative w-48">
-        <button id="btnRegionFilter" class="w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg flex justify-between items-center cursor-pointer hover:border-blue-500 transition shadow-sm">
-            <span id="labelRegionFilter" class="font-medium">All Regions</span>
-            <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
-        </button>
-        <div id="listRegionFilter" class="hidden absolute z-20 mt-1 w-full bg-white border border-gray-100 rounded-lg shadow-xl overflow-hidden">
-            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="All">All Regions</div>
-            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="Java">Jawa</div>
-            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="Sumatra">Sumatera</div>
-            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="Kalimantan">Kalimantan</div>
+      <header class="header">
+        <h1 class="text-3xl font-bold text-gray-900">
+          Demografi Tenaga Kerja & Wawasan Populasi
+        </h1>
+        <p>
+          Gambaran demografis angkatan kerja nasional berdasarkan kelompok usia,
+          jenis kelamin, dan tingkat pendidikan.
+        </p>
+
+        <div class="filters">
+          <div class="flex flex-wrap gap-4 mb-6">
+            <div class="relative w-48">
+              <button
+                id="btnRegionFilter"
+                class="w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg flex justify-between items-center cursor-pointer hover:border-blue-500 transition shadow-sm"
+              >
+                <span id="labelRegionFilter" class="font-medium"
+                  >All Regions</span
+                >
+                <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+              </button>
+              <div
+                id="listRegionFilter"
+                class="hidden absolute z-20 mt-1 w-full bg-white border border-gray-100 rounded-lg shadow-xl overflow-hidden"
+              >
+                <div
+                  class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer"
+                  data-value="All"
+                >
+                  All Regions
+                </div>
+                <div
+                  class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer"
+                  data-value="Java"
+                >
+                  Jawa
+                </div>
+                <div
+                  class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer"
+                  data-value="Sumatra"
+                >
+                  Sumatera
+                </div>
+                <div
+                  class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer"
+                  data-value="Kalimantan"
+                >
+                  Kalimantan
+                </div>
+              </div>
+              <input type="hidden" id="regionFilter" value="All" />
+            </div>
+
+            <div class="relative w-32">
+              <button
+                id="btnYearFilter"
+                class="w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg flex justify-between items-center cursor-pointer hover:border-blue-500 transition shadow-sm"
+              >
+                <span id="labelYearFilter" class="font-medium">2023</span>
+                <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
+              </button>
+              <div
+                id="listYearFilter"
+                class="hidden absolute z-20 mt-1 w-full bg-white border border-gray-100 rounded-lg shadow-xl overflow-hidden"
+              >
+                <div
+                  class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer"
+                  data-value="2025"
+                >
+                  2025
+                </div>
+                <div
+                  class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer"
+                  data-value="2024"
+                >
+                  2024
+                </div>
+                <div
+                  class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer"
+                  data-value="2023"
+                >
+                  2023
+                </div>
+                <div
+                  class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer"
+                  data-value="2022"
+                >
+                  2022
+                </div>
+                <div
+                  class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer"
+                  data-value="2021"
+                >
+                  2021
+                </div>
+              </div>
+              <input type="hidden" id="yearFilter" value="2023" />
+            </div>
+          </div>
         </div>
-        <input type="hidden" id="regionFilter" value="All"> 
-    </div>
+      </header>
 
-    <div class="relative w-32">
-        <button id="btnYearFilter" class="w-full bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg flex justify-between items-center cursor-pointer hover:border-blue-500 transition shadow-sm">
-            <span id="labelYearFilter" class="font-medium">2023</span>
-            <i class="fas fa-chevron-down text-gray-400 text-xs"></i>
-        </button>
-        <div id="listYearFilter" class="hidden absolute z-20 mt-1 w-full bg-white border border-gray-100 rounded-lg shadow-xl overflow-hidden">
-            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="2025">2025</div>
-            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="2024">2024</div>
-            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="2023">2023</div>
-            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="2022">2022</div>
-            <div class="option-item px-4 py-2 text-sm text-gray-600 hover:bg-blue-50 cursor-pointer" data-value="2021">2021</div>
+      <div class="dashboard-grid">
+        <div class="card">
+          <h3 class="card-title">Populasi berdasarkan Kelompok Usia</h3>
+          <div class="chart-container-bar">
+            <canvas id="ageChart"></canvas>
+          </div>
         </div>
-        <input type="hidden" id="yearFilter" value="2023">
-    </div>
-</div>
-            </div>
-        </header>
 
-        <div class="dashboard-grid">
-            <div class="card">
-                <h3 class="card-title">Populasi berdasarkan Kelompok Usia</h3>
-                <div class="chart-container-bar">
-                    <canvas id="ageChart"></canvas>
-                </div>
+        <div class="card">
+          <h3 class="card-title">Distribusi Gender</h3>
+          <div class="chart-container-donut">
+            <canvas id="genderChart"></canvas>
+            <div class="donut-center-text">
+              <h3 id="totalWorkforce">150Jt</h3>
+              <span>Total Angkatan Kerja</span>
             </div>
-
-            <div class="card">
-                <h3 class="card-title">Distribusi Gender</h3>
-                <div class="chart-container-donut">
-                    <canvas id="genderChart"></canvas>
-                    <div class="donut-center-text">
-                        <h3 id="totalWorkforce">150Jt</h3>
-                        <span>Total Angkatan Kerja</span>
-                    </div>
-                </div>
-                <div class="donut-legend">
-                    <div class="legend-item"><div class="dot" style="background:#1e3a8a"></div> Laki-laki (<span id="malePct">51%</span>)</div>
-                    <div class="legend-item"><div class="dot" style="background:#60a5fa"></div> Perempuan (<span id="femalePct">49%</span>)</div>
-                </div>
+          </div>
+          <div class="donut-legend">
+            <div class="legend-item">
+              <div class="dot" style="background: #1e3a8a"></div>
+              Laki-laki (<span id="malePct">51%</span>)
             </div>
-
-            <div class="card education-section">
-                <h3 class="card-title">Tingkat Pendidikan Tertinggi</h3>
-                <div class="chart-container-bar">
-                    <canvas id="educationChart"></canvas>
-                </div>
+            <div class="legend-item">
+              <div class="dot" style="background: #60a5fa"></div>
+              Perempuan (<span id="femalePct">49%</span>)
             </div>
-
-            <div class="card insight-section">
-                <div class="insight-image">
-                    <i class="fa-solid fa-chart-pie fa-2x"></i>
-                </div>
-                <div class="insight-content">
-                    <div class="insight-tag">Wawasan</div>
-                    <h3 class="insight-title">Ringkasan Ketenagakerjaan</h3>
-                    
-                    <div class="insight-details">
-                        <div>
-                            <div class="stat-big" id="unemploymentRate">8.2%</div>
-                            <p class="stat-label">Tingkat Pengangguran</p>
-                        </div>
-                        <ul class="bullet-list">
-                            <li>Analisis menunjukkan kesenjangan keterampilan yang signifikan dalam literasi digital.</li>
-                            <li>Preferensi pasar bergeser berdasarkan kondisi ekonomi.</li>
-                            <li>Tingkat pengangguran adalah indikator utama kesehatan ekonomi.</li>
-                        </ul>
-                    </div>
-    <button onclick="toggleReportModal(true)" class="btn-primary">Lihat Laporan Rinci</button>                </div>
-            </div>
+          </div>
         </div>
-    </main>
-    <div id="reportModal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-[9999] flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0">
-    <div class="bg-white rounded-2xl max-w-2xl w-full shadow-2xl transform scale-95 transition-transform duration-300" id="reportModalContent">
-        
-        <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50 rounded-t-2xl">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
-                    <i class="fas fa-file-invoice-dollar text-lg"></i>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold text-gray-900">Laporan Rinci: Q3 2024</h3>
-                    <p class="text-xs text-gray-500">Status: Finalized • ID: #REP-2024-Q3</p>
-                </div>
+
+        <div class="card education-section">
+          <h3 class="card-title">Tingkat Pendidikan Tertinggi</h3>
+          <div class="chart-container-bar">
+            <canvas id="educationChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card insight-section">
+          <div class="insight-image">
+            <i class="fa-solid fa-chart-pie fa-2x"></i>
+          </div>
+          <div class="insight-content">
+            <div class="insight-tag">Wawasan</div>
+            <h3 class="insight-title">Ringkasan Ketenagakerjaan</h3>
+
+            <div class="insight-details">
+              <div>
+                <div class="stat-big" id="unemploymentRate">8.2%</div>
+                <p class="stat-label">Tingkat Pengangguran</p>
+              </div>
+              <ul class="bullet-list">
+                <li>
+                  Analisis menunjukkan kesenjangan keterampilan yang signifikan
+                  dalam literasi digital.
+                </li>
+                <li>Preferensi pasar bergeser berdasarkan kondisi ekonomi.</li>
+                <li>
+                  Tingkat pengangguran adalah indikator utama kesehatan ekonomi.
+                </li>
+              </ul>
             </div>
-            <button onclick="toggleReportModal(false)" class="text-gray-400 hover:text-red-500 transition w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50">
-                <i class="fas fa-times"></i>
+            <button onclick="toggleReportModal(true)" class="btn-primary">
+              Lihat Laporan Rinci
             </button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div
+      id="reportModal"
+      class="fixed inset-0 bg-black bg-opacity-60 hidden z-[9999] flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0"
+    >
+      <div
+        class="bg-white rounded-2xl max-w-2xl w-full shadow-2xl transform scale-95 transition-transform duration-300"
+        id="reportModalContent"
+      >
+        <div
+          class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50 rounded-t-2xl"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600"
+            >
+              <i class="fas fa-file-invoice-dollar text-lg"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-bold text-gray-900">
+                Laporan Rinci: Q3 2024
+              </h3>
+              <p class="text-xs text-gray-500">
+                Status: Finalized • ID: #REP-2024-Q3
+              </p>
+            </div>
+          </div>
+          <button
+            onclick="toggleReportModal(false)"
+            class="text-gray-400 hover:text-red-500 transition w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50"
+          >
+            <i class="fas fa-times"></i>
+          </button>
         </div>
 
         <div class="p-6 overflow-y-auto max-h-[60vh]">
-            
-            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r-lg">
-                <div class="flex">
-                    <div class="flex-shrink-0">
-                        <i class="fas fa-info-circle text-blue-500"></i>
-                    </div>
-                    <div class="ml-3">
-                        <p class="text-sm text-blue-700 font-medium">Insight Utama</p>
-                        <p class="text-sm text-blue-600 mt-1">
-                            Tingkat pengangguran tertinggi berada pada rentang usia <strong>18-24 tahun (Gen Z)</strong>, menyumbang 40% dari total pengangguran nasional.
-                        </p>
-                    </div>
-                </div>
+          <div
+            class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r-lg"
+          >
+            <div class="flex">
+              <div class="flex-shrink-0">
+                <i class="fas fa-info-circle text-blue-500"></i>
+              </div>
+              <div class="ml-3">
+                <p class="text-sm text-blue-700 font-medium">Insight Utama</p>
+                <p class="text-sm text-blue-600 mt-1">
+                  Tingkat pengangguran tertinggi berada pada rentang usia
+                  <strong>18-24 tahun (Gen Z)</strong>, menyumbang 40% dari
+                  total pengangguran nasional.
+                </p>
+              </div>
             </div>
+          </div>
 
-            <h4 class="font-bold text-gray-800 mb-3 text-sm uppercase tracking-wider">Breakdown per Pendidikan</h4>
-            <div class="overflow-x-auto rounded-xl border border-gray-200 mb-6">
-                <table class="min-w-full divide-y divide-gray-200">
-                    <thead class="bg-gray-50">
-                        <tr>
-                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Jenjang</th>
-                            <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Total (Juta)</th>
-                            <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Persentase</th>
-                            <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Tren</th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200 text-sm">
-                        <tr>
-                            <td class="px-4 py-3 font-medium text-gray-800">SMK / Vokasi</td>
-                            <td class="px-4 py-3 text-right text-gray-600">3.2</td>
-                            <td class="px-4 py-3 text-right font-bold text-red-500">9.4%</td>
-                            <td class="px-4 py-3 text-center text-red-500"><i class="fas fa-arrow-up"></i></td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-3 font-medium text-gray-800">Sarjana (S1)</td>
-                            <td class="px-4 py-3 text-right text-gray-600">1.8</td>
-                            <td class="px-4 py-3 text-right font-bold text-orange-500">5.6%</td>
-                            <td class="px-4 py-3 text-center text-green-500"><i class="fas fa-arrow-down"></i></td>
-                        </tr>
-                        <tr>
-                            <td class="px-4 py-3 font-medium text-gray-800">SMA</td>
-                            <td class="px-4 py-3 text-right text-gray-600">2.5</td>
-                            <td class="px-4 py-3 text-right font-bold text-gray-700">7.1%</td>
-                            <td class="px-4 py-3 text-center text-gray-400">-</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+          <h4
+            class="font-bold text-gray-800 mb-3 text-sm uppercase tracking-wider"
+          >
+            Breakdown per Pendidikan
+          </h4>
+          <div class="overflow-x-auto rounded-xl border border-gray-200 mb-6">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th
+                    class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase"
+                  >
+                    Jenjang
+                  </th>
+                  <th
+                    class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase"
+                  >
+                    Total (Juta)
+                  </th>
+                  <th
+                    class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase"
+                  >
+                    Persentase
+                  </th>
+                  <th
+                    class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase"
+                  >
+                    Tren
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                <tr>
+                  <td class="px-4 py-3 font-medium text-gray-800">
+                    SMK / Vokasi
+                  </td>
+                  <td class="px-4 py-3 text-right text-gray-600">3.2</td>
+                  <td class="px-4 py-3 text-right font-bold text-red-500">
+                    9.4%
+                  </td>
+                  <td class="px-4 py-3 text-center text-red-500">
+                    <i class="fas fa-arrow-up"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-medium text-gray-800">
+                    Sarjana (S1)
+                  </td>
+                  <td class="px-4 py-3 text-right text-gray-600">1.8</td>
+                  <td class="px-4 py-3 text-right font-bold text-orange-500">
+                    5.6%
+                  </td>
+                  <td class="px-4 py-3 text-center text-green-500">
+                    <i class="fas fa-arrow-down"></i>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3 font-medium text-gray-800">SMA</td>
+                  <td class="px-4 py-3 text-right text-gray-600">2.5</td>
+                  <td class="px-4 py-3 text-right font-bold text-gray-700">
+                    7.1%
+                  </td>
+                  <td class="px-4 py-3 text-center text-gray-400">-</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-            <div class="grid grid-cols-2 gap-4">
-                <button class="flex items-center justify-center gap-2 bg-white border border-gray-300 text-gray-700 py-2.5 rounded-xl hover:bg-gray-50 transition font-medium text-sm">
-                    <i class="fas fa-share-alt"></i> Bagikan
-                </button>
-                <button class="flex items-center justify-center gap-2 bg-blue-600 text-white py-2.5 rounded-xl hover:bg-blue-700 transition font-medium text-sm shadow-lg shadow-blue-500/30">
-                    <i class="fas fa-download"></i> Download PDF
-                </button>
-            </div>
-
+          <div class="grid grid-cols-2 gap-4">
+            <button
+              class="flex items-center justify-center gap-2 bg-white border border-gray-300 text-gray-700 py-2.5 rounded-xl hover:bg-gray-50 transition font-medium text-sm"
+            >
+              <i class="fas fa-share-alt"></i> Bagikan
+            </button>
+            <button
+              class="flex items-center justify-center gap-2 bg-blue-600 text-white py-2.5 rounded-xl hover:bg-blue-700 transition font-medium text-sm shadow-lg shadow-blue-500/30"
+            >
+              <i class="fas fa-download"></i> Download PDF
+            </button>
+          </div>
         </div>
+      </div>
     </div>
-</div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <script src="assete/js/app.js"></script>
-</body>
+  </body>
 </html>

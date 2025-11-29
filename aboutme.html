@@ -1,185 +1,304 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Me – SDG 8 | WorkLab Insight</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/assete/css/style.css">
-</head>
-<body class="bg-gray-50">
-    <div class="bg-bubbles"><li></li><li></li><li></li><li></li><li></li><li></li></div>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/assete/css/style.css" />
+  </head>
+  <body class="bg-gray-50">
+    <div class="bg-bubbles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </div>
 
     <nav class="navbar animate-fade-down relative">
-        <div class="logo">
-            <img src="/assete/img/logo.png" alt="Logo">
-            <span>WorkLab Insight</span>
-        </div>
-        <ul class="nav-links hidden md:flex" id="desktopMenu">
-            <a href="dashboard.html" class="nav-item">Beranda</a>
-            <li class="relative group">
-                <button class="nav-item flex items-center gap-1 focus:outline-none">
-                    <span>Data Ketenagakerjaan Nasional</span>
-                    <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
-                </button>
-                <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6">
-                    <div class="grid grid-cols-2 gap-6">
-                        <a href="employmentdata.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-chart-bar text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Statistik Ketenagakerjaan</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Data statistik tenaga kerja nasional terkini.</p>
-                            </div>
-                        </a>
-                        <a href="wageAnalysis.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-search-dollar text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Analisis Upah</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Analisis tren gaji di berbagai sektor industri.</p>
-                            </div>
-                        </a>
-                        <a href="workforce.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-users text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Demografi</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Penyebaran tenaga kerja berdasarkan demografi.</p>
-                            </div>
-                        </a>
-                        <a href="laborissues.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-industry text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Isu Pekerja</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Laporan isu pekerja di indonesia.</p>
-                            </div>
-                        </a>
-                    </div>
+      <div class="logo">
+        <img src="/assete/img/logo.png" alt="Logo" />
+        <span>WorkLab Insight</span>
+      </div>
+      <ul class="nav-links hidden md:flex" id="desktopMenu">
+        <a href="dashboard.html" class="nav-item">Beranda</a>
+        <li class="relative group">
+          <button class="nav-item flex items-center gap-1 focus:outline-none">
+            <span>Data Ketenagakerjaan Nasional</span>
+            <i
+              class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"
+            ></i>
+          </button>
+          <div
+            class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6"
+          >
+            <div class="grid grid-cols-2 gap-6">
+              <a
+                href="employmentdata.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-chart-bar text-xl"></i>
                 </div>
-            </li>   
-            <a href="lowongan.html" class="nav-item">Portal Lowongan Kerja</a>
-            <a href="economicgrowth.html" class="nav-item">Analisis Pertumbuhan Ekonomi</a>
-        </ul>
-        
-        <div class="flex items-center gap-4">    
-            <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200">
-                <i class="fas fa-moon text-xl" id="themeIcon"></i>
-            </button>
-            <div class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Statistik Ketenagakerjaan
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Data statistik tenaga kerja nasional terkini.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="wageAnalysis.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-search-dollar text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Analisis Upah
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Analisis tren gaji di berbagai sektor industri.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="workforce.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-users text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Demografi
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Penyebaran tenaga kerja berdasarkan demografi.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="laborissues.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-industry text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Isu Pekerja
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Laporan isu pekerja di indonesia.
+                  </p>
+                </div>
+              </a>
             </div>
-            <div id="mobileDropdown" class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50">
-                <a href="dashboard.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Beranda</a>
-                <a href="analisis.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Data Ketenagakerjaan Nasional</a>
-                <a href="lowongan.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Portal lapangan Kerja</a>
-                <a href="economicgrowth.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Analisis Pertumbuhan Ekonomi</a>
-            </div>
+          </div>
+        </li>
+        <a href="lowongan.html" class="nav-item">Portal Lowongan Kerja</a>
+        <a href="economicgrowth.html" class="nav-item"
+          >Analisis Pertumbuhan Ekonomi</a
+        >
+      </ul>
+
+      <div class="flex items-center gap-4">
+        <button
+          id="themeToggle"
+          class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200"
+        >
+          <i class="fas fa-moon text-xl" id="themeIcon"></i>
+        </button>
+        <div
+          class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer"
+          id="mobileMenuBtn"
+        >
+          <i class="fas fa-bars"></i>
         </div>
+        <div
+          id="mobileDropdown"
+          class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50"
+        >
+          <a
+            href="dashboard.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Beranda</a
+          >
+          <a
+            href="analisis.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Data Ketenagakerjaan Nasional</a
+          >
+          <a
+            href="lowongan.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Portal lapangan Kerja</a
+          >
+          <a
+            href="economicgrowth.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Analisis Pertumbuhan Ekonomi</a
+          >
+        </div>
+      </div>
     </nav>
 
     <main class="container mx-auto px-4 relative z-10 pt-16">
-        <div class="max-w-6xl mx-auto">
-            <section class="mt-10 mb-8 animate-fade-in-up">
-                <h1 class="text-3xl font-bold text-gray-800">About Me</h1>
-                <div class="h-1 w-12 bg-blue-600 rounded-full mt-2"></div>
-                <p class="text-gray-600 mt-4">Halaman ini menjelaskan tujuan pembuatan WorkLab Insight dan kaitannya dengan Sustainable Development Goal (SDG) 8: Decent Work and Economic Growth.</p>
-            </section>
+      <div class="max-w-6xl mx-auto">
+        <section class="mt-10 mb-8 animate-fade-in-up">
+          <h1 class="text-3xl font-bold text-gray-800">About Me</h1>
+          <div class="h-1 w-12 bg-blue-600 rounded-full mt-2"></div>
+          <p class="text-gray-600 mt-4">
+            Halaman ini menjelaskan tujuan pembuatan WorkLab Insight dan
+            kaitannya dengan Sustainable Development Goal (SDG) 8: Decent Work
+            and Economic Growth.
+          </p>
+        </section>
 
-            <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <div class="card lg:col-span-2">
-                    <div class="chart-header">
-                        <div>
-                            <div class="chart-title">Tujuan Utama</div>
-                            <div class="sub-text">Mendukung SDG 8 melalui data dan aksi</div>
-                        </div>
-                    </div>
-                    <div class="space-y-4 text-gray-700">
-                        <p>WorkLab Insight dibangun untuk menyediakan informasi ketenagakerjaan dan pertumbuhan ekonomi yang mudah diakses. Data yang disajikan membantu pemangku kepentingan mengambil keputusan berbasis bukti, sejalan dengan SDG 8 yang mendorong pekerjaan layak dan pertumbuhan ekonomi berkelanjutan.</p>
-                        <ul class="list-disc pl-5 space-y-2">
-                            <li>Meningkatkan transparansi informasi lowongan kerja.</li>
-                            <li>Menyediakan visualisasi ketenagakerjaan nasional yang informatif.</li>
-                            <li>Mendokumentasikan tren pertumbuhan sektor ekonomi.</li>
-                            <li>Mendorong literasi data bagi pencari kerja dan pembuat kebijakan.</li>
-                        </ul>
-                    </div>
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div class="card lg:col-span-2">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title">Tujuan Utama</div>
+                <div class="sub-text">
+                  Mendukung SDG 8 melalui data dan aksi
                 </div>
-                <div class="card">
-                    <div class="chart-header">
-                        <div>
-                            <div class="chart-title">SDG 8</div>
-                            <div class="sub-text">Decent Work and Economic Growth</div>
-                        </div>
-                    </div>
-                    <div class="space-y-3 text-gray-700">
-                        <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-briefcase text-blue-600 mt-1"></i>
-                            <div>
-                                <div class="font-semibold">Pekerjaan Layak</div>
-                                <div class="text-sm text-gray-600">Mendorong akses terhadap pekerjaan yang aman, produktif, dan berupah layak.</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-chart-line text-green-600 mt-1"></i>
-                            <div>
-                                <div class="font-semibold">Pertumbuhan Ekonomi</div>
-                                <div class="text-sm text-gray-600">Memfasilitasi pemahaman tren ekonomi agar kebijakan lebih tepat sasaran.</div>
-                            </div>
-                        </div>
-                        <div class="flex items-start gap-3">
-                            <i class="fa-solid fa-graduation-cap text-indigo-600 mt-1"></i>
-                            <div>
-                                <div class="font-semibold">Peningkatan Keterampilan</div>
-                                <div class="text-sm text-gray-600">Memotivasi peningkatan kompetensi melalui informasi pasar kerja.</div>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+            </div>
+            <div class="space-y-4 text-gray-700">
+              <p>
+                WorkLab Insight dibangun untuk menyediakan informasi
+                ketenagakerjaan dan pertumbuhan ekonomi yang mudah diakses. Data
+                yang disajikan membantu pemangku kepentingan mengambil keputusan
+                berbasis bukti, sejalan dengan SDG 8 yang mendorong pekerjaan
+                layak dan pertumbuhan ekonomi berkelanjutan.
+              </p>
+              <ul class="list-disc pl-5 space-y-2">
+                <li>Meningkatkan transparansi informasi lowongan kerja.</li>
+                <li>
+                  Menyediakan visualisasi ketenagakerjaan nasional yang
+                  informatif.
+                </li>
+                <li>Mendokumentasikan tren pertumbuhan sektor ekonomi.</li>
+                <li>
+                  Mendorong literasi data bagi pencari kerja dan pembuat
+                  kebijakan.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div class="chart-header">
+              <div>
+                <div class="chart-title">SDG 8</div>
+                <div class="sub-text">Decent Work and Economic Growth</div>
+              </div>
+            </div>
+            <div class="space-y-3 text-gray-700">
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-briefcase text-blue-600 mt-1"></i>
+                <div>
+                  <div class="font-semibold">Pekerjaan Layak</div>
+                  <div class="text-sm text-gray-600">
+                    Mendorong akses terhadap pekerjaan yang aman, produktif, dan
+                    berupah layak.
+                  </div>
                 </div>
-            </section>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-chart-line text-green-600 mt-1"></i>
+                <div>
+                  <div class="font-semibold">Pertumbuhan Ekonomi</div>
+                  <div class="text-sm text-gray-600">
+                    Memfasilitasi pemahaman tren ekonomi agar kebijakan lebih
+                    tepat sasaran.
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-start gap-3">
+                <i class="fa-solid fa-graduation-cap text-indigo-600 mt-1"></i>
+                <div>
+                  <div class="font-semibold">Peningkatan Keterampilan</div>
+                  <div class="text-sm text-gray-600">
+                    Memotivasi peningkatan kompetensi melalui informasi pasar
+                    kerja.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-                <div class="card">
-                    <div class="chart-header"><div class="chart-title">Fitur yang Mendukung SDG 8</div></div>
-                    <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                        <li>Job Portal dengan filter cerdas dan proses lamaran sederhana.</li>
-                        <li>Dashboard ketenagakerjaan: tren pengangguran, partisipasi kerja, dan distribusi sektor.</li>
-                        <li>Analisis pertumbuhan ekonomi sektoral dengan kontrol interaktif.</li>
-                    </ul>
-                </div>
-                <div class="card lg:col-span-2">
-                    <div class="chart-header"><div class="chart-title">Arah Pengembangan</div></div>
-                    <ul class="list-disc pl-5 text-gray-700 space-y-2">
-                        <li>Integrasi data real-time dan sumber resmi statistik.</li>
-                        <li>Pelaporan insight siap unduh untuk pemangku kebijakan.</li>
-                        <li>Dukungan multibahasa dan aksesibilitas.</li>
-                    </ul>
-                    <button class="btn-primary mt-4"><i class="fa-solid fa-file-arrow-down"></i> Unduh Ringkasan</button>
-                </div>
-            </section>
-        </div>
+        <section class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+          <div class="card">
+            <div class="chart-header">
+              <div class="chart-title">Fitur yang Mendukung SDG 8</div>
+            </div>
+            <ul class="list-disc pl-5 text-gray-700 space-y-2">
+              <li>
+                Job Portal dengan filter cerdas dan proses lamaran sederhana.
+              </li>
+              <li>
+                Dashboard ketenagakerjaan: tren pengangguran, partisipasi kerja,
+                dan distribusi sektor.
+              </li>
+              <li>
+                Analisis pertumbuhan ekonomi sektoral dengan kontrol interaktif.
+              </li>
+            </ul>
+          </div>
+          <div class="card lg:col-span-2">
+            <div class="chart-header">
+              <div class="chart-title">Arah Pengembangan</div>
+            </div>
+            <ul class="list-disc pl-5 text-gray-700 space-y-2">
+              <li>Integrasi data real-time dan sumber resmi statistik.</li>
+              <li>Pelaporan insight siap unduh untuk pemangku kebijakan.</li>
+              <li>Dukungan multibahasa dan aksesibilitas.</li>
+            </ul>
+            <button class="btn-primary mt-4">
+              <i class="fa-solid fa-file-arrow-down"></i> Unduh Ringkasan
+            </button>
+          </div>
+        </section>
+      </div>
     </main>
 
-  <footer class="mt-auto">
-        <div class="container footer-content">
-            <div class="footer-links">
-                <a href="aboutme.html">About Us</a>
-                <a href="#">Contact</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
-            </div>
-            <div class="social-icons">
-                <span>🐦</span> <span>🔗</span> <span>fb</span>
-            </div>
-            <p class="copyright">© 2024 Indonesia Employment Watch. All Rights Reserved.</p>
+    <footer class="mt-auto">
+      <div class="container footer-content">
+        <div class="footer-links">
+          <a href="aboutme.html">About Us</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
         </div>
+        <div class="social-icons">
+          <span>🐦</span> <span>🔗</span> <span>fb</span>
+        </div>
+        <p class="copyright">
+          © 2024 Indonesia Employment Watch. All Rights Reserved.
+        </p>
+      </div>
     </footer>
 
     <script src="assete/js/app.js"></script>
-</body>
+  </body>
 </html>

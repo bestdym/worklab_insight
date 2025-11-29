@@ -1,337 +1,622 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Analisis Ekonomi - WorkLab Insight</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assete/css/style.css">
 
-</head>
-<body class="bg-gray-50 text-gray-800 font-outfit">
-
-   <nav class="navbar animate-fade-down relative">
-        <div class="logo">
-            <img src="/assete/img/logo.png" alt="Logo">
-            <span>WorkLab Insight</span>
-        </div>
-        <ul class="nav-links hidden md:flex" id="desktopMenu">
-            <a href="dashboard.html" class="nav-item">Beranda</a>
-            <li class="relative group">
-                <button class="nav-item flex items-center gap-1 focus:outline-none">
-                    <span>Data Ketenagakerjaan Nasional</span>
-                    <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
-                </button>
-                <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6">
-                    <div class="grid grid-cols-2 gap-6">
-                        <a href="employmentdata.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-chart-bar text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Statistik Ketenagakerjaan</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Data statistik tenaga kerja nasional terkini.</p>
-                            </div>
-                        </a>
-                        <a href="wageAnalysis.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-search-dollar text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Analisis Upah</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Analisis tren gaji di berbagai sektor industri.</p>
-                            </div>
-                        </a>
-                        <a href="workforce.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-users text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Demografi</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Penyebaran tenaga kerja berdasarkan demografi.</p>
-                            </div>
-                        </a>
-                        <a href="laborissues.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-industry text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Isu Pekerja</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Laporan isu pekerja di indonesia.</p>
-                            </div>
-                        </a>
-                    </div>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assete/css/style.css" />
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-outfit">
+    <nav class="navbar animate-fade-down relative">
+      <div class="logo">
+        <img src="/assete/img/logo.png" alt="Logo" />
+        <span>WorkLab Insight</span>
+      </div>
+      <ul class="nav-links hidden md:flex" id="desktopMenu">
+        <a href="dashboard.html" class="nav-item">Beranda</a>
+        <li class="relative group">
+          <button class="nav-item flex items-center gap-1 focus:outline-none">
+            <span>Data Ketenagakerjaan Nasional</span>
+            <i
+              class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"
+            ></i>
+          </button>
+          <div
+            class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6"
+          >
+            <div class="grid grid-cols-2 gap-6">
+              <a
+                href="employmentdata.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-chart-bar text-xl"></i>
                 </div>
-            </li>   
-            <a href="lowongan.html" class="nav-item">Portal Lowongan Kerja</a>
-            <a href="economicgrowth.html" class="nav-item">Analisis Pertumbuhan Ekonomi</a>
-        </ul>
-        
-        <div class="flex items-center gap-4">    
-            <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200">
-                <i class="fas fa-moon text-xl" id="themeIcon"></i>
-            </button>
-            <div class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Statistik Ketenagakerjaan
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Data statistik tenaga kerja nasional terkini.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="wageAnalysis.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-search-dollar text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Analisis Upah
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Analisis tren gaji di berbagai sektor industri.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="workforce.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-users text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Demografi
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Penyebaran tenaga kerja berdasarkan demografi.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="laborissues.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-industry text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Isu Pekerja
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Laporan isu pekerja di indonesia.
+                  </p>
+                </div>
+              </a>
             </div>
-            <div id="mobileDropdown" class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50">
-                <a href="dashboard.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Beranda</a>
-                <a href="analisis.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Data Ketenagakerjaan Nasional</a>
-                <a href="lowongan.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Portal lapangan Kerja</a>
-                <a href="economicgrowth.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Analisis Pertumbuhan Ekonomi</a>
-            </div>
+          </div>
+        </li>
+        <a href="lowongan.html" class="nav-item">Portal Lowongan Kerja</a>
+        <a href="economicgrowth.html" class="nav-item"
+          >Analisis Pertumbuhan Ekonomi</a
+        >
+      </ul>
+
+      <div class="flex items-center gap-4">
+        <button
+          id="themeToggle"
+          class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200"
+        >
+          <i class="fas fa-moon text-xl" id="themeIcon"></i>
+        </button>
+        <div
+          class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer"
+          id="mobileMenuBtn"
+        >
+          <i class="fas fa-bars"></i>
         </div>
+        <div
+          id="mobileDropdown"
+          class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50"
+        >
+          <a
+            href="dashboard.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Beranda</a
+          >
+          <a
+            href="analisis.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Data Ketenagakerjaan Nasional</a
+          >
+          <a
+            href="lowongan.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Portal lapangan Kerja</a
+          >
+          <a
+            href="economicgrowth.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Analisis Pertumbuhan Ekonomi</a
+          >
+        </div>
+      </div>
     </nav>
 
     <main class="container mx-auto px-4 py-10 relative z-10">
-        
-        <div class="flex flex-col md:flex-row justify-between items-end mb-10 animate-fade-in-up relative z-50">
+      <div
+        class="flex flex-col md:flex-row justify-between items-end mb-10 animate-fade-in-up relative z-50"
+      >
+        <div>
+          <h1 class="text-3xl font-bold text-gray-900">
+            Sector-Based Employment Overview
+          </h1>
+          <p class="text-gray-500 mt-2">
+            Pilih sektor untuk melihat detail data dan tren ekonomi nasional.
+          </p>
+        </div>
+
+        <div class="mt-6 md:mt-0 w-full md:w-64">
+          <label
+            class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 block"
+            >Select a Sector</label
+          >
+
+          <div class="relative group">
+            <button
+              id="btnSektorAnalysis"
+              class="w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 rounded-xl flex justify-between items-center shadow-sm hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer"
+            >
+              <span
+                id="labelSektorAnalysis"
+                class="truncate font-medium text-gray-900"
+                >Technology</span
+              >
+              <svg
+                class="h-5 w-5 text-gray-400 transition-transform duration-200 group-focus-within:rotate-180"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </button>
+
+            <div
+              id="listSektorAnalysis"
+              class="hidden absolute right-0 left-0 mt-2 bg-white shadow-xl rounded-xl border border-gray-100 py-2 text-sm overflow-hidden overflow-y-auto max-h-64 animate-fade-in-down origin-top z-[60]"
+            >
+              <div
+                class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium"
+                data-value="Technology"
+              >
+                Technology
+              </div>
+              <div
+                class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium"
+                data-value="Finance"
+              >
+                Finance
+              </div>
+              <div
+                class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium"
+                data-value="Healthcare"
+              >
+                Healthcare
+              </div>
+              <div
+                class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium"
+                data-value="Manufacturing"
+              >
+                Manufacturing
+              </div>
+              <div
+                class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium"
+                data-value="Retail"
+              >
+                Retail
+              </div>
+              <div
+                class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium"
+                data-value="Agriculture"
+              >
+                Agriculture
+              </div>
+              <div
+                class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium"
+                data-value="Construction"
+              >
+                Construction
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-6 animate-fade-in-up delay-200 relative z-30">
+        <h2
+          class="text-xl font-bold text-gray-800 border-l-4 border-blue-600 pl-3"
+        >
+          Sector Overview:
+          <span id="sectorTitle" class="text-blue-600">Technology</span>
+        </h2>
+      </div>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 relative z-0"
+      >
+        <div
+          class="stat-card opacity-0-start bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition hover:shadow-md"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div
+              class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-500 text-xl"
+            >
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <span
+              id="badgeGrowth"
+              class="text-xs font-bold text-orange-600 bg-orange-100 px-2 py-1 rounded"
+              >+2.1% YoY</span
+            >
+          </div>
+          <h3 class="text-gray-500 text-sm font-medium">Demand Growth</h3>
+          <p id="valGrowth" class="text-2xl font-bold text-gray-900 mt-1">
+            15.2%
+          </p>
+          <p id="descGrowth" class="text-xs text-gray-400 mt-2">
+            Didorong oleh AI & Digitalisasi
+          </p>
+        </div>
+
+        <div
+          class="stat-card opacity-0-start bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition hover:shadow-md"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div
+              class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600 text-xl"
+            >
+              <i class="fas fa-money-bill-wave"></i>
+            </div>
+            <span
+              id="badgeWage"
+              class="text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded"
+              >High Paid</span
+            >
+          </div>
+          <h3 class="text-gray-500 text-sm font-medium">Average Wage (IDR)</h3>
+          <p id="valWage" class="text-2xl font-bold text-gray-900 mt-1">
+            12,500,000
+          </p>
+          <p id="descWage" class="text-xs text-gray-400 mt-2">
+            Per bulan (Gross)
+          </p>
+        </div>
+
+        <div
+          class="stat-card opacity-0-start bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition hover:shadow-md"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div
+              class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 text-xl"
+            >
+              <i class="fas fa-briefcase"></i>
+            </div>
+            <span
+              id="badgeJobs"
+              class="text-xs font-bold text-blue-600 bg-blue-100 px-2 py-1 rounded"
+              >Stabil</span
+            >
+          </div>
+          <h3 class="text-gray-500 text-sm font-medium">
+            Total Lowongan Aktif
+          </h3>
+          <p id="valJobs" class="text-2xl font-bold text-gray-900 mt-1">
+            14,205
+          </p>
+          <p id="descJobs" class="text-xs text-gray-400 mt-2">
+            Di seluruh portal terdaftar
+          </p>
+        </div>
+
+        <div
+          class="stat-card opacity-0-start bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition hover:shadow-md"
+        >
+          <div class="flex items-center justify-between mb-4">
+            <div
+              class="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 text-xl"
+            >
+              <i class="fas fa-brain"></i>
+            </div>
+            <span
+              class="text-xs font-bold text-purple-600 bg-purple-100 px-2 py-1 rounded"
+              >Most Wanted</span
+            >
+          </div>
+          <h3 class="text-gray-500 text-sm font-medium">Top Required Skill</h3>
+          <p
+            id="valSkill"
+            class="text-2xl font-bold text-gray-900 mt-1 truncate"
+          >
+            Data Analysis
+          </p>
+          <p id="descSkill" class="text-xs text-gray-400 mt-2">
+            Dibutuhkan di 70% lowongan
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 relative z-0">
+        <div
+          class="chart-wrapper lg:col-span-2 bg-white p-6 rounded-xl shadow-lg border border-gray-100 opacity-0-start"
+        >
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-lg font-bold text-gray-800">Employment Trend</h3>
+            <div class="flex gap-2">
+              <span class="w-3 h-3 rounded-full bg-blue-500 mt-1.5"></span>
+              <span class="text-sm text-gray-500">Growth Rate</span>
+            </div>
+          </div>
+          <div class="relative h-80 w-full">
+            <canvas id="employmentTrendChart"></canvas>
+          </div>
+        </div>
+
+        <div
+          class="lg:col-span-1 bg-white p-6 rounded-xl shadow-lg border border-gray-100 animate-fade-in-up delay-500"
+        >
+          <h3 class="text-lg font-bold text-gray-800 mb-6">
+            Sector Comparison
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm text-left">
+              <thead
+                class="text-xs text-gray-400 uppercase border-b border-gray-100"
+              >
+                <tr>
+                  <th class="py-3 font-semibold">Sector</th>
+                  <th class="py-3 font-semibold text-right">Growth</th>
+                  <th class="py-3 font-semibold text-right">Salary</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-50 text-gray-600">
+                <tr class="hover:bg-gray-50 transition cursor-pointer">
+                  <td class="py-3 font-medium text-gray-800">Technology</td>
+                  <td class="py-3 text-right text-green-500 font-bold">
+                    +15.2%
+                  </td>
+                  <td class="py-3 text-right">High</td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition cursor-pointer">
+                  <td class="py-3 font-medium text-gray-800">Finance</td>
+                  <td class="py-3 text-right text-green-500 font-bold">
+                    +8.5%
+                  </td>
+                  <td class="py-3 text-right">High</td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition cursor-pointer">
+                  <td class="py-3 font-medium text-gray-800">Retail</td>
+                  <td class="py-3 text-right text-green-500 font-bold">
+                    +3.1%
+                  </td>
+                  <td class="py-3 text-right">Low</td>
+                </tr>
+                <tr class="hover:bg-gray-50 transition cursor-pointer">
+                  <td class="py-3 font-medium text-gray-800">Manufacturing</td>
+                  <td class="py-3 text-right text-red-500 font-bold">-1.8%</td>
+                  <td class="py-3 text-right">Medium</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden animate-fade-in-up delay-500 mb-12 relative z-0"
+      >
+        <div
+          class="p-6 border-b border-gray-100 flex justify-between items-center"
+        >
+          <div>
+            <h3 class="text-lg font-bold text-gray-800">
+              Rincian Data Regional
+            </h3>
+            <p class="text-xs text-gray-500">Preview Top 5 Wilayah</p>
+          </div>
+
+          <button
+            onclick="showRegionalData()"
+            class="text-sm text-blue-600 hover:text-blue-800 font-medium px-4 py-2 border border-blue-200 rounded-lg hover:bg-blue-50 transition cursor-pointer"
+          >
+            Lihat Semua Data <i class="fas fa-arrow-right ml-1"></i>
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead
+              class="bg-gray-100 text-gray-500 uppercase text-xs tracking-wider"
+            >
+              <tr>
+                <th class="px-6 py-4 font-semibold">Wilayah</th>
+                <th class="px-6 py-4 font-semibold">UMR Rata-rata</th>
+                <th class="px-6 py-4 font-semibold">Pengangguran</th>
+                <th class="px-6 py-4 font-semibold">Sektor Dominan</th>
+                <th class="px-6 py-4 font-semibold">Status</th>
+              </tr>
+            </thead>
+            <tbody class="text-sm text-gray-700 divide-y divide-gray-100">
+              <tr class="hover:bg-blue-50/30 transition">
+                <td class="px-6 py-4 font-bold text-gray-800">DKI Jakarta</td>
+                <td class="px-6 py-4 font-mono text-gray-600">Rp 5.067.381</td>
+                <td class="px-6 py-4">
+                  <span class="text-red-600 font-bold">6.5%</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="bg-purple-100 text-purple-700 px-3 py-1 rounded-lg text-xs font-semibold"
+                    >Jasa & Keuangan</span
+                  >
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold"
+                    >Tumbuh</span
+                  >
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/30 transition">
+                <td class="px-6 py-4 font-bold text-gray-800">Jawa Barat</td>
+                <td class="px-6 py-4 font-mono text-gray-600">Rp 2.057.495</td>
+                <td class="px-6 py-4">
+                  <span class="text-orange-500 font-bold">7.8%</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="bg-blue-100 text-blue-700 px-3 py-1 rounded-lg text-xs font-semibold"
+                    >Manufaktur</span
+                  >
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold"
+                    >Stabil</span
+                  >
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/30 transition">
+                <td class="px-6 py-4 font-bold text-gray-800">Bali</td>
+                <td class="px-6 py-4 font-mono text-gray-600">Rp 2.813.672</td>
+                <td class="px-6 py-4">
+                  <span class="text-green-600 font-bold">2.6%</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="bg-orange-100 text-orange-700 px-3 py-1 rounded-lg text-xs font-semibold"
+                    >Pariwisata</span
+                  >
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold"
+                    >Pulih</span
+                  >
+                </td>
+              </tr>
+              <tr class="hover:bg-blue-50/30 transition">
+                <td class="px-6 py-4 font-bold text-gray-800">
+                  Kalimantan Timur
+                </td>
+                <td class="px-6 py-4 font-mono text-gray-600">Rp 3.360.858</td>
+                <td class="px-6 py-4">
+                  <span class="text-green-600 font-bold">5.7%</span>
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="bg-gray-200 text-gray-700 px-3 py-1 rounded-lg text-xs font-semibold"
+                    >Pertambangan</span
+                  >
+                </td>
+                <td class="px-6 py-4">
+                  <span
+                    class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold"
+                    >Booming</span
+                  >
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div
+        id="regionalDataModal"
+        class="fixed inset-0 bg-black bg-opacity-60 hidden z-[9999] flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300"
+      >
+        <div
+          class="bg-white rounded-xl w-full max-w-4xl max-h-[70vh] flex flex-col shadow-2xl animate-fade-in-up"
+        >
+          <div
+            class="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white rounded-t-xl z-10"
+          >
             <div>
-                <h1 class="text-3xl font-bold text-gray-900">Sector-Based Employment Overview</h1>
-                <p class="text-gray-500 mt-2">Pilih sektor untuk melihat detail data dan tren ekonomi nasional.</p>
+              <h3 class="text-xl font-bold text-gray-900">
+                Data Lengkap Regional
+              </h3>
+              <p class="text-sm text-gray-500">
+                Menampilkan data 34 Provinsi di Indonesia
+              </p>
             </div>
-            
-            <div class="mt-6 md:mt-0 w-full md:w-64">
-                <label class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 block">Select a Sector</label>
-                
-                <div class="relative group">
-                    <button id="btnSektorAnalysis" class="w-full bg-white border border-gray-200 text-gray-700 py-3 px-4 rounded-xl flex justify-between items-center shadow-sm hover:border-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-all cursor-pointer">
-                        <span id="labelSektorAnalysis" class="truncate font-medium text-gray-900">Technology</span>
-                        <svg class="h-5 w-5 text-gray-400 transition-transform duration-200 group-focus-within:rotate-180" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                        </svg>
-                    </button>
+            <button
+              onclick="closeRegionalData()"
+              class="text-gray-400 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-red-50"
+            >
+              <i class="fas fa-times text-xl"></i>
+            </button>
+          </div>
 
-                    <div id="listSektorAnalysis" class="hidden absolute right-0 left-0 mt-2 bg-white shadow-xl rounded-xl border border-gray-100 py-2 text-sm overflow-hidden overflow-y-auto max-h-64 animate-fade-in-down origin-top z-[60]">
-                        <div class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium" data-value="Technology">Technology</div>
-                        <div class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium" data-value="Finance">Finance</div>
-                        <div class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium" data-value="Healthcare">Healthcare</div>
-                        <div class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium" data-value="Manufacturing">Manufacturing</div>
-                        <div class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium" data-value="Retail">Retail</div>
-                         <div class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium" data-value="Agriculture">Agriculture</div>
-                          <div class="option-item cursor-pointer px-4 py-2.5 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors font-medium" data-value="Construction">Construction</div>
-                    </div>
-                </div>
-            </div>
+          <div class="overflow-y-auto p-0 flex-1">
+            <table class="w-full text-left border-collapse">
+              <thead
+                class="bg-gray-50 text-gray-500 uppercase text-xs tracking-wider sticky top-0 z-10 shadow-sm"
+              >
+                <tr>
+                  <th class="px-6 py-4 font-semibold">Wilayah</th>
+                  <th class="px-6 py-4 font-semibold">UMR</th>
+                  <th class="px-6 py-4 font-semibold">Pengangguran</th>
+                  <th class="px-6 py-4 font-semibold">Sektor Dominan</th>
+                  <th class="px-6 py-4 font-semibold">Status</th>
+                </tr>
+              </thead>
+              <tbody
+                id="fullRegionalDataBody"
+                class="text-sm text-gray-700 divide-y divide-gray-100"
+              ></tbody>
+            </table>
+          </div>
+
+          <div
+            class="p-4 border-t border-gray-100 flex justify-end bg-gray-50 rounded-b-xl"
+          >
+            <button
+              onclick="closeRegionalData()"
+              class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition font-medium text-sm"
+            >
+              Tutup
+            </button>
+          </div>
         </div>
-
-        <div class="mb-6 animate-fade-in-up delay-200 relative z-30">
-            <h2 class="text-xl font-bold text-gray-800 border-l-4 border-blue-600 pl-3">
-                Sector Overview: <span id="sectorTitle" class="text-blue-600">Technology</span>
-            </h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 relative z-0">
-    
-            <div class="stat-card opacity-0-start bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition hover:shadow-md">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 rounded-full bg-orange-50 flex items-center justify-center text-orange-500 text-xl">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <span id="badgeGrowth" class="text-xs font-bold text-orange-600 bg-orange-100 px-2 py-1 rounded">+2.1% YoY</span>
-                </div>
-                <h3 class="text-gray-500 text-sm font-medium">Demand Growth</h3>
-                <p id="valGrowth" class="text-2xl font-bold text-gray-900 mt-1">15.2%</p>
-                <p id="descGrowth" class="text-xs text-gray-400 mt-2">Didorong oleh AI & Digitalisasi</p>
-            </div>
-
-            <div class="stat-card opacity-0-start bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition hover:shadow-md">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center text-green-600 text-xl">
-                        <i class="fas fa-money-bill-wave"></i>
-                    </div>
-                    <span id="badgeWage" class="text-xs font-bold text-green-600 bg-green-100 px-2 py-1 rounded">High Paid</span>
-                </div>
-                <h3 class="text-gray-500 text-sm font-medium">Average Wage (IDR)</h3>
-                <p id="valWage" class="text-2xl font-bold text-gray-900 mt-1">12,500,000</p>
-                <p id="descWage" class="text-xs text-gray-400 mt-2">Per bulan (Gross)</p>
-            </div>
-
-            <div class="stat-card opacity-0-start bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition hover:shadow-md">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 text-xl">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <span id="badgeJobs" class="text-xs font-bold text-blue-600 bg-blue-100 px-2 py-1 rounded">Stabil</span>
-                </div>
-                <h3 class="text-gray-500 text-sm font-medium">Total Lowongan Aktif</h3>
-                <p id="valJobs" class="text-2xl font-bold text-gray-900 mt-1">14,205</p>
-                <p id="descJobs" class="text-xs text-gray-400 mt-2">Di seluruh portal terdaftar</p>
-            </div>
-
-            <div class="stat-card opacity-0-start bg-white p-6 rounded-xl shadow-sm border border-gray-100 transition hover:shadow-md">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center text-purple-600 text-xl">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <span class="text-xs font-bold text-purple-600 bg-purple-100 px-2 py-1 rounded">Most Wanted</span>
-                </div>
-                <h3 class="text-gray-500 text-sm font-medium">Top Required Skill</h3>
-                <p id="valSkill" class="text-2xl font-bold text-gray-900 mt-1 truncate">Data Analysis</p>
-                <p id="descSkill" class="text-xs text-gray-400 mt-2">Dibutuhkan di 70% lowongan</p>
-            </div>
-
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12 relative z-0">
-            
-            <div class="chart-wrapper lg:col-span-2 bg-white p-6 rounded-xl shadow-lg border border-gray-100 opacity-0-start">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-lg font-bold text-gray-800">Employment Trend</h3>
-                    <div class="flex gap-2">
-                        <span class="w-3 h-3 rounded-full bg-blue-500 mt-1.5"></span>
-                        <span class="text-sm text-gray-500">Growth Rate</span>
-                    </div>
-                </div>
-                <div class="relative h-80 w-full">
-                    <canvas id="employmentTrendChart"></canvas>
-                </div>
-            </div>
-
-            <div class="lg:col-span-1 bg-white p-6 rounded-xl shadow-lg border border-gray-100 animate-fade-in-up delay-500">
-                <h3 class="text-lg font-bold text-gray-800 mb-6">Sector Comparison</h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-sm text-left">
-                        <thead class="text-xs text-gray-400 uppercase border-b border-gray-100">
-                            <tr>
-                                <th class="py-3 font-semibold">Sector</th>
-                                <th class="py-3 font-semibold text-right">Growth</th>
-                                <th class="py-3 font-semibold text-right">Salary</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-50 text-gray-600">
-                            <tr class="hover:bg-gray-50 transition cursor-pointer">
-                                <td class="py-3 font-medium text-gray-800">Technology</td>
-                                <td class="py-3 text-right text-green-500 font-bold">+15.2%</td>
-                                <td class="py-3 text-right">High</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50 transition cursor-pointer">
-                                <td class="py-3 font-medium text-gray-800">Finance</td>
-                                <td class="py-3 text-right text-green-500 font-bold">+8.5%</td>
-                                <td class="py-3 text-right">High</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50 transition cursor-pointer">
-                                <td class="py-3 font-medium text-gray-800">Retail</td>
-                                <td class="py-3 text-right text-green-500 font-bold">+3.1%</td>
-                                <td class="py-3 text-right">Low</td>
-                            </tr>
-                            <tr class="hover:bg-gray-50 transition cursor-pointer">
-                                <td class="py-3 font-medium text-gray-800">Manufacturing</td>
-                                <td class="py-3 text-right text-red-500 font-bold">-1.8%</td>
-                                <td class="py-3 text-right">Medium</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden animate-fade-in-up delay-500 mb-12 relative z-0">
-            <div class="p-6 border-b border-gray-100 flex justify-between items-center">
-                <div>
-                    <h3 class="text-lg font-bold text-gray-800">Rincian Data Regional</h3>
-                    <p class="text-xs text-gray-500">Preview Top 5 Wilayah</p>
-                </div>
-                
-                <button onclick="showRegionalData()" class="text-sm text-blue-600 hover:text-blue-800 font-medium px-4 py-2 border border-blue-200 rounded-lg hover:bg-blue-50 transition cursor-pointer">
-                    Lihat Semua Data <i class="fas fa-arrow-right ml-1"></i>
-                </button>
-            </div>
-            
-            <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                    <thead class="bg-gray-100 text-gray-500 uppercase text-xs tracking-wider">
-                        <tr>
-                            <th class="px-6 py-4 font-semibold">Wilayah</th>
-                            <th class="px-6 py-4 font-semibold">UMR Rata-rata</th>
-                            <th class="px-6 py-4 font-semibold">Pengangguran</th>
-                            <th class="px-6 py-4 font-semibold">Sektor Dominan</th> <th class="px-6 py-4 font-semibold">Status</th>
-                        </tr>
-                    </thead>
-                    <tbody class="text-sm text-gray-700 divide-y divide-gray-100">
-                        <tr class="hover:bg-blue-50/30 transition">
-                            <td class="px-6 py-4 font-bold text-gray-800">DKI Jakarta</td>
-                            <td class="px-6 py-4 font-mono text-gray-600">Rp 5.067.381</td>
-                            <td class="px-6 py-4"><span class="text-red-600 font-bold">6.5%</span></td>
-                            <td class="px-6 py-4"><span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-lg text-xs font-semibold">Jasa & Keuangan</span></td>
-                            <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">Tumbuh</span></td>
-                        </tr>
-                        <tr class="hover:bg-blue-50/30 transition">
-                            <td class="px-6 py-4 font-bold text-gray-800">Jawa Barat</td>
-                            <td class="px-6 py-4 font-mono text-gray-600">Rp 2.057.495</td>
-                            <td class="px-6 py-4"><span class="text-orange-500 font-bold">7.8%</span></td>
-                            <td class="px-6 py-4"><span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-lg text-xs font-semibold">Manufaktur</span></td>
-                            <td class="px-6 py-4"><span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-bold">Stabil</span></td>
-                        </tr>
-                        <tr class="hover:bg-blue-50/30 transition">
-                            <td class="px-6 py-4 font-bold text-gray-800">Bali</td>
-                            <td class="px-6 py-4 font-mono text-gray-600">Rp 2.813.672</td>
-                            <td class="px-6 py-4"><span class="text-green-600 font-bold">2.6%</span></td>
-                            <td class="px-6 py-4"><span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-lg text-xs font-semibold">Pariwisata</span></td>
-                            <td class="px-6 py-4"><span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-bold">Pulih</span></td>
-                        </tr>
-                        <tr class="hover:bg-blue-50/30 transition">
-                            <td class="px-6 py-4 font-bold text-gray-800">Kalimantan Timur</td>
-                            <td class="px-6 py-4 font-mono text-gray-600">Rp 3.360.858</td>
-                            <td class="px-6 py-4"><span class="text-green-600 font-bold">5.7%</span></td>
-                            <td class="px-6 py-4"><span class="bg-gray-200 text-gray-700 px-3 py-1 rounded-lg text-xs font-semibold">Pertambangan</span></td>
-                            <td class="px-6 py-4"><span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-bold">Booming</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div id="regionalDataModal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-[9999] flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300">
-            <div class="bg-white rounded-xl w-full max-w-4xl max-h-[70vh] flex flex-col shadow-2xl animate-fade-in-up">                
-                <div class="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white rounded-t-xl z-10">
-                    <div>
-                        <h3 class="text-xl font-bold text-gray-900">Data Lengkap Regional</h3>
-                        <p class="text-sm text-gray-500">Menampilkan data 34 Provinsi di Indonesia</p>
-                    </div>
-                    <button onclick="closeRegionalData()" class="text-gray-400 hover:text-red-500 transition-colors p-2 rounded-full hover:bg-red-50">
-                        <i class="fas fa-times text-xl"></i>
-                    </button>
-                </div>
-
-                <div class="overflow-y-auto p-0 flex-1">
-                    <table class="w-full text-left border-collapse">
-                        <thead class="bg-gray-50 text-gray-500 uppercase text-xs tracking-wider sticky top-0 z-10 shadow-sm">
-                            <tr>
-                                <th class="px-6 py-4 font-semibold">Wilayah</th>
-                                <th class="px-6 py-4 font-semibold">UMR</th>
-                                <th class="px-6 py-4 font-semibold">Pengangguran</th>
-                                <th class="px-6 py-4 font-semibold">Sektor Dominan</th>
-                                <th class="px-6 py-4 font-semibold">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="fullRegionalDataBody" class="text-sm text-gray-700 divide-y divide-gray-100">
-                            </tbody>
-                    </table>
-                </div>
-
-                <div class="p-4 border-t border-gray-100 flex justify-end bg-gray-50 rounded-b-xl">
-                    <button onclick="closeRegionalData()" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition font-medium text-sm">
-                        Tutup
-                    </button>
-                </div>
-            </div>
-        </div>
-
+      </div>
     </main>
 
     <footer class="footer-bg mt-12 bg-gray-900 text-white relative z-0">
-        <div class="container mx-auto px-4 py-8 text-center text-gray-400 text-sm">
-            © 2025 WorkLab Insight. All Rights Reserved.
-        </div>
+      <div
+        class="container mx-auto px-4 py-8 text-center text-gray-400 text-sm"
+      >
+        © 2025 WorkLab Insight. All Rights Reserved.
+      </div>
     </footer>
     <script src="assete/js/app.js"></script>
-
-</body>
+  </body>
 </html>

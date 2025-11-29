@@ -1,242 +1,455 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Isu Ketenagakerjaan - WorkLab Insight</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="assete/css/style.css">
-    <style>
-        body, input, select, textarea, button {
-            font-family: 'Outfit', sans-serif !important;
-        }
-    </style>
-</head>
-<body class="bg-gray-50 text-gray-800 font-outfit">
 
-     <nav class="navbar animate-fade-down relative">
-        <div class="logo">
-            <img src="/assete/img/logo.png" alt="Logo">
-            <span>WorkLab Insight</span>
-        </div>
-        <ul class="nav-links hidden md:flex" id="desktopMenu">
-            <a href="dashboard.html" class="nav-item">Beranda</a>
-            <li class="relative group">
-                <button class="nav-item flex items-center gap-1 focus:outline-none">
-                    <span>Data Ketenagakerjaan Nasional</span>
-                    <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
-                </button>
-                <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6">
-                    <div class="grid grid-cols-2 gap-6">
-                        <a href="employmentdata.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-chart-bar text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Statistik Ketenagakerjaan</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Data statistik tenaga kerja nasional terkini.</p>
-                            </div>
-                        </a>
-                        <a href="wageAnalysis.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-search-dollar text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Analisis Upah</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Analisis tren gaji di berbagai sektor industri.</p>
-                            </div>
-                        </a>
-                        <a href="workforce.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-users text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Demografi</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Penyebaran tenaga kerja berdasarkan demografi.</p>
-                            </div>
-                        </a>
-                        <a href="laborissues.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item">
-                            <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors">
-                                <i class="fas fa-industry text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Isu Pekerja</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Laporan isu pekerja di indonesia.</p>
-                            </div>
-                        </a>
-                    </div>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="assete/css/style.css" />
+    <style>
+      body,
+      input,
+      select,
+      textarea,
+      button {
+        font-family: "Outfit", sans-serif !important;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50 text-gray-800 font-outfit">
+    <nav class="navbar animate-fade-down relative">
+      <div class="logo">
+        <img src="/assete/img/logo.png" alt="Logo" />
+        <span>WorkLab Insight</span>
+      </div>
+      <ul class="nav-links hidden md:flex" id="desktopMenu">
+        <a href="dashboard.html" class="nav-item">Beranda</a>
+        <li class="relative group">
+          <button class="nav-item flex items-center gap-1 focus:outline-none">
+            <span>Data Ketenagakerjaan Nasional</span>
+            <i
+              class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"
+            ></i>
+          </button>
+          <div
+            class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6"
+          >
+            <div class="grid grid-cols-2 gap-6">
+              <a
+                href="employmentdata.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-chart-bar text-xl"></i>
                 </div>
-            </li>   
-            <a href="lowongan.html" class="nav-item">Portal Lowongan Kerja</a>
-            <a href="economicgrowth.html" class="nav-item">Analisis Pertumbuhan Ekonomi</a>
-        </ul>
-        
-        <div class="flex items-center gap-4">    
-            <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200">
-                <i class="fas fa-moon text-xl" id="themeIcon"></i>
-            </button>
-            <div class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Statistik Ketenagakerjaan
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Data statistik tenaga kerja nasional terkini.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="wageAnalysis.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-search-dollar text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Analisis Upah
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Analisis tren gaji di berbagai sektor industri.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="workforce.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-users text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Demografi
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Penyebaran tenaga kerja berdasarkan demografi.
+                  </p>
+                </div>
+              </a>
+              <a
+                href="laborissues.html"
+                class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item"
+              >
+                <div
+                  class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors"
+                >
+                  <i class="fas fa-industry text-xl"></i>
+                </div>
+                <div>
+                  <h4 class="font-bold text-gray-900 text-base mb-1">
+                    Isu Pekerja
+                  </h4>
+                  <p class="text-xs text-gray-500 leading-relaxed">
+                    Laporan isu pekerja di indonesia.
+                  </p>
+                </div>
+              </a>
             </div>
-            <div id="mobileDropdown" class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50">
-                <a href="dashboard.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Beranda</a>
-                <a href="analisis.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Data Ketenagakerjaan Nasional</a>
-                <a href="lowongan.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Portal lapangan Kerja</a>
-                <a href="economicgrowth.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Analisis Pertumbuhan Ekonomi</a>
-            </div>
+          </div>
+        </li>
+        <a href="lowongan.html" class="nav-item">Portal Lowongan Kerja</a>
+        <a href="economicgrowth.html" class="nav-item"
+          >Analisis Pertumbuhan Ekonomi</a
+        >
+      </ul>
+
+      <div class="flex items-center gap-4">
+        <button
+          id="themeToggle"
+          class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200"
+        >
+          <i class="fas fa-moon text-xl" id="themeIcon"></i>
+        </button>
+        <div
+          class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer"
+          id="mobileMenuBtn"
+        >
+          <i class="fas fa-bars"></i>
         </div>
+        <div
+          id="mobileDropdown"
+          class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50"
+        >
+          <a
+            href="dashboard.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Beranda</a
+          >
+          <a
+            href="analisis.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Data Ketenagakerjaan Nasional</a
+          >
+          <a
+            href="lowongan.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Portal lapangan Kerja</a
+          >
+          <a
+            href="economicgrowth.html"
+            class="block px-4 py-3 nav-item hover:bg-blue-50"
+            >Analisis Pertumbuhan Ekonomi</a
+          >
+        </div>
+      </div>
     </nav>
 
     <div class="pt-20 bg-gray-50">
-        <div class="container mx-auto px-4 animate-fade-in-up">
-            <h1 class="text-3xl font-bold text-gray-900">Dinamika & Tantangan Ketenagakerjaan</h1>
-            <p class="text-gray-500 mt-2">Analisis mendalam mengenai fenomena PHK Massal, realita program magang, dan kondisi sektor informal.</p>
-        </div>
+      <div class="container mx-auto px-4 animate-fade-in-up">
+        <h1 class="text-3xl font-bold text-gray-900">
+          Dinamika & Tantangan Ketenagakerjaan
+        </h1>
+        <p class="text-gray-500 mt-2">
+          Analisis mendalam mengenai fenomena PHK Massal, realita program
+          magang, dan kondisi sektor informal.
+        </p>
+      </div>
     </div>
 
     <main class="container mx-auto px-4 py-12">
-        
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 mb-12 animate-fade-in-up" style="animation-delay: 100ms;">
-            <div class="flex flex-col md:flex-row gap-8">
-                <div class="md:w-1/3">
-                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center text-red-600 text-3xl mb-6"><i class="fas fa-briefcase-medical"></i></div>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Gelombang PHK Massal</h2>
-                    <div class="h-1 w-12 bg-red-500 rounded-full mb-4"></div>
-                    <p class="text-sm text-gray-400">Fenomena "Tech Winter" dan efisiensi industri menjadi pemicu utama.</p>
-                </div>
-                
-                <div class="md:w-2/3 article-content">
-                    <p class="mb-4 text-gray-600 leading-relaxed">
-                        Pemutusan Hubungan Kerja (PHK) massal telah menjadi isu sentral dalam beberapa tahun terakhir, terutama di sektor teknologi dan manufaktur. Fenomena ini bukan sekadar siklus bisnis biasa, melainkan akibat dari <strong>koreksi pasar global</strong> pasca-pandemi dan percepatan adopsi otomatisasi.
-                    </p>
-                    <p class="mb-4 text-gray-600 leading-relaxed">
-                        Perusahaan kini beralih dari strategi "Growth at all costs" menjadi "Sustainability & Profitability". Hal ini memaksa restrukturisasi besar-besaran yang berdampak pada ribuan tenaga kerja terampil.
-                    </p>                    
-                    <div onclick="showDetail('faktorPHK')" class="interactive-card bg-gray-50 p-6 rounded-xl border-l-4 border-red-500 mt-6 cursor-pointer hover:bg-gray-100 transition group">
-                        <div class="flex justify-between items-start">
-                            <h4 class="font-bold text-gray-900 mb-3 text-lg group-hover:text-red-600 transition">Faktor Pemicu Utama:</h4>
-                            <i class="fas fa-info-circle text-red-400 text-xl"></i>
-                        </div>
-                        <ul class="feature-list list-none space-y-2 text-gray-600 text-sm mb-3">
-                            <li>• Ketidakpastian ekonomi global dan inflasi tinggi.</li>
-                            <li>• Perubahan perilaku konsumen pasca-pandemi.</li>
-                            <li>• Implementasi AI yang menggantikan peran administratif.</li>
-                        </ul>
-                        <div class="text-xs text-blue-600 font-semibold mt-2"><i class="fas fa-hand-pointer mr-1"></i> Klik untuk analisis detail</div>
-                    </div>
-                </div>
+      <div
+        class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 mb-12 animate-fade-in-up"
+        style="animation-delay: 100ms"
+      >
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="md:w-1/3">
+            <div
+              class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center text-red-600 text-3xl mb-6"
+            >
+              <i class="fas fa-briefcase-medical"></i>
             </div>
-        </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">
+              Gelombang PHK Massal
+            </h2>
+            <div class="h-1 w-12 bg-red-500 rounded-full mb-4"></div>
+            <p class="text-sm text-gray-400">
+              Fenomena "Tech Winter" dan efisiensi industri menjadi pemicu
+              utama.
+            </p>
+          </div>
 
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 mb-12 animate-fade-in-up" style="animation-delay: 300ms;">
-            <div class="flex flex-col md:flex-row-reverse gap-8">
-                <div class="md:w-1/3">
-                    <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center text-yellow-600 text-3xl mb-6"><i class="fas fa-user-graduate"></i></div>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Realita Magang</h2>
-                    <div class="h-1 w-12 bg-yellow-500 rounded-full mb-4"></div>
-                    <p class="text-sm text-gray-400">Batas tipis antara pembelajaran dan tenaga kerja murah.</p>
-                </div>
-                
-                <div class="md:w-2/3 article-content">
-                    <p class="mb-4 text-gray-600 leading-relaxed">
-                        Program magang sejatinya dirancang sebagai jembatan antara dunia pendidikan dan industri. Namun, data lapangan menunjukkan adanya tren <strong>penyalahgunaan wewenang</strong> di mana pemagang diperlakukan layaknya karyawan penuh waktu tanpa kompensasi atau perlindungan yang layak.
-                    </p>
-                    <p class="mb-4 text-gray-600 leading-relaxed">
-                        Banyak perusahaan memanfaatkan celah regulasi untuk merekrut pemagang guna mengisi posisi strategis dengan biaya operasional yang minim, seringkali tanpa kurikulum pembelajaran yang jelas.
-                    </p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                        
-                        <div onclick="showDetail('magangIdeal')" class="interactive-card border border-green-200 p-5 rounded-xl hover:bg-green-50 transition cursor-pointer group">
-                            <h5 class="font-bold text-gray-900 mb-2 flex items-center group-hover:text-green-700"><i class="fas fa-check-circle text-green-500 mr-2 text-xl"></i>Magang Ideal</h5>
-                            <p class="text-xs text-gray-500">Memiliki mentor, kurikulum jelas, uang saku layak, beban kerja untuk belajar.</p>
-                            <div class="text-xs text-green-600 font-semibold mt-2"><i class="fas fa-plus-circle mr-1"></i> Lihat Standar</div>
-                        </div>
-
-                        <div onclick="showDetail('eksploitasi')" class="interactive-card border border-red-200 p-5 rounded-xl bg-red-50/30 hover:bg-red-50 transition cursor-pointer group">
-                            <h5 class="font-bold text-red-700 mb-2 flex items-center"><i class="fas fa-times-circle mr-2 text-xl"></i>Eksploitasi</h5>
-                            <p class="text-xs text-red-600">Beban kerja full-time, lembur tanpa upah, menggantikan peran staff tetap.</p>
-                            <div class="text-xs text-red-600 font-semibold mt-2"><i class="fas fa-exclamation-triangle mr-1"></i> Lihat Indikator</div>
-                        </div>
-
-                    </div>
-                </div>
+          <div class="md:w-2/3 article-content">
+            <p class="mb-4 text-gray-600 leading-relaxed">
+              Pemutusan Hubungan Kerja (PHK) massal telah menjadi isu sentral
+              dalam beberapa tahun terakhir, terutama di sektor teknologi dan
+              manufaktur. Fenomena ini bukan sekadar siklus bisnis biasa,
+              melainkan akibat dari
+              <strong>koreksi pasar global</strong> pasca-pandemi dan percepatan
+              adopsi otomatisasi.
+            </p>
+            <p class="mb-4 text-gray-600 leading-relaxed">
+              Perusahaan kini beralih dari strategi "Growth at all costs"
+              menjadi "Sustainability & Profitability". Hal ini memaksa
+              restrukturisasi besar-besaran yang berdampak pada ribuan tenaga
+              kerja terampil.
+            </p>
+            <div
+              onclick="showDetail('faktorPHK')"
+              class="interactive-card bg-gray-50 p-6 rounded-xl border-l-4 border-red-500 mt-6 cursor-pointer hover:bg-gray-100 transition group"
+            >
+              <div class="flex justify-between items-start">
+                <h4
+                  class="font-bold text-gray-900 mb-3 text-lg group-hover:text-red-600 transition"
+                >
+                  Faktor Pemicu Utama:
+                </h4>
+                <i class="fas fa-info-circle text-red-400 text-xl"></i>
+              </div>
+              <ul
+                class="feature-list list-none space-y-2 text-gray-600 text-sm mb-3"
+              >
+                <li>• Ketidakpastian ekonomi global dan inflasi tinggi.</li>
+                <li>• Perubahan perilaku konsumen pasca-pandemi.</li>
+                <li>
+                  • Implementasi AI yang menggantikan peran administratif.
+                </li>
+              </ul>
+              <div class="text-xs text-blue-600 font-semibold mt-2">
+                <i class="fas fa-hand-pointer mr-1"></i> Klik untuk analisis
+                detail
+              </div>
             </div>
+          </div>
         </div>
+      </div>
 
-        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 mb-12 animate-fade-in-up" style="animation-delay: 500ms;">
-            <div class="flex flex-col md:flex-row gap-8">
-                <div class="md:w-1/3">
-                    <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-3xl mb-6"><i class="fas fa-store"></i></div>
-                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Sektor Informal</h2>
-                    <div class="h-1 w-12 bg-blue-500 rounded-full mb-4"></div>
-                    <p class="text-sm text-gray-400">Tulang punggung ekonomi yang rentan guncangan.</p>
-                </div>
-                <div class="md:w-2/3 article-content">
-                    <p class="mb-4 text-gray-600 leading-relaxed">
-                        Lebih dari 50% tenaga kerja Indonesia berada di sektor informal (UMKM, Pekerja Gig, Freelancer). Meskipun menawarkan fleksibilitas dan menjadi bantalan saat krisis ekonomi, sektor ini memiliki kerentanan tinggi: <strong>minimnya jaminan sosial (BPJS)</strong> dan ketidakpastian pendapatan.
-                    </p>
-                    <p class="mb-4 text-gray-600 leading-relaxed">
-                        Di era Gig Economy, pekerja platform (seperti ojek online) sering diklasifikasikan sebagai "mitra", yang secara hukum melepaskan tanggung jawab perusahaan terhadap hak-hak normatif pekerja seperti THR dan asuransi kesehatan.
-                    </p>                    
-                    <div class="mt-6">
-                        <div class="flex justify-between text-sm font-bold mb-2"><span class="text-gray-600">Komposisi Tenaga Kerja</span><span class="text-blue-600">60% Informal</span></div>
-                        <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden"><div class="bg-blue-600 h-4 rounded-full" style="width: 60%"></div></div>
-                    </div>
-                </div>
+      <div
+        class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 mb-12 animate-fade-in-up"
+        style="animation-delay: 300ms"
+      >
+        <div class="flex flex-col md:flex-row-reverse gap-8">
+          <div class="md:w-1/3">
+            <div
+              class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center text-yellow-600 text-3xl mb-6"
+            >
+              <i class="fas fa-user-graduate"></i>
             </div>
-        </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">
+              Realita Magang
+            </h2>
+            <div class="h-1 w-12 bg-yellow-500 rounded-full mb-4"></div>
+            <p class="text-sm text-gray-400">
+              Batas tipis antara pembelajaran dan tenaga kerja murah.
+            </p>
+          </div>
 
+          <div class="md:w-2/3 article-content">
+            <p class="mb-4 text-gray-600 leading-relaxed">
+              Program magang sejatinya dirancang sebagai jembatan antara dunia
+              pendidikan dan industri. Namun, data lapangan menunjukkan adanya
+              tren <strong>penyalahgunaan wewenang</strong> di mana pemagang
+              diperlakukan layaknya karyawan penuh waktu tanpa kompensasi atau
+              perlindungan yang layak.
+            </p>
+            <p class="mb-4 text-gray-600 leading-relaxed">
+              Banyak perusahaan memanfaatkan celah regulasi untuk merekrut
+              pemagang guna mengisi posisi strategis dengan biaya operasional
+              yang minim, seringkali tanpa kurikulum pembelajaran yang jelas.
+            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+              <div
+                onclick="showDetail('magangIdeal')"
+                class="interactive-card border border-green-200 p-5 rounded-xl hover:bg-green-50 transition cursor-pointer group"
+              >
+                <h5
+                  class="font-bold text-gray-900 mb-2 flex items-center group-hover:text-green-700"
+                >
+                  <i class="fas fa-check-circle text-green-500 mr-2 text-xl"></i
+                  >Magang Ideal
+                </h5>
+                <p class="text-xs text-gray-500">
+                  Memiliki mentor, kurikulum jelas, uang saku layak, beban kerja
+                  untuk belajar.
+                </p>
+                <div class="text-xs text-green-600 font-semibold mt-2">
+                  <i class="fas fa-plus-circle mr-1"></i> Lihat Standar
+                </div>
+              </div>
+
+              <div
+                onclick="showDetail('eksploitasi')"
+                class="interactive-card border border-red-200 p-5 rounded-xl bg-red-50/30 hover:bg-red-50 transition cursor-pointer group"
+              >
+                <h5 class="font-bold text-red-700 mb-2 flex items-center">
+                  <i class="fas fa-times-circle mr-2 text-xl"></i>Eksploitasi
+                </h5>
+                <p class="text-xs text-red-600">
+                  Beban kerja full-time, lembur tanpa upah, menggantikan peran
+                  staff tetap.
+                </p>
+                <div class="text-xs text-red-600 font-semibold mt-2">
+                  <i class="fas fa-exclamation-triangle mr-1"></i> Lihat
+                  Indikator
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 mb-12 animate-fade-in-up"
+        style="animation-delay: 500ms"
+      >
+        <div class="flex flex-col md:flex-row gap-8">
+          <div class="md:w-1/3">
+            <div
+              class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 text-3xl mb-6"
+            >
+              <i class="fas fa-store"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">
+              Sektor Informal
+            </h2>
+            <div class="h-1 w-12 bg-blue-500 rounded-full mb-4"></div>
+            <p class="text-sm text-gray-400">
+              Tulang punggung ekonomi yang rentan guncangan.
+            </p>
+          </div>
+          <div class="md:w-2/3 article-content">
+            <p class="mb-4 text-gray-600 leading-relaxed">
+              Lebih dari 50% tenaga kerja Indonesia berada di sektor informal
+              (UMKM, Pekerja Gig, Freelancer). Meskipun menawarkan fleksibilitas
+              dan menjadi bantalan saat krisis ekonomi, sektor ini memiliki
+              kerentanan tinggi:
+              <strong>minimnya jaminan sosial (BPJS)</strong> dan ketidakpastian
+              pendapatan.
+            </p>
+            <p class="mb-4 text-gray-600 leading-relaxed">
+              Di era Gig Economy, pekerja platform (seperti ojek online) sering
+              diklasifikasikan sebagai "mitra", yang secara hukum melepaskan
+              tanggung jawab perusahaan terhadap hak-hak normatif pekerja
+              seperti THR dan asuransi kesehatan.
+            </p>
+            <div class="mt-6">
+              <div class="flex justify-between text-sm font-bold mb-2">
+                <span class="text-gray-600">Komposisi Tenaga Kerja</span
+                ><span class="text-blue-600">60% Informal</span>
+              </div>
+              <div class="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
+                <div
+                  class="bg-blue-600 h-4 rounded-full"
+                  style="width: 60%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
 
     <!-- DETAIL MODAL -->
-    <div id="detailModal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-[10000] flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300">
-        <div class="bg-white rounded-xl w-full max-w-2xl max-h-[85vh] overflow-y-auto shadow-2xl animate-modal-pop relative">
-            
-            <div id="modalHeaderBg" class="p-6 border-b border-gray-100 flex items-center gap-4 bg-gray-50">
-                <div id="modalIconContainer" class="w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-sm bg-white">
-                    </div>
-                <h3 id="modalTitle" class="text-xl font-bold text-gray-900 flex-1">Title Here</h3>
-                <button onclick="closeDetailModal()" class="text-gray-400 hover:text-red-500 transition-colors p-2">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-
-            <div class="p-8 text-gray-600 leading-relaxed space-y-4 text-sm md:text-base" id="modalBody">
-                </div>
-
-            <div class="p-4 border-t border-gray-100 flex justify-end bg-gray-50">
-                <button onclick="closeDetailModal()" class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition font-medium text-sm">Tutup</button>
-            </div>
+    <div
+      id="detailModal"
+      class="fixed inset-0 bg-black bg-opacity-60 hidden z-[10000] flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300"
+    >
+      <div
+        class="bg-white rounded-xl w-full max-w-2xl max-h-[85vh] overflow-y-auto shadow-2xl animate-modal-pop relative"
+      >
+        <div
+          id="modalHeaderBg"
+          class="p-6 border-b border-gray-100 flex items-center gap-4 bg-gray-50"
+        >
+          <div
+            id="modalIconContainer"
+            class="w-12 h-12 rounded-full flex items-center justify-center text-2xl shadow-sm bg-white"
+          ></div>
+          <h3 id="modalTitle" class="text-xl font-bold text-gray-900 flex-1">
+            Title Here
+          </h3>
+          <button
+            onclick="closeDetailModal()"
+            class="text-gray-400 hover:text-red-500 transition-colors p-2"
+          >
+            <i class="fas fa-times text-xl"></i>
+          </button>
         </div>
+
+        <div
+          class="p-8 text-gray-600 leading-relaxed space-y-4 text-sm md:text-base"
+          id="modalBody"
+        ></div>
+
+        <div class="p-4 border-t border-gray-100 flex justify-end bg-gray-50">
+          <button
+            onclick="closeDetailModal()"
+            class="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition font-medium text-sm"
+          >
+            Tutup
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="text-center py-10 animate-fade-in-up" style="animation-delay: 700ms;">
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Ingin Melihat Data Lebih Detail?</h3>
-            <p class="text-gray-500 mb-8">Jelajahi data statistik lengkap untuk setiap sektor di halaman analisis kami.</p>
-            <a href="employmentdata.html" class="inline-block bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg hover:shadow-blue-500/30">
-                Buka Analisis Data
-            </a>
-        </div>
+    <div
+      class="text-center py-10 animate-fade-in-up"
+      style="animation-delay: 700ms"
+    >
+      <h3 class="text-2xl font-bold text-gray-900 mb-4">
+        Ingin Melihat Data Lebih Detail?
+      </h3>
+      <p class="text-gray-500 mb-8">
+        Jelajahi data statistik lengkap untuk setiap sektor di halaman analisis
+        kami.
+      </p>
+      <a
+        href="employmentdata.html"
+        class="inline-block bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg hover:shadow-blue-500/30"
+      >
+        Buka Analisis Data
+      </a>
+    </div>
 
     <footer class="mt-auto">
-        <div class="container footer-content">
-            <div class="footer-links">
-                <a href="aboutme.html">Tentang Kami</a>
-                <a href="#">Kontak</a>
-                <a href="#">Kebijakan Privasi</a>
-                <a href="#">Syarat & Ketentuan</a>
-            </div>
-            <div class="social-icons">
-                <span>🐦</span> <span>🔗</span> <span>fb</span>
-            </div>
-            <p class="copyright">© 2024 Indonesia Employment Watch. Hak Cipta Dilindungi Undang-Undang.</p>
+      <div class="container footer-content">
+        <div class="footer-links">
+          <a href="aboutme.html">Tentang Kami</a>
+          <a href="#">Kontak</a>
+          <a href="#">Kebijakan Privasi</a>
+          <a href="#">Syarat & Ketentuan</a>
         </div>
+        <div class="social-icons">
+          <span>🐦</span> <span>🔗</span> <span>fb</span>
+        </div>
+        <p class="copyright">
+          © 2024 Indonesia Employment Watch. Hak Cipta Dilindungi Undang-Undang.
+        </p>
+      </div>
     </footer>
 
     <script src="assete/js/app.js"></script>
-</body>
+  </body>
 </html>
