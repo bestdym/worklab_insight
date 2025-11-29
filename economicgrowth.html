@@ -99,19 +99,30 @@
 
                     <section class="controls-container">
                         <div class="filters-row">
-                            <div class="filter-group">
-                                <select id="metricSelect" class="dropdown">
+                           <div class="filter-group">
+                        <select id="metricSelect" class="dropdown">
                                     <option value="GDP">PDB (GDP)</option>
                                     <option value="Employment">Penyerapan Tenaga Kerja</option>
-                                </select>
-                                <select id="sectorSelect" class="dropdown">
+                        </select>
+    
+                        <select id="sectorSelect" class="dropdown">
                                     <option value="Technology">Teknologi</option>
                                     <option value="Manufacturing">Manufaktur</option>
                                     <option value="Agriculture">Pertanian</option>
                                     <option value="Mining">Pertambangan</option>
                                     <option value="Retail">Ritel</option>
                                     <option value="Finance">Keuangan</option>
+                        </select>
+
+                        <select id="compareSectorSelect" class="dropdown" style="display: none; border-color: #28a745; color: #28a745;">
+                            <option value="Technology">Banding: Teknologi</option>
+                                    <option value="Manufacturing" selected>Banding: Manufaktur</option>
+                                    <option value="Agriculture">Banding: Pertanian</option>
+                                    <option value="Mining">Banding: Pertambangan</option>
+                                    <option value="Retail">Banding: Ritel</option>
+                                    <option value="Finance">Banding: Keuangan</option>
                                 </select>
+
                                 <select id="regionSelect" class="dropdown">
                                     <option value="Indonesia">Indonesia</option>
                                     <option value="Asia">Asia</option>

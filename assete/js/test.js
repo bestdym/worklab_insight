@@ -466,8 +466,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
-
 const sectorMap = {
     'Technology': 'Teknologi',
     'Manufacturing': 'Manufaktur',
@@ -679,6 +677,7 @@ const dataStore = {
 let currentMetric = 'GDP';
 let currentSector = 'Technology';
 let currentRegion = 'Indonesia';
+let compareSector = 'Manufacturing'; 
 let isCompareMode = false;
 let maxYear = 2024;
 let chartInstance = null;
@@ -697,11 +696,13 @@ function updateChart() {
     
     chartInstance.data.datasets[0].label = `${metricName} (${sectorName})`;
     
-    if (isCompareMode && currentSector !== 'Manufacturing') {
-        const compareData = dataStore[currentMetric]['Manufacturing'][currentRegion];
+    if (isCompareMode) {
+        const compareData = dataStore[currentMetric][compareSector][currentRegion];
         const compareFilteredData = compareData.data.slice(0, filteredLabels.length);
+        const compareSectorName = sectorMap[compareSector] || compareSector;
+
         chartInstance.data.datasets[1] = {
-            label: `${metricName} (Manufaktur)`,
+            label: `${metricName} (${compareSectorName})`,
             data: compareFilteredData,
             borderColor: '#28a745', 
             backgroundColor: 'rgba(40, 167, 69, 0.05)',
@@ -727,7 +728,7 @@ function updateSidebar() {
     
     if (bigStatEl) {
         const lastVal = data.data[data.data.length - 1];
-        const unit = currentMetric === 'GDP' ? 'T IDR' : 'Ribu Pekerja';
+        const unit = currentMetric === 'GDP' ? 'T IDR' : 'Ribu';
         const growthClass = data.growth.includes('+') ? 'positive' : 'negative';
         bigStatEl.innerHTML = `${lastVal} ${unit} <span class="growth ${growthClass}">↗ ${data.growth}</span>`;
     }
@@ -852,6 +853,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    const compareSectorSelect = document.getElementById('compareSectorSelect');
+    if(compareSectorSelect) {
+        compareSectorSelect.addEventListener('change', function() {
+            compareSector = this.value;
+            updateChart();
+        });
+    }
+
     const regionSelect = document.getElementById('regionSelect');
     if(regionSelect) {
         regionSelect.addEventListener('change', function() {
@@ -865,6 +874,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if(compareToggle) {
         compareToggle.addEventListener('change', function() {
             isCompareMode = this.checked;
+            
+            const compareDropdown = document.getElementById('compareSectorSelect');
+            if (compareDropdown) {
+                compareDropdown.style.display = isCompareMode ? 'inline-block' : 'none';
+            }
+
             updateChart();
         });
     }
