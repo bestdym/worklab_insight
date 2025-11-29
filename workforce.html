@@ -173,11 +173,90 @@
                             <li>Tingkat pengangguran adalah indikator utama kesehatan ekonomi.</li>
                         </ul>
                     </div>
-                    <button class="btn-primary">Lihat Laporan Rinci</button>
-                </div>
+    <button onclick="toggleReportModal(true)" class="btn-primary">Lihat Laporan Rinci</button>                </div>
             </div>
         </div>
     </main>
+    <div id="reportModal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-[9999] flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+    <div class="bg-white rounded-2xl max-w-2xl w-full shadow-2xl transform scale-95 transition-transform duration-300" id="reportModalContent">
+        
+        <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50 rounded-t-2xl">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+                    <i class="fas fa-file-invoice-dollar text-lg"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-gray-900">Laporan Rinci: Q3 2024</h3>
+                    <p class="text-xs text-gray-500">Status: Finalized • ID: #REP-2024-Q3</p>
+                </div>
+            </div>
+            <button onclick="toggleReportModal(false)" class="text-gray-400 hover:text-red-500 transition w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="p-6 overflow-y-auto max-h-[60vh]">
+            
+            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-6 rounded-r-lg">
+                <div class="flex">
+                    <div class="flex-shrink-0">
+                        <i class="fas fa-info-circle text-blue-500"></i>
+                    </div>
+                    <div class="ml-3">
+                        <p class="text-sm text-blue-700 font-medium">Insight Utama</p>
+                        <p class="text-sm text-blue-600 mt-1">
+                            Tingkat pengangguran tertinggi berada pada rentang usia <strong>18-24 tahun (Gen Z)</strong>, menyumbang 40% dari total pengangguran nasional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="font-bold text-gray-800 mb-3 text-sm uppercase tracking-wider">Breakdown per Pendidikan</h4>
+            <div class="overflow-x-auto rounded-xl border border-gray-200 mb-6">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Jenjang</th>
+                            <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Total (Juta)</th>
+                            <th class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Persentase</th>
+                            <th class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Tren</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200 text-sm">
+                        <tr>
+                            <td class="px-4 py-3 font-medium text-gray-800">SMK / Vokasi</td>
+                            <td class="px-4 py-3 text-right text-gray-600">3.2</td>
+                            <td class="px-4 py-3 text-right font-bold text-red-500">9.4%</td>
+                            <td class="px-4 py-3 text-center text-red-500"><i class="fas fa-arrow-up"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium text-gray-800">Sarjana (S1)</td>
+                            <td class="px-4 py-3 text-right text-gray-600">1.8</td>
+                            <td class="px-4 py-3 text-right font-bold text-orange-500">5.6%</td>
+                            <td class="px-4 py-3 text-center text-green-500"><i class="fas fa-arrow-down"></i></td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 font-medium text-gray-800">SMA</td>
+                            <td class="px-4 py-3 text-right text-gray-600">2.5</td>
+                            <td class="px-4 py-3 text-right font-bold text-gray-700">7.1%</td>
+                            <td class="px-4 py-3 text-center text-gray-400">-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <button class="flex items-center justify-center gap-2 bg-white border border-gray-300 text-gray-700 py-2.5 rounded-xl hover:bg-gray-50 transition font-medium text-sm">
+                    <i class="fas fa-share-alt"></i> Bagikan
+                </button>
+                <button class="flex items-center justify-center gap-2 bg-blue-600 text-white py-2.5 rounded-xl hover:bg-blue-700 transition font-medium text-sm shadow-lg shadow-blue-500/30">
+                    <i class="fas fa-download"></i> Download PDF
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     

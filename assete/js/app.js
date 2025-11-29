@@ -920,73 +920,205 @@ const initSectorDashboard = () => {
 };
 
     const initDemographics = () => {
-        const getData = (year, region) => {
-            if (dummyData[year] && dummyData[year][region]) return dummyData[year][region];
-            else if (dummyData[year] && dummyData[year]['All']) return dummyData[year]['All'];
-            return dummyData['2023']['All'];
-        }
-
-        const initAgeChart = (data) => {
-            const el = document.getElementById('ageChart');
-            if (!el) return;
-            ageChart = new Chart(el.getContext('2d'), {
-                type: 'bar',
-                data: {
-                    labels: ['18-24', '25-34', '35-44', '45-54', '55-64', '65+'],
-                    datasets: [{ data: data, backgroundColor: ['#d1d5db', '#d1d5db', '#1e3a8a', '#d1d5db', '#d1d5db', '#d1d5db'], borderRadius: 4 }]
-                },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { display: false } } }
-            });
-        }
-
-        const initGenderChart = (data) => {
-            const el = document.getElementById('genderChart');
-            if (!el) return;
-            genderChart = new Chart(el.getContext('2d'), {
-                type: 'doughnut',
-                data: { labels: ['Laki-laki', 'Perempuan'], datasets: [{ data: data, backgroundColor: ['#1e3a8a', '#60a5fa'], borderWidth: 0, cutout: '75%' }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } }
-            });
-        }
-
-        const initEduChart = (data) => {
-            const el = document.getElementById('educationChart');
-            if (!el) return;
-            eduChart = new Chart(el.getContext('2d'), {
-                type: 'bar',
-                data: { labels: ['SMA', 'S1', 'S2', 'S3'], datasets: [{ data: data, backgroundColor: ['#d1d5db', '#1e3a8a', '#d1d5db', '#d1d5db'], borderRadius: 4 }] },
-                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { display: false }, x: { display: false } } }
-            });
-        }
-
-        window.updateDemographics = () => {
-            const region = document.getElementById('regionFilter')?.value;
-            const year = document.getElementById('yearFilter')?.value;
-            const currentData = getData(year, region);
-
-            if (ageChart) { ageChart.data.datasets[0].data = currentData.age; ageChart.update(); }
-            if (genderChart) { genderChart.data.datasets[0].data = currentData.gender; genderChart.update(); }
-            if (eduChart) { eduChart.data.datasets[0].data = currentData.edu; eduChart.update(); }
-
-            if (document.getElementById('totalWorkforce')) document.getElementById('totalWorkforce').innerText = currentData.total;
-            if (document.getElementById('malePct')) document.getElementById('malePct').innerText = currentData.gender[0] + "%";
-            if (document.getElementById('femalePct')) document.getElementById('femalePct').innerText = currentData.gender[1] + "%";
-            
-            const unemp = document.getElementById('unemploymentRate');
-            if(unemp) {
-                unemp.innerText = currentData.unemployment;
-                unemp.style.color = parseFloat(currentData.unemployment) > 10 ? "#dc2626" : "#1e3a8a";
-            }
-        }
-
-        const initialData = dummyData['2023']['All'];
-        initAgeChart(initialData.age);
-        initGenderChart(initialData.gender);
-        initEduChart(initialData.edu);
-
-        document.getElementById('regionFilter')?.addEventListener('change', window.updateDemographics);
-        document.getElementById('yearFilter')?.addEventListener('change', window.updateDemographics);
+    const getColorPattern = (data) => {
+        const maxVal = Math.max(...data);
+        return data.map(val => val === maxVal ? '#1e3a8a' : '#e5e7eb'); // Biru Tua vs Abu Terang
     };
+
+    const getData = (year, region) => {
+        if (dummyData[year] && dummyData[year][region]) return dummyData[year][region];
+        else if (dummyData[year] && dummyData[year]['All']) return dummyData[year]['All'];
+        return dummyData['2023']['All'];
+    }
+
+    const initAgeChart = (data) => {
+        const el = document.getElementById('ageChart');
+        if (!el) return;
+
+        const colors = getColorPattern(data);
+
+        ageChart = new Chart(el.getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['18-24', '25-34', '35-44', '45-54', '55-64', '65+'],
+                datasets: [{ 
+                    data: data, 
+                    backgroundColor: colors, 
+                    borderRadius: 6, 
+                    barPercentage: 0.6
+                }]
+            },
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: false, 
+                plugins: { legend: { display: false } }, 
+                scales: { 
+                    y: { 
+                        display: true,
+                        beginAtZero: true,
+                        grid: {
+                            color: '#f3f4f6', 
+                            borderDash: [5, 5]
+                        },
+                        ticks: {
+                            font: { family: 'Outfit', size: 11 },
+                            color: '#9ca3af'
+                        },
+                        border: { display: false } 
+                    }, 
+                    x: { 
+                        display: true, 
+                        grid: { display: false }, 
+                        ticks: {
+                            font: { family: 'Outfit', size: 11 },
+                            color: '#6b7280'
+                        }
+                    } 
+                },
+                animation: { duration: 1000 }
+            }
+        });
+    }
+
+    const initGenderChart = (data) => {
+        const el = document.getElementById('genderChart');
+        if (!el) return;
+        genderChart = new Chart(el.getContext('2d'), {
+            type: 'doughnut',
+            data: { 
+                labels: ['Laki-laki', 'Perempuan'], 
+                datasets: [{ 
+                    data: data, 
+                    backgroundColor: ['#1e3a8a', '#60a5fa'], 
+                    borderWidth: 0, 
+                    cutout: '75%' 
+                }] 
+            },
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: false, 
+                plugins: { legend: { display: false } } 
+            }
+        });
+    }
+
+    const initEduChart = (data) => {
+        const el = document.getElementById('educationChart');
+        if (!el) return;
+        
+        const colors = getColorPattern(data);
+
+        eduChart = new Chart(el.getContext('2d'), {
+            type: 'bar',
+            data: { 
+                labels: ['SMA', 'S1', 'S2', 'S3'], 
+                datasets: [{ 
+                    data: data, 
+                    backgroundColor: colors, 
+                    borderRadius: 4,
+                    barPercentage: 0.5
+                }] 
+            },
+            options: { 
+                responsive: true, 
+                maintainAspectRatio: false, 
+                plugins: { legend: { display: false } }, 
+                scales: { 
+                    y: { 
+                        display: true,
+                        grid: { color: '#f3f4f6', borderDash: [3, 3] },
+                        ticks: { color: '#9ca3af' },
+                        border: { display: false }
+                    }, 
+                    x: { 
+                        display: true,
+                        grid: { display: false },
+                        ticks: { color: '#6b7280' }
+                    } 
+                } 
+            }
+        });
+    }
+
+    window.updateDemographics = () => {
+        const region = document.getElementById('regionFilter')?.value;
+        const year = document.getElementById('yearFilter')?.value;
+        const currentData = getData(year, region);
+
+        if (ageChart) { 
+            ageChart.data.datasets[0].data = currentData.age; 
+            ageChart.data.datasets[0].backgroundColor = getColorPattern(currentData.age);
+            ageChart.update(); 
+        }
+
+        if (genderChart) { 
+            genderChart.data.datasets[0].data = currentData.gender; 
+            genderChart.update(); 
+        }
+
+        if (eduChart) { 
+            eduChart.data.datasets[0].data = currentData.edu; 
+            eduChart.data.datasets[0].backgroundColor = getColorPattern(currentData.edu);
+            eduChart.update(); 
+        }
+
+        if (document.getElementById('totalWorkforce')) document.getElementById('totalWorkforce').innerText = currentData.total;
+        if (document.getElementById('malePct')) document.getElementById('malePct').innerText = currentData.gender[0] + "%";
+        if (document.getElementById('femalePct')) document.getElementById('femalePct').innerText = currentData.gender[1] + "%";
+        
+        const unemp = document.getElementById('unemploymentRate');
+        if(unemp) {
+            unemp.innerText = currentData.unemployment;
+            unemp.style.color = parseFloat(currentData.unemployment) > 10 ? "#dc2626" : "#1e3a8a";
+        }
+    }
+
+    const initialData = dummyData['2023']['All'];
+    initAgeChart(initialData.age);
+    initGenderChart(initialData.gender);
+    initEduChart(initialData.edu);
+
+    document.getElementById('regionFilter')?.addEventListener('change', window.updateDemographics);
+    document.getElementById('yearFilter')?.addEventListener('change', window.updateDemographics);
+    
+    document.querySelectorAll('#listRegionFilter .option-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const val = this.getAttribute('data-value');
+            document.getElementById('regionFilter').value = val;
+            document.getElementById('labelRegionFilter').innerText = this.innerText;
+            document.getElementById('listRegionFilter').classList.add('hidden');
+            window.updateDemographics();
+        });
+    });
+
+    document.querySelectorAll('#listYearFilter .option-item').forEach(item => {
+        item.addEventListener('click', function() {
+            const val = this.getAttribute('data-value');
+            document.getElementById('yearFilter').value = val;
+            document.getElementById('labelYearFilter').innerText = this.innerText;
+            document.getElementById('listYearFilter').classList.add('hidden');
+            window.updateDemographics();
+        });
+    });
+
+    const toggleDropdown = (btnId, listId) => {
+        const btn = document.getElementById(btnId);
+        const list = document.getElementById(listId);
+        if(btn && list) {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                list.classList.toggle('hidden');
+            });
+        }
+    }
+    toggleDropdown('btnRegionFilter', 'listRegionFilter');
+    toggleDropdown('btnYearFilter', 'listYearFilter');
+    
+    document.addEventListener('click', () => {
+        document.getElementById('listRegionFilter')?.classList.add('hidden');
+        document.getElementById('listYearFilter')?.classList.add('hidden');
+    });
+};
 
     const initMacroEconomics = () => {
     if (typeof Chart === 'undefined') return;
@@ -1344,3 +1476,32 @@ const initNationalStats = () => {
         });
     }
 };
+
+window.toggleReportModal = (show) => {
+    const modal = document.getElementById('reportModal');
+    const content = document.getElementById('reportModalContent');
+    
+    if (!modal || !content) return;
+
+    if (show) {
+        modal.classList.remove('hidden');
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            content.classList.remove('scale-95');
+            content.classList.add('scale-100');
+        }, 10);
+    } else {
+        modal.classList.add('opacity-0');
+        content.classList.remove('scale-100');
+        content.classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
+}
+
+document.getElementById('reportModal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'reportModal') {
+        toggleReportModal(false);
+    }
+});
