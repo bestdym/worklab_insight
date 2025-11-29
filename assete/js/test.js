@@ -468,22 +468,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+const sectorMap = {
+    'Technology': 'Teknologi',
+    'Manufacturing': 'Manufaktur',
+    'Agriculture': 'Pertanian',
+    'Mining': 'Pertambangan',
+    'Retail': 'Ritel',
+    'Finance': 'Keuangan'
+};
 
 const dataStore = {
     GDP: {
         Technology: {
             Indonesia: {
                 labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
-                data: [750, 820, 790, 950, 1100, 1050, 1250, 1400, 1380, 1550, 1650, 1800, 1750, 1900, 2100], 
+                data: [750, 820, 790, 950, 1100, 1050, 1250, 1400, 1380, 1550, 1650, 1800, 1750, 1900, 2100],
                 growth: '+180%',
-                summary: { label: 'Technology GDP', val: '750T → 2100T IDR', percent: '↑ +180%' },
+                summary: { label: 'PDB Teknologi', val: '750T → 2100T IDR', percent: '↑ +180%' },
                 takeaways: ['Lonjakan tinggi pasca-pandemi (2020+).', 'Koreksi pasar terjadi di 2015 dan 2022.', 'Sektor growth tertinggi namun volatil.']
             },
             Asia: {
                 labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                 data: [800, 900, 880, 1050, 1200, 1150, 1350, 1500, 1480, 1650, 1850, 1950, 1900, 2050, 2200],
                 growth: '+175%',
-                summary: { label: 'Technology GDP (Asia)', val: '800T → 2200T IDR', percent: '↑ +175%' },
+                summary: { label: 'PDB Teknologi (Asia)', val: '800T → 2200T IDR', percent: '↑ +175%' },
                 takeaways: ['Tren Asia mengikuti pola global.', 'Investasi startup mendorong volatilitas.', 'Pemulihan cepat setelah koreksi.']
             }
         },
@@ -492,14 +500,14 @@ const dataStore = {
                 labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                 data: [2800, 2950, 2900, 3050, 3150, 3100, 3200, 3350, 3400, 3300, 2900, 3100, 3300, 3250, 3450],
                 growth: '+23.2%',
-                summary: { label: 'Manufacturing GDP', val: '2800T → 3450T IDR', percent: '↑ +23.2%' },
+                summary: { label: 'PDB Manufaktur', val: '2800T → 3450T IDR', percent: '↑ +23.2%' },
                 takeaways: ['Dampak signifikan pandemi di 2020.', 'Pemulihan lambat namun pasti di 2021-2024.', 'Fluktuasi mengikuti demand global.']
             },
             Asia: {
                 labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                 data: [3000, 3150, 3100, 3250, 3350, 3300, 3450, 3600, 3650, 3550, 3100, 3300, 3500, 3550, 3700],
                 growth: '+23.3%',
-                summary: { label: 'Manufacturing GDP (Asia)', val: '3000T → 3700T IDR', percent: '↑ +23.3%' },
+                summary: { label: 'PDB Manufaktur (Asia)', val: '3000T → 3700T IDR', percent: '↑ +23.3%' },
                 takeaways: ['Basis produksi Asia kuat.', 'Drop signifikan di 2020 akibat lockdown.', 'Supply chain pulih di 2022.']
             }
         },
@@ -508,15 +516,63 @@ const dataStore = {
                 labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                 data: [1050, 1120, 1080, 1150, 1000, 1050, 980, 1020, 990, 1010, 1080, 1030, 990, 950, 980],
                 growth: '-6.6%',
-                summary: { label: 'Agriculture GDP', val: '1050T → 980T IDR', percent: '↓ -6.6%' },
+                summary: { label: 'PDB Pertanian', val: '1050T → 980T IDR', percent: '↓ -6.6%' },
                 takeaways: ['Sangat fluktuatif karena faktor cuaca.', 'Menjadi penyangga ekonomi saat krisis 2020.', 'Tren jangka panjang menurun.']
             },
             Asia: {
                 labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                 data: [1100, 1180, 1120, 1190, 1050, 1100, 1020, 1080, 1040, 1060, 1120, 1080, 1020, 980, 1000],
                 growth: '-9.0%',
-                summary: { label: 'Agriculture GDP (Asia)', val: '1100T → 1000T IDR', percent: '↓ -9.0%' },
+                summary: { label: 'PDB Pertanian (Asia)', val: '1100T → 1000T IDR', percent: '↓ -9.0%' },
                 takeaways: ['Modernisasi mengurangi porsi agrikultur.', 'Volatilitas harga komoditas terlihat jelas.', 'Stabilisasi di level rendah.']
+            }
+        },
+        Mining: {
+            Indonesia: {
+                labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [1400, 1450, 1420, 1500, 1550, 1480, 1520, 1600, 1650, 1700, 1550, 1750, 1900, 1850, 1900],
+                growth: '+35.7%',
+                summary: { label: 'PDB Pertambangan', val: '1400T → 1900T IDR', percent: '↑ +35.7%' },
+                takeaways: ['Harga komoditas global sangat berpengaruh.', 'Lonjakan batubara/nikel di 2022.', 'Investasi smelter mendorong nilai tambah.']
+            },
+            Asia: {
+                labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [1500, 1550, 1520, 1600, 1650, 1600, 1650, 1750, 1800, 1850, 1700, 1900, 2050, 2000, 2100],
+                growth: '+40.0%',
+                summary: { label: 'PDB Pertambangan (Asia)', val: '1500T → 2100T IDR', percent: '↑ +40.0%' },
+                takeaways: ['Permintaan energi China mendominasi.', 'Transisi energi mempengaruhi tren.', 'Stabilisasi harga di 2024.']
+            }
+        },
+        Retail: {
+            Indonesia: {
+                labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [900, 950, 1000, 1050, 1100, 1120, 1150, 1200, 1250, 1280, 1000, 1100, 1200, 1250, 1300],
+                growth: '+44.4%',
+                summary: { label: 'PDB Ritel', val: '900T → 1300T IDR', percent: '↑ +44.4%' },
+                takeaways: ['Konsumsi rumah tangga pondasi utama.', 'Jatuh tajam saat PSBB 2020.', 'E-commerce mendisrupsi ritel fisik.']
+            },
+            Asia: {
+                labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [1000, 1080, 1150, 1200, 1250, 1300, 1350, 1400, 1450, 1500, 1200, 1350, 1450, 1550, 1600],
+                growth: '+60.0%',
+                summary: { label: 'PDB Ritel (Asia)', val: '1000T → 1600T IDR', percent: '↑ +60.0%' },
+                takeaways: ['Kelas menengah Asia mendorong growth.', 'Digitalisasi ritel sangat cepat.', 'Pemulihan pariwisata membantu ritel.']
+            }
+        },
+        Finance: {
+            Indonesia: {
+                labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [1100, 1150, 1200, 1250, 1300, 1350, 1400, 1450, 1550, 1650, 1600, 1680, 1750, 1800, 1850],
+                growth: '+68.1%',
+                summary: { label: 'PDB Keuangan', val: '1100T → 1850T IDR', percent: '↑ +68.1%' },
+                takeaways: ['Pertumbuhan stabil meski krisis.', 'Fintech memperluas akses keuangan.', 'Suku bunga tinggi di 2023 menahan laju.']
+            },
+            Asia: {
+                labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [1200, 1280, 1350, 1400, 1480, 1550, 1620, 1700, 1800, 1900, 1850, 1950, 2050, 2150, 2250],
+                growth: '+87.5%',
+                summary: { label: 'PDB Keuangan (Asia)', val: '1200T → 2250T IDR', percent: '↑ +87.5%' },
+                takeaways: ['Pusat keuangan (SG, HK) dominan.', 'Adopsi pembayaran digital masif.', 'Ketahanan sektor perbankan kuat.']
             }
         }
     },
@@ -526,14 +582,14 @@ const dataStore = {
                 labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                 data: [50, 52, 58, 55, 65, 70, 68, 80, 95, 110, 105, 120, 115, 130, 145],
                 growth: '+190%',
-                summary: { label: 'Tech Employment', val: '50K → 145K', percent: '↑ +190%' },
+                summary: { label: 'Pekerja Teknologi', val: '50K → 145K', percent: '↑ +190%' },
                 takeaways: ['Permintaan talenta digital sangat tinggi.', 'Sedikit penurunan (layoff) di 2022.', 'Recovery cepat di 2023.']
             },
             Asia: {
                 labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                 data: [60, 65, 72, 70, 80, 85, 82, 95, 110, 125, 120, 135, 130, 145, 160],
                 growth: '+166%',
-                summary: { label: 'Tech Employment (Asia)', val: '60K → 160K', percent: '↑ +166%' },
+                summary: { label: 'Pekerja Teknologi (Asia)', val: '60K → 160K', percent: '↑ +166%' },
                 takeaways: ['Hub teknologi Asia terus merekrut.', 'Persaingan talenta menyebabkan churn rate.', 'Tren remote work terlihat.']
             }
         },
@@ -542,14 +598,14 @@ const dataStore = {
                 labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                 data: [200, 210, 205, 215, 225, 220, 230, 240, 235, 245, 210, 230, 250, 255, 260],
                 growth: '+30%',
-                summary: { label: 'Manu. Employment', val: '200K → 260K', percent: '↑ +30%' },
+                summary: { label: 'Pekerja Manufaktur', val: '200K → 260K', percent: '↑ +30%' },
                 takeaways: ['PHK massal terlihat saat pandemi 2020.', 'Rebound penyerapan tenaga kerja di 2022.', 'Automasi mulai menekan pertumbuhan.']
             },
             Asia: {
                 labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                 data: [220, 230, 225, 235, 245, 240, 250, 260, 255, 265, 230, 250, 270, 275, 280],
                 growth: '+27%',
-                summary: { label: 'Manu. Employment (Asia)', val: '220K → 280K', percent: '↑ +27%' },
+                summary: { label: 'Pekerja Manufaktur (Asia)', val: '220K → 280K', percent: '↑ +27%' },
                 takeaways: ['Pola serupa dengan Indonesia.', 'Pemulihan sektor riil pasca pandemi.', 'Pertumbuhan melambat dibanding tech.']
             }
         },
@@ -558,15 +614,63 @@ const dataStore = {
                 labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                 data: [150, 155, 145, 148, 140, 142, 135, 138, 130, 128, 135, 130, 125, 122, 120],
                 growth: '-20%',
-                summary: { label: 'Agri Employment', val: '150K → 120K', percent: '↓ -20%' },
+                summary: { label: 'Pekerja Pertanian', val: '150K → 120K', percent: '↓ -20%' },
                 takeaways: ['Urbanisasi mengurangi petani muda.', 'Spike kecil di 2020 fenomena "pulang kampung".', 'Penurunan struktural berlanjut.']
             },
             Asia: {
                 labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
                 data: [160, 165, 155, 158, 150, 152, 145, 148, 140, 138, 145, 140, 135, 132, 130],
                 growth: '-18.7%',
-                summary: { label: 'Agri Employment (Asia)', val: '160K → 130K', percent: '↓ -18.7%' },
+                summary: { label: 'Pekerja Pertanian (Asia)', val: '160K → 130K', percent: '↓ -18.7%' },
                 takeaways: ['Mekanisasi menggantikan tenaga kerja.', 'Penyerapan tenaga kerja terendah.', 'Peralihan ke sektor jasa.']
+            }
+        },
+        Mining: {
+            Indonesia: {
+                labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [30, 32, 35, 38, 36, 34, 35, 38, 40, 42, 38, 40, 45, 48, 50],
+                growth: '+66.6%',
+                summary: { label: 'Pekerja Pertambangan', val: '30K → 50K', percent: '↑ +66.6%' },
+                takeaways: ['Padat modal, bukan padat karya.', 'Peningkatan skill untuk operasi alat berat.', 'Lokasi kerja remote jadi tantangan.']
+            },
+            Asia: {
+                labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [35, 38, 40, 42, 40, 38, 40, 42, 45, 48, 44, 46, 50, 52, 55],
+                growth: '+57.1%',
+                summary: { label: 'Pekerja Tambang (Asia)', val: '35K → 55K', percent: '↑ +57.1%' },
+                takeaways: ['Automasi tambang mengurangi headcount.', 'Fokus pada keselamatan kerja (K3).', 'Pertumbuhan moderat.']
+            }
+        },
+        Retail: {
+            Indonesia: {
+                labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 220, 240, 260, 280, 290],
+                growth: '+61.1%',
+                summary: { label: 'Pekerja Ritel', val: '180K → 290K', percent: '↑ +61.1%' },
+                takeaways: ['Penyerap tenaga kerja terbesar kedua.', 'Shift ke logistik/kurir e-commerce.', 'Banyak pekerja informal.']
+            },
+            Asia: {
+                labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 240, 260, 280, 300, 310],
+                growth: '+55.0%',
+                summary: { label: 'Pekerja Ritel (Asia)', val: '200K → 310K', percent: '↑ +55.0%' },
+                takeaways: ['Sektor jasa mendominasi pasar kerja.', 'Kebutuhan staf digital marketing naik.', 'Recovery pasca pandemi solid.']
+            }
+        },
+        Finance: {
+            Indonesia: {
+                labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [40, 42, 45, 48, 50, 52, 55, 58, 60, 65, 62, 65, 68, 70, 75],
+                growth: '+87.5%',
+                summary: { label: 'Pekerja Keuangan', val: '40K → 75K', percent: '↑ +87.5%' },
+                takeaways: ['Mencari talenta skill tinggi (analis/IT).', 'Efisiensi bank mengurangi staf cabang.', 'Growth di sektor asuransi & fintech.']
+            },
+            Asia: {
+                labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                data: [50, 55, 58, 60, 65, 68, 70, 75, 80, 85, 82, 85, 90, 95, 100],
+                growth: '+100%',
+                summary: { label: 'Pekerja Keuangan (Asia)', val: '50K → 100K', percent: '↑ +100%' },
+                takeaways: ['Hub finansial (SG) menyerap ekspat.', 'Permintaan compliance & risk officer naik.', 'Gaji kompetitif menarik talenta.']
             }
         }
     }
@@ -587,12 +691,17 @@ function updateChart() {
 
     chartInstance.data.labels = filteredLabels;
     chartInstance.data.datasets[0].data = filteredData;
-    chartInstance.data.datasets[0].label = `${currentMetric} Growth (${currentSector})`;
+    
+    const metricName = currentMetric === 'GDP' ? 'Pertumbuhan PDB' : 'Pertumbuhan Tenaga Kerja';
+    const sectorName = sectorMap[currentSector] || currentSector;
+    
+    chartInstance.data.datasets[0].label = `${metricName} (${sectorName})`;
+    
     if (isCompareMode && currentSector !== 'Manufacturing') {
         const compareData = dataStore[currentMetric]['Manufacturing'][currentRegion];
         const compareFilteredData = compareData.data.slice(0, filteredLabels.length);
         chartInstance.data.datasets[1] = {
-            label: `${currentMetric} Growth (Manufacturing)`,
+            label: `${metricName} (Manufaktur)`,
             data: compareFilteredData,
             borderColor: '#28a745', 
             backgroundColor: 'rgba(40, 167, 69, 0.05)',
@@ -615,18 +724,28 @@ function updateChart() {
 function updateSidebar() {
     const data = dataStore[currentMetric][currentSector][currentRegion];
     const bigStatEl = document.getElementById('bigStat');
+    
     if (bigStatEl) {
         const lastVal = data.data[data.data.length - 1];
-        const unit = currentMetric === 'GDP' ? 'T IDR' : 'K Workers';
+        const unit = currentMetric === 'GDP' ? 'T IDR' : 'Ribu Pekerja';
         const growthClass = data.growth.includes('+') ? 'positive' : 'negative';
         bigStatEl.innerHTML = `${lastVal} ${unit} <span class="growth ${growthClass}">↗ ${data.growth}</span>`;
     }
 
     const chartTitle = document.getElementById('chartTitle');
     const chartSubtitle = document.getElementById('chartSubtitle');
-    if (chartTitle) chartTitle.textContent = `${currentMetric} Growth in ${currentSector} Sector`;
-    if (chartSubtitle) chartSubtitle.textContent = `Value (in ${currentMetric === 'GDP' ? 'Trillion IDR' : 'Thousands'})`;
-    const sectors = ['Technology', 'Manufacturing', 'Agriculture'];
+    
+    if (chartTitle) {
+        const metricName = currentMetric === 'GDP' ? 'PDB' : 'Tenaga Kerja';
+        const sectorName = sectorMap[currentSector] || currentSector;
+        chartTitle.textContent = `Pertumbuhan ${metricName} di Sektor ${sectorName}`;
+    }
+    
+    if (chartSubtitle) {
+        chartSubtitle.textContent = `Nilai (dalam ${currentMetric === 'GDP' ? 'Triliun IDR' : 'Ribuan'})`;
+    }
+    
+    const sectors = ['Technology', 'Manufacturing', 'Agriculture', 'Mining', 'Retail', 'Finance'];
 
     sectors.forEach((sector, index) => {
         const sectorData = dataStore[currentMetric][sector][currentRegion];
@@ -665,7 +784,7 @@ document.addEventListener('DOMContentLoaded', function() {
         data: {
             labels: [], 
             datasets: [{
-                label: 'GDP Growth',
+                label: 'Pertumbuhan PDB', 
                 data: [],
                 borderColor: '#007bff', 
                 backgroundColor: gradient,
@@ -691,7 +810,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                 label += ': ';
                             }
                             if (context.parsed.y !== null) {
-                                label += context.parsed.y + (currentMetric === 'GDP' ? ' T IDR' : ' K');
+                                label += context.parsed.y + (currentMetric === 'GDP' ? ' T IDR' : ' Ribu');
                             }
                             return label;
                         }

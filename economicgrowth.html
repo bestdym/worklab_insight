@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InsightDashboard - Economic Growth</title>
+    <title>InsightDashboard - Pertumbuhan Ekonomi</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"></head>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="assete/css/style.css">
 </head>
@@ -21,207 +21,197 @@
             <span>WorkLab Insight</span>
         </div>
         <ul class="nav-links hidden md:flex" id="desktopMenu">
-            <a href="dashboard.html" class="nav-item">
-                     Home
-                </a>
-                <li class="relative group">
+            <a href="dashboard.html" class="nav-item">Beranda</a>
+            <li class="relative group">
                 <button class="nav-item flex items-center gap-1 focus:outline-none">
-                    <span>National Employment Data</span>
+                    <span>Data Ketenagakerjaan Nasional</span>
                     <i class="fas fa-chevron-down text-xs transition-transform group-hover:rotate-180"></i>
                 </button>
-
                 <div class="absolute left-1/2 transform -translate-x-1/2 mt-2 w-[600px] bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-out z-50 top-full p-6">
-                    
                     <div class="grid grid-cols-2 gap-6">
-                        
                         <a href="employmentdata.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-blue-50 transition-colors group/item">
                             <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-blue-600 group-hover/item:text-white transition-colors">
                                 <i class="fas fa-chart-bar text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Employment Statistics</h4>
+                                <h4 class="font-bold text-gray-900 text-base mb-1">Statistik Ketenagakerjaan</h4>
                                 <p class="text-xs text-gray-500 leading-relaxed">Data statistik tenaga kerja nasional terkini.</p>
                             </div>
                         </a>
-
                         <a href="wageAnalysis.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-green-50 transition-colors group/item">
                             <div class="w-12 h-12 bg-green-100 text-green-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-green-600 group-hover/item:text-white transition-colors">
                                 <i class="fas fa-search-dollar text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Wage Analysis</h4>
+                                <h4 class="font-bold text-gray-900 text-base mb-1">Analisis Upah</h4>
                                 <p class="text-xs text-gray-500 leading-relaxed">Analisis tren gaji di berbagai sektor industri.</p>
                             </div>
                         </a>
-
                         <a href="workforce.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-purple-50 transition-colors group/item">
                             <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-purple-600 group-hover/item:text-white transition-colors">
                                 <i class="fas fa-users text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Demographics</h4>
+                                <h4 class="font-bold text-gray-900 text-base mb-1">Demografi</h4>
                                 <p class="text-xs text-gray-500 leading-relaxed">Penyebaran tenaga kerja berdasarkan demografi.</p>
                             </div>
                         </a>
-
                         <a href="#" class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item">
                             <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors">
                                 <i class="fas fa-industry text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Sector Growth</h4>
+                                <h4 class="font-bold text-gray-900 text-base mb-1">Pertumbuhan Sektor</h4>
                                 <p class="text-xs text-gray-500 leading-relaxed">Laporan pertumbuhan per sektor ekonomi.</p>
                             </div>
                         </a>
-
                     </div>
                 </div>
             </li>   
-            <a href="lowongan.html" class="nav-item">
-                 Job Portal
-            </a>
-            <a href="economicgrowth.html" class="nav-item">
-                 Economic growth Analysis
-            </a>
+            <a href="lowongan.html" class="nav-item">Portal Kerja</a>
+            <a href="economicgrowth.html" class="nav-item">Analisis Pertumbuhan Ekonomi</a>
         </ul>
         
         <div class="flex items-center gap-4">    
-        <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200">
-            <i class="fas fa-moon text-xl" id="themeIcon"></i>
-        </button>
-        <div class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer" id="mobileMenuBtn">
-            <i class="fas fa-bars"></i>
+            <button id="themeToggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition text-gray-600 dark:text-gray-200">
+                <i class="fas fa-moon text-xl" id="themeIcon"></i>
+            </button>
+            <div class="mobile-menu md:hidden text-primary-blue text-2xl cursor-pointer" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div id="mobileDropdown" class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50">
+                <a href="dashboard.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Beranda</a>
+                <a href="analisis.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Data Ketenagakerjaan Nasional</a>
+                <a href="lowongan.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Portal Kerja</a>
+                <a href="economicgrowth.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Analisis Pertumbuhan Ekonomi</a>
+            </div>
         </div>
-        <div id="mobileDropdown" class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50">
-            <a href="dashboard.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Home</a>
-            <a href="analisis.html" class="block px-4 py-3 nav-item hover:bg-blue-50">National Employment Data</a>
-            <a href="lowongan.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Job Portal</a>
-            <a href="economicgrowth.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Economic growth Analysis</a>
-        </div>
-    </div>
     </nav>
 
     <main class="container mx-auto px-4 relative z-10">
         <div class="max-w-6xl mx-auto">
-        <div class="main-wrapper">
-        <div class="container">
-            <header class="page-header">
-                <h1>Economic Growth Analysis</h1>
-                <p>Analyze sector-based economic growth and its impact on the labor market in Indonesia.</p>
-            </header>
+            <div class="main-wrapper">
+                <div class="container">
+                    <header class="page-header">
+                        <h1>Analisis Pertumbuhan Ekonomi</h1>
+                        <p>Menganalisis pertumbuhan ekonomi berbasis sektor dan dampaknya terhadap pasar tenaga kerja di Indonesia.</p>
+                    </header>
 
-            <section class="controls-container">
-                <div class="filters-row">
-                    <div class="filter-group">
-                        <select id="metricSelect" class="dropdown">
-                            <option value="GDP">GDP</option>
-                            <option value="Employment">Employment</option>
-                        </select>
-                        <select id="sectorSelect" class="dropdown">
-                            <option value="Technology">Technology</option>
-                            <option value="Manufacturing">Manufacturing</option>
-                            <option value="Agriculture">Agriculture</option>
-                        </select>
-                        <select id="regionSelect" class="dropdown">
-                            <option value="Indonesia">Indonesia</option>
-                            <option value="Asia">Asia</option>
-                        </select>
-                    </div>
-                    <div class="toggle-switch">
-                        <span>Compare Mode</span>
-                        <label class="switch">
-                            <input type="checkbox" id="compareToggle">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
+                    <section class="controls-container">
+                        <div class="filters-row">
+                            <div class="filter-group">
+                                <select id="metricSelect" class="dropdown">
+                                    <option value="GDP">PDB (GDP)</option>
+                                    <option value="Employment">Penyerapan Tenaga Kerja</option>
+                                </select>
+                                <select id="sectorSelect" class="dropdown">
+                                    <option value="Technology">Teknologi</option>
+                                    <option value="Manufacturing">Manufaktur</option>
+                                    <option value="Agriculture">Pertanian</option>
+                                    <option value="Mining">Pertambangan</option>
+                                    <option value="Retail">Ritel</option>
+                                    <option value="Finance">Keuangan</option>
+                                </select>
+                                <select id="regionSelect" class="dropdown">
+                                    <option value="Indonesia">Indonesia</option>
+                                    <option value="Asia">Asia</option>
+                                </select>
+                            </div>
+                            <div class="toggle-switch">
+                                <span>Mode Bandingkan</span>
+                                <label class="switch">
+                                    <input type="checkbox" id="compareToggle">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="range-slider-container">
+                            <div class="range-labels"><span>Rentang Tahun</span></div>
+                            <input type="range" min="2010" max="2024" value="2024" class="range-input" id="yearRange">
+                            <div class="range-years">
+                                <span>2010</span>
+                                <span id="currentYear">2024</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <main class="dashboard-grid">
+                        <div class="card chart-card">
+                            <div class="chart-header">
+                                <div class="header-text">
+                                    <h3 id="chartTitle">Pertumbuhan PDB di Sektor Teknologi</h3>
+                                    <p class="sub-text" id="chartSubtitle">Nilai (dalam Triliun IDR)</p>
+                                </div>
+                                <div class="big-stat" id="bigStat">1650T IDR <span class="growth positive">↗ +120%</span></div>
+                            </div>
+                            
+                            <div class="chart-wrapper">
+                                <canvas id="growthChart"></canvas>
+                            </div>
+
+                            <div class="chart-x-axis">
+                                <span>2010</span><span>2012</span><span>2014</span><span>2016</span>
+                                <span>2018</span><span>2020</span><span>2022</span><span>2024</span>
+                            </div>
+                        </div> 
+                        <aside class="sidebar">
+                            <div class="card summary-card">
+                                <h3>Ringkasan & Wawasan</h3>
+                                
+                                <div class="stat-item">
+                                    <div class="stat-info">
+                                        <span class="stat-label" id="statLabel1">PDB Teknologi</span>
+                                        <span class="stat-val" id="statVal1">750T → 1650T IDR</span>
+                                    </div>
+                                    <span class="stat-percent positive" id="statPercent1">↑ +120%</span>
+                                </div>
+                                <div class="divider"></div>
+
+                                <div class="stat-item">
+                                    <div class="stat-info">
+                                        <span class="stat-label" id="statLabel2">PDB Manufaktur</span>
+                                        <span class="stat-val" id="statVal2">2800T → 3200T IDR</span>
+                                    </div>
+                                    <span class="stat-percent positive" id="statPercent2">↑ +14.3%</span>
+                                </div>
+                                <div class="divider"></div>
+
+                                <div class="stat-item">
+                                    <div class="stat-info">
+                                        <span class="stat-label" id="statLabel3">PDB Pertanian</span>
+                                        <span class="stat-val" id="statVal3">1050T → 1000T IDR</span>
+                                    </div>
+                                    <span class="stat-percent negative" id="statPercent3">↓ -4.8%</span>
+                                </div>
+                                </div>
+
+                            <div class="card takeaways-card">
+                                <h3>Poin Penting</h3>
+                                <ul id="takeawaysList">
+                                    <li>Sektor teknologi menunjukkan <b>pertumbuhan eksponensial</b>.</li>
+                                    <li>Manufaktur tetap stabil namun lebih lambat dibanding teknologi.</li>
+                                    <li>Penurunan tipis pada PDB pertanian menunjukkan adanya pergeseran.</li>
+                                </ul>
+                            </div>
+                        </aside> 
+                    </main>
                 </div>
-
-                <div class="range-slider-container">
-                    <div class="range-labels"><span>Year Range</span></div>
-                    <input type="range" min="2010" max="2024" value="2024" class="range-input" id="yearRange">
-                    <div class="range-years">
-                        <span>2010</span>
-                        <span id="currentYear">2024</span>
-                    </div>
-                </div>
-            </section>
-
-            <main class="dashboard-grid">
-                <div class="card chart-card">
-                    <div class="chart-header">
-                        <div class="header-text">
-                            <h3 id="chartTitle">GDP Growth in Technology Sector</h3>
-                            <p class="sub-text" id="chartSubtitle">Value (in Trillion IDR)</p>
-                        </div>
-                        <div class="big-stat" id="bigStat">1650T IDR <span class="growth positive">↗ +120%</span></div>
-                    </div>
-                    
-                    <div class="chart-wrapper">
-                        <canvas id="growthChart"></canvas>
-                    </div>
-
-                    <div class="chart-x-axis">
-                        <span>2010</span><span>2012</span><span>2014</span><span>2016</span>
-                        <span>2018</span><span>2020</span><span>2022</span><span>2024</span>
-                    </div>
-                </div> 
-                <aside class="sidebar">
-                    <div class="card summary-card">
-                        <h3>Summary & Insights</h3>
-                        
-                        <div class="stat-item">
-                            <div class="stat-info">
-                                <span class="stat-label" id="statLabel1">Technology GDP</span>
-                                <span class="stat-val" id="statVal1">750T → 1650T IDR</span>
-                            </div>
-                            <span class="stat-percent positive" id="statPercent1">↑ +120%</span>
-                        </div>
-                        <div class="divider"></div>
-
-                        <div class="stat-item">
-                            <div class="stat-info">
-                                <span class="stat-label" id="statLabel2">Manufacturing GDP</span>
-                                <span class="stat-val" id="statVal2">2800T → 3200T IDR</span>
-                            </div>
-                            <span class="stat-percent positive" id="statPercent2">↑ +14.3%</span>
-                        </div>
-                        <div class="divider"></div>
-
-                        <div class="stat-item">
-                            <div class="stat-info">
-                                <span class="stat-label" id="statLabel3">Agriculture GDP</span>
-                                <span class="stat-val" id="statVal3">1050T → 1000T IDR</span>
-                            </div>
-                            <span class="stat-percent negative" id="statPercent3">↓ -4.8%</span>
-                        </div>
-                    </div>
-
-                    <div class="card takeaways-card">
-                        <h3>Key Takeaways</h3>
-                        <ul id="takeawaysList">
-                            <li>The technology sector shows <b>exponential growth</b>.</li>
-                            <li>Manufacturing remains stable but slower than tech.</li>
-                            <li>Slight decline in agriculture GDP suggests a shift.</li>
-                        </ul>
-                    </div>
-                </aside> 
-            </main>
+            </div>
         </div>
-        </div>
-    </div>
     </main>
-     <footer class="mt-auto">
+    <footer class="mt-auto">
         <div class="container footer-content">
             <div class="footer-links">
-                <a href="aboutme.html">About Us</a>
-                <a href="#">Contact</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Terms of Service</a>
+                <a href="aboutme.html">Tentang Kami</a>
+                <a href="#">Kontak</a>
+                <a href="#">Kebijakan Privasi</a>
+                <a href="#">Syarat & Ketentuan</a>
             </div>
             <div class="social-icons">
                 <span>🐦</span> <span>🔗</span> <span>fb</span>
             </div>
-            <p class="copyright">© 2024 Indonesia Employment Watch. All Rights Reserved.</p>
+            <p class="copyright">© 2024 Indonesia Employment Watch. Hak Cipta Dilindungi Undang-Undang.</p>
         </div>
     </footer>
     <script src="assete/js/test.js"></script>
