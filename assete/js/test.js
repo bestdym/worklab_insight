@@ -466,6 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
 const sectorMap = {
     'Technology': 'Teknologi',
     'Manufacturing': 'Manufaktur',
@@ -473,6 +474,54 @@ const sectorMap = {
     'Mining': 'Pertambangan',
     'Retail': 'Ritel',
     'Finance': 'Keuangan'
+};
+
+const correlationData = {
+    Technology: "Pertumbuhan PDB sektor Teknologi yang eksponensial (+180%) memiliki hubungan erat dengan penyerapan tenaga kerja (+190%). Ketika ekonomi digital tumbuh, permintaan akan layanan aplikasi dan data meningkat, mendorong perusahaan startup dan korporasi untuk melakukan ekspansi besar-besaran dan merekrut talenta digital (Hukum Okun).",
+    Manufacturing: "Di sektor Manufaktur, kualitas pertumbuhan mulai bergeser. Pertumbuhan PDB (+23.2%) didorong oleh otomatisasi mesin (capital-intensive), sehingga penyerapan tenaga kerja (+30%) tumbuh namun tidak secepat nilai outputnya. Tantangan saat ini adalah meningkatkan skill pekerja agar bisa berkolaborasi dengan teknologi pabrik cerdas.",
+    Agriculture: "Sektor Pertanian mengalami fenomena transformasi struktural. Penurunan PDB (-6.6%) dan tenaga kerja (-20%) menandakan peralihan ekonomi dari agraris ke industri/jasa. Banyak tenaga kerja muda berpindah ke kota (urbanisasi), meninggalkan lahan pertanian yang kini dituntut untuk lebih efisien menggunakan teknologi mekanisasi.",
+    Mining: "Sektor Pertambangan menunjukkan anomali unik. Nilai ekonomi (PDB) melonjak drastis (+35.7%) akibat harga komoditas global, namun penyerapan tenaga kerjanya relatif kecil karena sifat industri yang padat modal. Investasi besar di alat berat meningkatkan output tanpa memerlukan rekrutmen massal seperti di sektor ritel.",
+    Retail: "Sektor Ritel adalah bukti nyata ekonomi inklusif. Pertumbuhan PDB (+44.4%) langsung berdampak pada lonjakan penyerapan tenaga kerja (+61.1%). Sektor ini sangat responsif: setiap kenaikan konsumsi masyarakat langsung membuka lowongan untuk pramuniaga, kurir logistik, hingga admin toko online.",
+    Finance: "Sektor Keuangan tumbuh sangat pesat (+68.1%) secara nilai, namun pola kerjanya berubah. Penyerapan tenaga kerja tinggi (+87.5%) tidak lagi didominasi oleh staf cabang bank, melainkan oleh talenta spesialis (IT Security, Analis Data, Compliance). Ini menunjukkan pergeseran ke arah pekerjaan bernilai tambah tinggi."
+};
+
+const modalContent = {
+    uptrend: {
+        title: "Dampak Ekonomi Naik (Ekspansi)",
+        desc: "Fase di mana aktivitas ekonomi meningkat, ditandai dengan kenaikan PDB.",
+        list: [
+            "Permintaan barang & jasa tinggi, perusahaan butuh lebih banyak staf.",
+            "Daya tawar pekerja meningkat, gaji cenderung naik.",
+            "Munculnya peluang bisnis baru (UMKM bertambah).",
+            "Pemerintah mendapatkan pajak lebih banyak untuk pembangunan."
+        ],
+        color: "blue",
+        icon: "fa-arrow-up"
+    },
+    investment: {
+        title: "Peran Investasi",
+        desc: "Penanaman modal (asing/dalam negeri) untuk mengembangkan kapasitas produksi.",
+        list: [
+            "Membuka pabrik atau kantor cabang baru = Lowongan kerja masif.",
+            "Transfer teknologi dan peningkatan skill pekerja lokal.",
+            "Meningkatkan daya saing produk nasional di pasar global.",
+            "Efek berganda (multiplier effect) ke pedagang sekitar area industri."
+        ],
+        color: "green",
+        icon: "fa-money-bill-wave"
+    },
+    recession: {
+        title: "Dampak Resesi (Kontraksi)",
+        desc: "Penurunan aktivitas ekonomi yang signifikan berlangsung berbulan-bulan.",
+        list: [
+            "Perusahaan melakukan efisiensi biaya, seringkali melalui PHK.",
+            "Pembekuan rekrutmen (Hiring Freeze).",
+            "Daya beli masyarakat turun, sektor ritel terpukul.",
+            "Peralihan tenaga kerja ke sektor informal (ojek online, dsb) meningkat."
+        ],
+        color: "red",
+        icon: "fa-exclamation-triangle"
+    }
 };
 
 const dataStore = {
@@ -747,26 +796,76 @@ function updateSidebar() {
     }
     
     const sectors = ['Technology', 'Manufacturing', 'Agriculture', 'Mining', 'Retail', 'Finance'];
+    const summaryContainer = document.getElementById('summaryContent');
+    
+    if (summaryContainer) {
+        summaryContainer.innerHTML = '';
+        sectors.forEach((sector) => {
+            const sectorData = dataStore[currentMetric][sector][currentRegion];
+            const isPositive = sectorData.summary.percent.includes('↑') || sectorData.summary.percent.includes('+');
+            const colorClass = isPositive ? 'text-green-600 bg-green-50' : 'text-red-600 bg-red-50';
+            const activeClass = (sector === currentSector) ? 'ring-2 ring-blue-500 ring-offset-2 rounded-lg p-2 -m-2 bg-blue-50/50' : '';
 
-    sectors.forEach((sector, index) => {
-        const sectorData = dataStore[currentMetric][sector][currentRegion];
-        const statLabel = document.getElementById(`statLabel${index + 1}`);
-        const statVal = document.getElementById(`statVal${index + 1}`);
-        const statPercent = document.getElementById(`statPercent${index + 1}`);
-        
-        if(statLabel && statVal && statPercent) {
-            statLabel.textContent = sectorData.summary.label;
-            statVal.textContent = sectorData.summary.val;
-            statPercent.textContent = sectorData.summary.percent;
-            statPercent.className = `stat-percent ${sectorData.summary.percent.includes('↑') ? 'positive' : 'negative'}`;
-        }
-    });
+            const htmlItem = `
+                <div class="stat-item flex justify-between items-center ${activeClass}">
+                    <div class="stat-info">
+                        <span class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">${sectorData.summary.label}</span>
+                        <span class="block text-sm font-bold text-gray-800">${sectorData.summary.val}</span>
+                    </div>
+                    <span class="text-xs font-bold px-2 py-1 rounded-full ${colorClass}">
+                        ${sectorData.summary.percent}
+                    </span>
+                </div>
+                ${sector !== 'Finance' && activeClass === '' ? '<div class="border-b border-gray-50"></div>' : ''} 
+            `;
+            summaryContainer.innerHTML += htmlItem;
+        });
+    }
 
     const takeawaysList = document.getElementById('takeawaysList');
     if(takeawaysList) {
-        takeawaysList.innerHTML = data.takeaways.map(item => `<li>${item}</li>`).join('');
+        takeawaysList.innerHTML = data.takeaways.map(item => `<li class="leading-relaxed">${item}</li>`).join('');
+    }
+
+    const correlationTextEl = document.getElementById('correlationText');
+    if (correlationTextEl) {
+        correlationTextEl.textContent = correlationData[currentSector] || "Data analisis belum tersedia.";
     }
 }
+
+function openModal(type) {
+    const modal = document.getElementById('infoModal');
+    const content = modalContent[type];
+    
+    if (content && modal) {
+        document.getElementById('modalTitle').textContent = content.title;
+        document.getElementById('modalDesc').textContent = content.desc;
+        
+        const listContainer = document.getElementById('modalList');
+        listContainer.innerHTML = content.list.map(item => `<li>${item}</li>`).join('');
+        
+        const iconBg = document.getElementById('modalIconBg');
+        const icon = document.getElementById('modalIcon');
+        
+        iconBg.className = `mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full sm:mx-0 sm:h-10 sm:w-10 bg-${content.color}-100`;
+        icon.className = `fas ${content.icon} text-${content.color}-600`;
+
+        modal.classList.remove('hidden');
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('infoModal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Escape") {
+        closeModal();
+    }
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     const ctx = document.getElementById('growthChart');

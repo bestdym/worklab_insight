@@ -56,13 +56,13 @@
                                 <p class="text-xs text-gray-500 leading-relaxed">Penyebaran tenaga kerja berdasarkan demografi.</p>
                             </div>
                         </a>
-                        <a href="laborissues.html" class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item">
+                        <a href="#" class="flex items-start gap-4 p-3 rounded-lg hover:bg-orange-50 transition-colors group/item">
                             <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center shrink-0 group-hover/item:bg-orange-600 group-hover/item:text-white transition-colors">
                                 <i class="fas fa-industry text-xl"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-900 text-base mb-1">Isu Ketenagakerjaan</h4>
-                                <p class="text-xs text-gray-500 leading-relaxed">Membahas Isu Ketenagakerjaan di Indonesia.</p>
+                                <h4 class="font-bold text-gray-900 text-base mb-1">Pertumbuhan Sektor</h4>
+                                <p class="text-xs text-gray-500 leading-relaxed">Laporan pertumbuhan per sektor ekonomi.</p>
                             </div>
                         </a>
                     </div>
@@ -99,23 +99,23 @@
 
                     <section class="controls-container">
                         <div class="filters-row">
-                           <div class="filter-group">
-                        <select id="metricSelect" class="dropdown">
+                            <div class="filter-group">
+                                <select id="metricSelect" class="dropdown">
                                     <option value="GDP">PDB (GDP)</option>
                                     <option value="Employment">Penyerapan Tenaga Kerja</option>
-                        </select>
-    
-                        <select id="sectorSelect" class="dropdown">
+                                </select>
+                                
+                                <select id="sectorSelect" class="dropdown">
                                     <option value="Technology">Teknologi</option>
                                     <option value="Manufacturing">Manufaktur</option>
                                     <option value="Agriculture">Pertanian</option>
                                     <option value="Mining">Pertambangan</option>
                                     <option value="Retail">Ritel</option>
                                     <option value="Finance">Keuangan</option>
-                        </select>
+                                </select>
 
-                        <select id="compareSectorSelect" class="dropdown" style="display: none; border-color: #28a745; color: #28a745;">
-                            <option value="Technology">Banding: Teknologi</option>
+                                <select id="compareSectorSelect" class="dropdown" style="display: none; border-color: #28a745; color: #28a745;">
+                                    <option value="Technology">Banding: Teknologi</option>
                                     <option value="Manufacturing" selected>Banding: Manufaktur</option>
                                     <option value="Agriculture">Banding: Pertanian</option>
                                     <option value="Mining">Banding: Pertambangan</option>
@@ -166,47 +166,124 @@
                                 <span>2018</span><span>2020</span><span>2022</span><span>2024</span>
                             </div>
                         </div> 
-                        <aside class="sidebar">
-                            <div class="card summary-card">
-                                <h3>Ringkasan & Wawasan</h3>
-                                
-                                <div class="stat-item">
-                                    <div class="stat-info">
-                                        <span class="stat-label" id="statLabel1">PDB Teknologi</span>
-                                        <span class="stat-val" id="statVal1">750T → 1650T IDR</span>
-                                    </div>
-                                    <span class="stat-percent positive" id="statPercent1">↑ +120%</span>
+                        
+                        <aside class="sidebar lg:col-span-1 flex flex-col gap-4">
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-100 flex flex-col h-[320px]">
+                                <div class="p-5 border-b border-gray-100 bg-white rounded-t-xl z-10">
+                                    <h3 class="font-bold text-lg text-gray-800">Ringkasan & Wawasan</h3>
+                                    <p class="text-xs text-gray-500 mt-1">Perbandingan Data Semua Sektor</p>
                                 </div>
-                                <div class="divider"></div>
-
-                                <div class="stat-item">
-                                    <div class="stat-info">
-                                        <span class="stat-label" id="statLabel2">PDB Manufaktur</span>
-                                        <span class="stat-val" id="statVal2">2800T → 3200T IDR</span>
-                                    </div>
-                                    <span class="stat-percent positive" id="statPercent2">↑ +14.3%</span>
+                                <div class="overflow-y-auto flex-1 p-5 custom-scrollbar">
+                                    <div id="summaryContent" class="space-y-5"></div>
                                 </div>
-                                <div class="divider"></div>
-
-                                <div class="stat-item">
-                                    <div class="stat-info">
-                                        <span class="stat-label" id="statLabel3">PDB Pertanian</span>
-                                        <span class="stat-val" id="statVal3">1050T → 1000T IDR</span>
-                                    </div>
-                                    <span class="stat-percent negative" id="statPercent3">↓ -4.8%</span>
-                                </div>
-                                </div>
-
-                            <div class="card takeaways-card">
-                                <h3>Poin Penting</h3>
-                                <ul id="takeawaysList">
-                                    <li>Sektor teknologi menunjukkan <b>pertumbuhan eksponensial</b>.</li>
-                                    <li>Manufaktur tetap stabil namun lebih lambat dibanding teknologi.</li>
-                                    <li>Penurunan tipis pada PDB pertanian menunjukkan adanya pergeseran.</li>
-                                </ul>
                             </div>
-                        </aside> 
+
+                            <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-5 flex-1">
+                                <div class="flex items-center gap-2 mb-3">
+                                    <div class="p-1.5 bg-blue-50 rounded-lg text-blue-600">
+                                        <i class="fas fa-lightbulb"></i>
+                                    </div>
+                                    <h3 class="font-bold text-lg text-gray-800">Poin Penting</h3>
+                                </div>
+                                <ul id="takeawaysList" class="list-disc pl-5 space-y-2 text-sm text-gray-600 leading-relaxed"></ul>
+                            </div>
+                        </aside>
                     </main>
+
+                    <section class="mt-8 animate-fade-up">
+                        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
+                            <div class="mb-6">
+                                <h2 class="text-2xl font-bold text-gray-900">Keterkaitan Pertumbuhan Ekonomi & Tenaga Kerja</h2>
+                                <div class="w-16 h-1.5 bg-blue-600 rounded-full mt-2"></div>
+                            </div>
+                    
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+                                <div class="lg:col-span-2">
+                                    <p id="correlationText" class="text-gray-600 leading-relaxed text-base mb-6 text-justify">
+                                        Memuat analisis data...
+                                    </p>
+                                    <p class="text-gray-500 text-sm italic">
+                                        *Analisis ini didasarkan pada perbandingan data PDB dan tingkat penyerapan tenaga kerja tahunan.
+                                    </p>
+                                </div>
+                    
+                                <div class="lg:col-span-1 flex justify-center">
+                                    <div class="relative w-56 h-56 bg-blue-50 rounded-full flex flex-col items-center justify-center text-center p-4">
+                                        <div class="absolute inset-0 border-4 border-blue-100 rounded-full border-dashed animate-spin-slow"></div>
+                                        <div class="bg-blue-600 text-white p-3 rounded-lg shadow-lg mb-2 z-10">
+                                            <i class="fas fa-briefcase text-2xl"></i>
+                                        </div>
+                                        <h4 class="font-bold text-blue-900 z-10">Siklus Ekonomi</h4>
+                                        <p class="text-xs text-blue-600 mt-1 z-10">Supply & Demand</p>
+                                    </div>
+                                </div>
+                            </div>
+                    
+                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                                <div onclick="openModal('uptrend')" class="bg-blue-50 hover:bg-blue-100 border border-blue-100 p-5 rounded-xl cursor-pointer transition-all duration-300 transform hover:-translate-y-1 group">
+                                    <div class="flex items-center gap-2 mb-2 text-blue-700">
+                                        <i class="fas fa-arrow-up text-lg"></i>
+                                        <h4 class="font-bold text-lg group-hover:underline">Ekonomi Naik</h4>
+                                    </div>
+                                    <p class="text-xs text-blue-800 leading-relaxed">
+                                        Menciptakan lapangan kerja baru & menekan angka pengangguran secara nasional.
+                                    </p>
+                                </div>
+                    
+                                <div onclick="openModal('investment')" class="bg-green-50 hover:bg-green-100 border border-green-100 p-5 rounded-xl cursor-pointer transition-all duration-300 transform hover:-translate-y-1 group">
+                                    <div class="flex items-center gap-2 mb-2 text-green-700">
+                                        <i class="fas fa-money-bill-wave text-lg"></i>
+                                        <h4 class="font-bold text-lg group-hover:underline">Investasi</h4>
+                                    </div>
+                                    <p class="text-xs text-green-800 leading-relaxed">
+                                        Meningkatkan produktivitas, teknologi, & standar upah pekerja di sektor terkait.
+                                    </p>
+                                </div>
+                    
+                                <div onclick="openModal('recession')" class="bg-red-50 hover:bg-red-100 border border-red-100 p-5 rounded-xl cursor-pointer transition-all duration-300 transform hover:-translate-y-1 group">
+                                    <div class="flex items-center gap-2 mb-2 text-red-700">
+                                        <i class="fas fa-exclamation-triangle text-lg"></i>
+                                        <h4 class="font-bold text-lg group-hover:underline">Resesi</h4>
+                                    </div>
+                                    <p class="text-xs text-red-800 leading-relaxed">
+                                        Memicu efisiensi massal (PHK), pembekuan rekrutmen, & lonjakan sektor informal.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <div id="infoModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                        <div class="flex items-center justify-center min-h-screen px-4 text-center sm:block sm:p-0">
+                            <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" aria-hidden="true" onclick="closeModal()"></div>
+                            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                            <div class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full">
+                                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                                    <div class="sm:flex sm:items-start">
+                                        <div id="modalIconBg" class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
+                                            <i id="modalIcon" class="fas fa-info text-blue-600"></i>
+                                        </div>
+                                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left w-full">
+                                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modalTitle">Judul Modal</h3>
+                                            <div class="mt-4">
+                                                <p class="text-sm text-gray-500 mb-4" id="modalDesc">
+                                                    Deskripsi detail akan muncul di sini.
+                                                </p>
+                                                <ul id="modalList" class="list-disc pl-5 text-sm text-gray-600 space-y-2">
+                                                    <li>Detail 1</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                                    <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-600 text-base font-medium text-white hover:bg-blue-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm" onclick="closeModal()">
+                                        Tutup
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
