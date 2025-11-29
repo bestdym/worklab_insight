@@ -294,24 +294,117 @@ let ageChart, genderChart, eduChart;
 
 const detailData = {
     'faktorPHK': {
-        title: "Analisis Mendalam: Pemicu PHK Massal",
+        title: "Analisis: Pemicu PHK Massal (Tech Winter)",
         icon: '<i class="fas fa-chart-line text-red-600"></i>',
         headerColor: 'bg-red-50',
-        content: `<p class="font-semibold text-gray-800 mb-2">1. Koreksi Pasar Pasca-Pandemi</p><p class="mb-4">Selama pandemi, perusahaan teknologi merekrut secara agresif ("overhiring")...</p><p class="font-semibold text-gray-800 mb-2">2. Tekanan Investor & Suku Bunga Tinggi</p><p class="mb-4">Era "uang murah" (suku bunga rendah) telah berakhir...</p><p class="font-semibold text-gray-800 mb-2">3. Disrupsi AI Generatif</p><p>Adopsi teknologi AI seperti ChatGPT...</p>`
+        borderColor: 'border-red-100',
+        content: `
+            <div class="space-y-6">
+                <div>
+                    <h4 class="font-bold text-gray-900 text-lg mb-2">1. Berakhirnya Era "Uang Murah"</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Kenaikan suku bunga global membuat biaya pinjaman modal menjadi mahal. Startup yang dulunya "bakar uang" kini dipaksa investor untuk segera mencetak profit.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 text-lg mb-2">2. Normalisasi Pasca-Pandemi</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Perusahaan teknologi melakukan "Overhiring" saat pandemi. Kini aktivitas offline kembali normal, terjadi surplus tenaga kerja.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 text-lg mb-2">3. Disrupsi AI & Efisiensi</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Adopsi AI Generatif menggantikan peran administratif, memungkinkan perusahaan beroperasi dengan tim yang lebih ramping.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gray-900 text-lg mb-2">4. Ketidakpastian Geopolitik</h4>
+                    <p class="text-gray-600 text-sm leading-relaxed">Konflik global mengganggu rantai pasok dan menaikkan harga energi, memaksa industri memangkas produksi.</p>
+                </div>
+                <div class="bg-red-50 p-4 rounded-lg border border-red-200 mt-4">
+                    <p class="font-bold text-red-800 text-xs uppercase tracking-wide">Dampak Langsung</p>
+                    <p class="text-red-700 text-sm mt-1">Hiring Freeze dan standar gaji entry-level terkoreksi turun.</p>
+                </div>
+            </div>
+        `
     },
     'magangIdeal': {
-        title: "Standar Program Magang Berkualitas",
+        title: "Standar Emas: Magang Berkualitas",
         icon: '<i class="fas fa-check-circle text-green-600"></i>',
         headerColor: 'bg-green-50',
-        content: `<p>Magang yang ideal harus memenuhi prinsip <strong>Learning by Doing</strong>...</p>`
+        borderColor: 'border-green-100',
+        content: `
+            <div class="space-y-4">
+                <p class="text-gray-600 text-sm mb-4">Magang adalah fase <strong>belajar</strong>. Pastikan tempat magangmu memiliki ciri-ciri ini:</p>
+                <div class="flex items-start gap-4 p-3 bg-white border border-gray-100 rounded-lg shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0"><i class="fas fa-chalkboard-user"></i></div>
+                    <div>
+                        <h5 class="font-bold text-gray-900 text-sm">Mentoring Terstruktur</h5>
+                        <p class="text-gray-500 text-xs mt-1">Ada supervisor yang membimbing, bukan dilepas jalan sendiri.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-3 bg-white border border-gray-100 rounded-lg shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0"><i class="fas fa-list-check"></i></div>
+                    <div>
+                        <h5 class="font-bold text-gray-900 text-sm">Job Desc Jelas</h5>
+                        <p class="text-gray-500 text-xs mt-1">Tugas sesuai jurusan, bukan urusan personal (ambil kopi/fotokopi).</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-3 bg-white border border-gray-100 rounded-lg shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0"><i class="fas fa-wallet"></i></div>
+                    <div>
+                        <h5 class="font-bold text-gray-900 text-sm">Uang Saku (Pocket Money)</h5>
+                        <p class="text-gray-500 text-xs mt-1">Minimal mengcover biaya transport dan makan siang.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-3 bg-white border border-gray-100 rounded-lg shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0"><i class="fas fa-project-diagram"></i></div>
+                    <div>
+                        <h5 class="font-bold text-gray-900 text-sm">Dilibatkan di Proyek Nyata</h5>
+                        <p class="text-gray-500 text-xs mt-1">Diajak meeting tim dan mengerjakan bagian dari proyek real.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4 p-3 bg-white border border-gray-100 rounded-lg shadow-sm">
+                    <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shrink-0"><i class="fas fa-file-contract"></i></div>
+                    <div>
+                        <h5 class="font-bold text-gray-900 text-sm">Sertifikat & Referensi</h5>
+                        <p class="text-gray-500 text-xs mt-1">Jaminan bukti tertulis dan penilaian performa di akhir.</p>
+                    </div>
+                </div>
+            </div>
+        `
     },
     'eksploitasi': {
         title: "Red Flags: Tanda Eksploitasi Magang",
         icon: '<i class="fas fa-exclamation-triangle text-yellow-600"></i>',
         headerColor: 'bg-yellow-50',
-        content: `<p class="mb-4">Banyak perusahaan menyalahgunakan label "magang"...</p>`
+        borderColor: 'border-yellow-100',
+        content: `
+            <div class="space-y-4">
+                <p class="text-gray-600 text-sm mb-4">Waspada jika lowongan magang memiliki ciri-ciri berikut:</p>
+                <div class="grid grid-cols-1 gap-3">
+                    <div class="bg-red-50 border border-red-100 p-3 rounded-lg">
+                        <span class="font-bold text-red-700 block text-sm mb-1">🚩 "Mampu Bekerja di Bawah Tekanan"</span>
+                        <p class="text-xs text-red-600">Kode halus untuk "Beban kerja berlebih tanpa bantuan tim".</p>
+                    </div>
+                    <div class="bg-red-50 border border-red-100 p-3 rounded-lg">
+                        <span class="font-bold text-red-700 block text-sm mb-1">🚩 Peran Palugada</span>
+                        <p class="text-xs text-red-600">Satu anak magang mengerjakan Desain, Admin, Sosmed, dan Sales.</p>
+                    </div>
+                    <div class="bg-red-50 border border-red-100 p-3 rounded-lg">
+                        <span class="font-bold text-red-700 block text-sm mb-1">🚩 Penalti Resign</span>
+                        <p class="text-xs text-red-600">Denda uang besar jika berhenti (Ilegal untuk konteks belajar).</p>
+                    </div>
+                    <div class="bg-red-50 border border-red-100 p-3 rounded-lg">
+                        <span class="font-bold text-red-700 block text-sm mb-1">🚩 Mentor Gaib (Ghosting)</span>
+                        <p class="text-xs text-red-600">Dibiarkan bekerja sendiri tanpa arahan, ekspektasi setara profesional.</p>
+                    </div>
+                    <div class="bg-red-50 border border-red-100 p-3 rounded-lg">
+                        <span class="font-bold text-red-700 block text-sm mb-1">🚩 Overtime Tanpa Batas</span>
+                        <p class="text-xs text-red-600">Sering diminta lembur di luar jam kerja dengan dalih "dedikasi".</p>
+                    </div>
+                </div>
+            </div>
+        `
     }
 };
+
+
 
 const initJobsSystem = () => {
     const currentFile = window.location.pathname.split('/').pop();
@@ -664,8 +757,8 @@ const initSectorDashboard = () => {
             growth: "15.2%", growthBadge: "+2.1% YoY", growthDesc: "Didorong oleh AI & Digitalisasi",
             wage: "12,500,000", wageBadge: "High Paid", jobs: "14,205", jobsBadge: "Tinggi", jobsDesc: "Di seluruh portal",
             skill: "Data Analysis", skillDesc: "Dibutuhkan di 70% lowongan", 
-            chartData: [5.2, 12.5, 10.8, 8.5, 15.2], // Data Grafik (Persen)
-            realData: [10500, 11800, 13100, 14200, 16350], // Data Hover (Jumlah Orang)
+            chartData: [5.2, 12.5, 10.8, 8.5, 15.2], 
+            realData: [10500, 11800, 13100, 14200, 16350], 
             chartColor: '#3b82f6'
         },
         "Finance": {
@@ -733,17 +826,13 @@ const initSectorDashboard = () => {
         employmentChart = new Chart(ctx, {
             type: 'line',
             data: {
-                labels: ['2020', '2021', '2022', '2023', '2024'], 
+                labels: ['2020', '2021', '2022', '2023', '2024'],
                 datasets: [{
                     label: 'Growth Rate',
-                    data: data, 
+                    data: data,
                     borderColor: color,
                     backgroundColor: gradient,
                     borderWidth: 3,
-                    pointBackgroundColor: '#fff',
-                    pointBorderColor: color,
-                    pointRadius: 6,
-                    pointHoverRadius: 8,
                     fill: true,
                     tension: 0.4
                 }]
@@ -751,6 +840,10 @@ const initSectorDashboard = () => {
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
+                interaction: {
+                    mode: 'index',
+                    intersect: false,
+                },
                 plugins: {
                     legend: { display: false },
                     tooltip: {
@@ -762,18 +855,16 @@ const initSectorDashboard = () => {
                         borderColor: '#e5e7eb',
                         borderWidth: 1,
                         padding: 12,
-                        boxPadding: 4,
+                        displayColors: false, 
                         callbacks: {
                             title: function(tooltipItems) {
                                 return 'Tahun ' + tooltipItems[0].label;
                             },
                             label: function(context) {
                                 const index = context.dataIndex;
-                                const actualValue = realData[index]; 
+                                const actualValue = realData ? realData[index] : 0; 
                                 const percentage = context.parsed.y;
-                                
                                 const formattedValue = new Intl.NumberFormat('id-ID').format(actualValue);
-                                
                                 return ` ${formattedValue} Pekerja (Growth: ${percentage}%)`;
                             }
                         }
@@ -781,7 +872,7 @@ const initSectorDashboard = () => {
                 },
                 scales: {
                     y: {
-                        beginAtZero: true, 
+                        beginAtZero: true,
                         grid: {
                             borderDash: [5, 5],
                             color: '#f1f5f9'
@@ -789,14 +880,12 @@ const initSectorDashboard = () => {
                         ticks: {
                             font: { family: 'Outfit', size: 11 },
                             color: '#9ca3af',
-                            callback: function(value) { return value + '%' } 
+                            callback: function(value) { return value + '%' }
                         }
                     },
                     x: {
-                        display: true, 
-                        grid: {
-                            display: false
-                        },
+                        display: true,
+                        grid: { display: false },
                         ticks: {
                             font: { family: 'Outfit', size: 12, weight: '500' },
                             color: '#6b7280',
@@ -804,9 +893,15 @@ const initSectorDashboard = () => {
                         }
                     }
                 },
-                animation: {
-                    duration: 1200,
-                    easing: 'easeOutQuart'
+                elements: {
+                    point: {
+                        radius: 0,          
+                        hitRadius: 20,     
+                        hoverRadius: 6,     
+                        hoverBorderWidth: 3,
+                        hoverBackgroundColor: '#ffffff',
+                        hoverBorderColor: color
+                    }
                 }
             }
         });
@@ -836,48 +931,136 @@ const initSectorDashboard = () => {
 
     const initSideCharts = () => {
         if (typeof Chart === 'undefined') return;
-        const commonOptions = {
-            responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            elements: { line: { tension: 0.4 } },
-            scales: { x: { display: false }, y: { display: false } }
+
+        const years = ['2020', '2021', '2022', '2023', '2024'];
+
+        // Data Charts
+        const leftChartData = {
+            "Manufacturing": [-2.5, 1.2, 2.5, 1.8, -0.5],
+            "Technology": [12.5, 15.2, 10.8, 8.5, 14.2],
+            "Agriculture": [2.1, 1.8, 2.0, 1.5, 1.2],
+            "Mining": [-5.0, 8.5, 12.0, 5.5, 3.2],
+            "Retail": [-8.0, 4.5, 5.2, 3.8, 4.1],
+            "Finance": [3.5, 4.2, 5.0, 6.1, 5.8],
+            "Digital & ICT": [12.5, 15.2, 10.8, 8.5, 14.2]
         };
 
-        const ctxLeft = document.getElementById('sectorChart');
-        const selectLeft = document.getElementById('sectorSelect');
-        let leftChart;
-        if (ctxLeft) {
-            leftChart = new Chart(ctxLeft.getContext('2d'), {
-                type: 'line',
-                data: { labels: months, datasets: [{ label: 'Growth', data: leftChartData["Technology"], borderColor: '#1e3a8a', borderWidth: 3, fill: true, backgroundColor: 'rgba(30, 58, 138, 0.1)' }] },
-                options: commonOptions
-            });
-            if (selectLeft) {
-                selectLeft.addEventListener('change', function () {
-                    const key = this.value === "Digital & ICT" ? "Technology" : this.value;
-                    if (leftChartData[key]) { leftChart.data.datasets[0].data = leftChartData[key]; leftChart.update(); }
+        const rightChartData = {
+            "Manufacturing": [18.2, 17.5, 17.8, 17.6, 17.4],
+            "Technology": [3.5, 4.1, 4.8, 5.5, 6.2],
+            "Agriculture": [38.5, 38.0, 37.5, 37.2, 36.8],
+            "Mining": [1.2, 1.3, 1.4, 1.45, 1.5],
+            "Retail": [12.5, 12.8, 13.5, 14.2, 14.8],
+            "Finance": [2.8, 3.0, 3.2, 3.4, 3.6],
+            "Digital & ICT": [3.5, 4.1, 4.8, 5.5, 6.2]
+        };
+
+        // Helper: Chart Options
+        const getChartOptions = (unitSuffix) => ({
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    titleColor: '#1f2937', titleFont: { family: 'Outfit', weight: 'bold' },
+                    bodyColor: '#4b5563', bodyFont: { family: 'Outfit' },
+                    borderColor: '#e5e7eb', borderWidth: 1, padding: 10, displayColors: false,
+                    callbacks: { label: (c) => ` ${c.parsed.y}${unitSuffix}` }
+                }
+            },
+            scales: {
+                x: { display: true, grid: { display: false }, ticks: { font: { family: 'Outfit', size: 11 }, color: '#9ca3af' } },
+                y: { display: true, grid: { borderDash: [4, 4], color: '#f3f4f6' }, ticks: { font: { family: 'Outfit', size: 10 }, color: '#9ca3af', maxTicksLimit: 5 }, border: { display: false } }
+            },
+            elements: { point: { radius: 0, hitRadius: 20, hoverRadius: 6, hoverBorderWidth: 3 }, line: { tension: 0.4 } }
+        });
+
+        // --- Helper: Setup Custom Dropdown ---
+        const setupSmallDropdown = (btnId, listId, labelId, itemClass, callback) => {
+            const btn = document.getElementById(btnId);
+            const list = document.getElementById(listId);
+            const label = document.getElementById(labelId);
+
+            if (!btn || !list) return;
+
+            // Toggle
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // Tutup semua dropdown lain dulu
+                document.querySelectorAll('[id^="listSector"]').forEach(el => {
+                    if (el.id !== listId) el.classList.add('hidden');
                 });
-            }
+                list.classList.toggle('hidden');
+            });
+
+            // Item Click
+            list.querySelectorAll(`.${itemClass}`).forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const val = item.getAttribute('data-value');
+                    const text = item.textContent;
+                    
+                    if(label) label.textContent = text;
+                    list.classList.add('hidden');
+                    
+                    // Visual active state
+                    list.querySelectorAll(`.${itemClass}`).forEach(el => {
+                        el.classList.remove('text-blue-600', 'bg-blue-50', 'font-medium');
+                        el.classList.add('text-gray-700');
+                    });
+                    item.classList.remove('text-gray-700');
+                    item.classList.add('text-blue-600', 'bg-blue-50', 'font-medium');
+
+                    if(callback) callback(val);
+                });
+            });
+        };
+
+        // Close dropdown on click outside
+        document.addEventListener('click', () => {
+            document.querySelectorAll('[id^="listSector"]').forEach(el => el.classList.add('hidden'));
+        });
+
+        // --- Chart 1: Growth (Kiri) ---
+        const ctxLeft = document.getElementById('sectorChart');
+        if (ctxLeft) {
+            const leftChart = new Chart(ctxLeft.getContext('2d'), {
+                type: 'line',
+                data: { labels: years, datasets: [{ label: 'Growth', data: leftChartData["Digital & ICT"], borderColor: '#1e3a8a', borderWidth: 3, fill: true, backgroundColor: 'rgba(30, 58, 138, 0.1)' }] },
+                options: getChartOptions('%')
+            });
+
+            // Init Dropdown Kiri
+            setupSmallDropdown('btnSectorGrowth', 'listSectorGrowth', 'labelSectorGrowth', 'option-item-growth', (val) => {
+                const key = val === "Digital & ICT" ? "Technology" : val; // Mapping jika perlu
+                const dataKey = leftChartData[val] ? val : "Digital & ICT"; // Fallback
+                leftChart.data.datasets[0].data = leftChartData[dataKey];
+                leftChart.update();
+            });
         }
 
+        // --- Chart 2: Total (Kanan) ---
         const ctxRight = document.getElementById('sectorTotalChart');
-        const selectRight = document.getElementById('totalWorkersSelect');
-        let rightChart;
         if (ctxRight) {
              const gradRight = ctxRight.getContext('2d').createLinearGradient(0, 0, 0, 300);
              gradRight.addColorStop(0, 'rgba(16, 185, 129, 0.2)');
              gradRight.addColorStop(1, 'rgba(16, 185, 129, 0)');
-             rightChart = new Chart(ctxRight.getContext('2d'), {
+
+             const rightChart = new Chart(ctxRight.getContext('2d'), {
                 type: 'line',
-                data: { labels: months, datasets: [{ label: 'Workers', data: rightChartData["Technology"], borderColor: '#10b981', backgroundColor: gradRight, borderWidth: 3, fill: true }] },
-                options: commonOptions
+                data: { labels: years, datasets: [{ label: 'Workers', data: rightChartData["Digital & ICT"], borderColor: '#10b981', backgroundColor: gradRight, borderWidth: 3, fill: true }] },
+                options: getChartOptions(' Juta')
             });
-            if (selectRight) {
-                selectRight.addEventListener('change', function() {
-                    const key = this.value === "Digital & ICT" ? "Technology" : this.value;
-                    if (rightChartData[key]) { rightChart.data.datasets[0].data = rightChartData[key]; rightChart.update(); }
-                });
-            }
+
+            // Init Dropdown Kanan
+            setupSmallDropdown('btnSectorTotal', 'listSectorTotal', 'labelSectorTotal', 'option-item-total', (val) => {
+                const key = val === "Digital & ICT" ? "Technology" : val;
+                const dataKey = rightChartData[val] ? val : "Digital & ICT";
+                rightChart.data.datasets[0].data = rightChartData[dataKey];
+                rightChart.update();
+            });
         }
     }
 
@@ -936,7 +1119,7 @@ const initSectorDashboard = () => {
     const initDemographics = () => {
     const getColorPattern = (data) => {
         const maxVal = Math.max(...data);
-        return data.map(val => val === maxVal ? '#1e3a8a' : '#e5e7eb'); // Biru Tua vs Abu Terang
+        return data.map(val => val === maxVal ? '#1e3a8a' : '#e5e7eb'); 
     };
 
     const getData = (year, region) => {
@@ -1290,7 +1473,7 @@ const initSectorDashboard = () => {
         }
         
         const takeawaysList = document.getElementById('takeawaysList');
-        if(takeawaysList) takeawaysList.innerHTML = data.takeaways.map(item => `<li class="leading-relaxed text-gray-600"><span class="mr-2 text-blue-500">•</span>${item}</li>`).join('');
+        if(takeawaysList) takeawaysList.innerHTML = data.takeaways.map(item => `<li class="leading-relaxed text-gray-600">${item}</li>`).join('');
 
         if (correlationTextEl) correlationTextEl.textContent = correlationData[currentSector] || "Data analisis belum tersedia.";
     }
@@ -1429,28 +1612,72 @@ const initSectorDashboard = () => {
         console.log("System Ready.");
     });
 
-// ==========================================
-// FEATURE: NATIONAL STATS CHARTS (YANG HILANG)
-// ==========================================
 const initNationalStats = () => {
-    // Cek apakah Chart.js sudah di-load
     if (typeof Chart === 'undefined') return;
 
-    const commonOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-            x: { grid: { display: false }, ticks: { color: '#9ca3af', font: { size: 10 } } },
-            y: { display: true, grid: { color: '#f3f4f6', drawBorder: false }, ticks: { color: '#9ca3af', maxTicksLimit: 6 } }
-        },
-        elements: {
-            point: { radius: 0, hitRadius: 20, hoverRadius: 8, hoverBorderWidth: 3, hoverBackgroundColor: '#ffffff' },
-            line: { tension: 0.4 }
-        }
+    const getNationalChartOptions = (color) => {
+        return {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    titleColor: '#1f2937',
+                    titleFont: { family: 'Outfit', weight: 'bold' },
+                    bodyColor: '#4b5563',
+                    bodyFont: { family: 'Outfit' },
+                    borderColor: '#e5e7eb',
+                    borderWidth: 1,
+                    padding: 10,
+                    displayColors: false,
+                    callbacks: {
+                        label: function(context) {
+                            return ` ${context.parsed.y}%`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: { display: false },
+                    ticks: { 
+                        font: { family: 'Outfit', size: 10 }, 
+                        color: '#9ca3af' 
+                    }
+                },
+                y: {
+                    display: true,
+                    grid: { 
+                        borderDash: [4, 4], 
+                        color: '#f3f4f6' 
+                    },
+                    ticks: { 
+                        font: { family: 'Outfit', size: 10 }, 
+                        color: '#9ca3af', 
+                        maxTicksLimit: 6,
+                        callback: function(value) { return value + '%' }
+                    }
+                }
+            },
+            elements: {
+                point: { 
+                    radius: 0, 
+                    hitRadius: 20,
+                    hoverRadius: 6, 
+                    hoverBorderWidth: 3,
+                    hoverBackgroundColor: '#ffffff',
+                    hoverBorderColor: color 
+                },
+                line: { tension: 0.4 } 
+            }
+        };
     };
 
-    // 1. Grafik Pengangguran (Kiri Atas)
     const ctx1 = document.getElementById('unemploymentChart');
     if (ctx1) {
         new Chart(ctx1.getContext('2d'), {
@@ -1459,18 +1686,17 @@ const initNationalStats = () => {
                 labels: ['2019', '2020', '2021', '2022', '2023', 'Q1 24', 'Q2 24'],
                 datasets: [{ 
                     label: 'Unemployment Rate', 
-                    data: [5.2, 7.0, 6.5, 5.8, 5.3, 5.1, 4.8], // Data dummy disesuaikan
+                    data: [5.2, 7.0, 6.5, 5.8, 5.3, 5.1, 4.8], 
                     borderColor: '#ef4444', 
                     backgroundColor: 'rgba(239, 68, 68, 0.1)', 
                     fill: true,
                     borderWidth: 2
                 }]
             },
-            options: commonOptions
+            options: getNationalChartOptions('#ef4444')
         });
     }
 
-    // 2. Grafik Partisipasi Angkatan Kerja (Kanan Atas)
     const ctx2 = document.getElementById('laborChart');
     if (ctx2) {
         new Chart(ctx2.getContext('2d'), {
@@ -1479,14 +1705,14 @@ const initNationalStats = () => {
                 labels: ['2019', '2020', '2021', '2022', '2023', 'Q1 24', 'Q2 24'],
                 datasets: [{ 
                     label: 'Labor Force', 
-                    data: [67.5, 64.0, 65.2, 66.5, 68.0, 69.1, 69.5], // Data dummy disesuaikan
+                    data: [67.5, 64.0, 65.2, 66.5, 68.0, 69.1, 69.5], 
                     borderColor: '#3b82f6', 
                     backgroundColor: 'rgba(59, 130, 246, 0.1)',
                     fill: true,
                     borderWidth: 2
                 }]
             },
-            options: commonOptions
+            options: getNationalChartOptions('#3b82f6')
         });
     }
 };
@@ -1518,4 +1744,138 @@ document.getElementById('reportModal')?.addEventListener('click', (e) => {
     if (e.target.id === 'reportModal') {
         toggleReportModal(false);
     }
+});
+
+window.closeDetailModal = function() {
+    const modal = document.getElementById('detailModal');
+    if (modal) {
+        modal.classList.add('hidden');
+    }
+};
+
+const digitalTrendsData = {
+    'youngWorkers': {
+        title: "Peluang Pekerja Muda",
+        iconClass: "bg-blue-100 text-blue-600",
+        icon: '<i class="fas fa-laptop-code"></i>',
+        content: `
+            <p>Generasi muda (Gen Z & Milenial) memiliki keunggulan kompetitif sebagai <em>digital natives</em>. Pasar kerja saat ini sangat menghargai kemampuan adaptasi teknologi dibandingkan sekadar gelar akademis.</p>
+            <p class="font-bold mt-2">Peluang Spesifik:</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li><strong>Data & Analitik:</strong> Perusahaan butuh talenta yang bisa membaca data untuk keputusan bisnis.</li>
+                <li><strong>Creative Tech:</strong> Content Creator, UI/UX Designer, dan Digital Marketer sangat dicari.</li>
+                <li><strong>Coding & Dev:</strong> Fullstack Developer menjadi posisi entry-level dengan gaji di atas rata-rata.</li>
+            </ul>`
+    },
+    'gigEconomy': {
+        title: "Gig Economy (Ekonomi Serabutan)",
+        iconClass: "bg-green-100 text-green-600",
+        icon: '<i class="fas fa-briefcase"></i>',
+        content: `
+            <p>Gig Economy mengubah paradigma "Satu Pekerjaan Seumur Hidup" menjadi "Banyak Proyek Sekaligus". Ini mencakup driver ojol, freelancer desain, hingga konsultan lepas.</p>
+            <div class="bg-yellow-50 p-3 rounded-lg border border-yellow-200 mt-2">
+                <p class="text-xs text-yellow-800 font-bold">⚠️ Tantangan Utama:</p>
+                <p class="text-xs text-yellow-700">Ketidakpastian pendapatan bulanan dan absennya tunjangan kesehatan (BPJS) atau THR dari pemberi kerja.</p>
+            </div>`
+    },
+    'flexibility': {
+        title: "Fleksibilitas & Mobilitas",
+        iconClass: "bg-indigo-100 text-indigo-600",
+        icon: '<i class="fas fa-house-laptop"></i>',
+        content: `
+            <p>Konsep <strong>WFA (Work From Anywhere)</strong> kini bukan lagi sekadar tren, tapi kebutuhan. Perusahaan yang menawarkan fleksibilitas memiliki retensi karyawan 30% lebih tinggi.</p>
+            <p>Ini memungkinkan munculnya "Digital Nomad", di mana seseorang bisa bekerja untuk perusahaan di Jakarta sambil tinggal di Bali, atau bekerja untuk klien Amerika dari kamar tidur di Yogyakarta.</p>`
+    },
+    'globalCollab': {
+        title: "Kolaborasi Global",
+        iconClass: "bg-cyan-100 text-cyan-600",
+        icon: '<i class="fas fa-earth-americas"></i>',
+        content: `
+            <p>Batasan negara runtuh berkat tools kolaborasi seperti Slack, Zoom, dan Trello. Tenaga kerja Indonesia kini bersaing langsung di pasar global.</p>
+            <p>Ini membuka peluang pendapatan Dolar/Euro tanpa harus menjadi TKI fisik. Kuncinya adalah penguasaan <strong>Bahasa Inggris</strong> dan standar kerja internasional (disiplin & komunikasi asinkron).</p>`
+    },
+    'automation': {
+        title: "Otomatisasi & Efisiensi",
+        iconClass: "bg-orange-100 text-orange-600",
+        icon: '<i class="fas fa-robot"></i>',
+        content: `
+            <p>Robot dan software tidak mengambil alih pekerjaan, tapi mengambil alih <strong>tugas</strong>. Pekerjaan repetitif (input data, kasir, sorting pabrik) akan hilang.</p>
+            <p>Manusia difokuskan pada hal yang tidak bisa dilakukan mesin: <strong>Empati, Kreativitas, dan Pemecahan Masalah Kompleks</strong>. Pekerja yang bisa "mengelola" AI akan menggantikan mereka yang menolak AI.</p>`
+    },
+    'newJobs': {
+        title: "Munculnya Pekerjaan Baru",
+        iconClass: "bg-yellow-100 text-yellow-600",
+        icon: '<i class="fas fa-lightbulb"></i>',
+        content: `
+            <p>10 tahun lalu, pekerjaan ini belum ada. Sekarang, mereka adalah primadona dengan gaji tinggi:</p>
+            <ul class="list-disc pl-5 space-y-1 mt-2">
+                <li><strong>AI Prompt Engineer:</strong> Ahli memerintah AI agar menghasilkan output terbaik.</li>
+                <li><strong>Sustainability Manager:</strong> Mengurus standar hijau/ESG perusahaan.</li>
+                <li><strong>Cloud Architect:</strong> Merancang infrastruktur server maya.</li>
+            </ul>`
+    },
+    'skillDemand': {
+        title: "Tuntutan Skill Baru (Reskilling)",
+        iconClass: "bg-pink-100 text-pink-600",
+        icon: '<i class="fas fa-brain"></i>',
+        content: `
+            <p>Ijazah kuliah hanya relevan untuk 3-5 tahun pertama kerja. Selebihnya adalah tentang <strong>Life-Long Learning</strong>.</p>
+            <p>Kemampuan <em>Reskilling</em> (belajar skill baru dari nol) dan <em>Upskilling</em> (menajamkan skill lama) adalah mata uang baru. Skill teknis (Hard Skill) cepat usang, namun Soft Skill (Komunikasi, Leadership) abadi.</p>`
+    },
+    'workLife': {
+        title: "Work-Life Balance",
+        iconClass: "bg-teal-100 text-teal-600",
+        icon: '<i class="fas fa-scale-balanced"></i>',
+        content: `
+            <p>Teknologi membuat kita "Always On". Notifikasi email kerja bisa masuk jam 10 malam. Ini memicu isu kesehatan mental dan <em>burnout</em>.</p>
+            <p>Tantangan pekerja modern adalah menetapkan batas (boundaries). Tren baru seperti <em>"Right to Disconnect"</em> mulai diperjuangkan agar pekerja berhak mematikan notifikasi di luar jam kerja.</p>`
+    },
+    'digitalRisk': {
+        title: "Tantangan Era Digital",
+        iconClass: "bg-red-100 text-red-600",
+        icon: '<i class="fas fa-shield-halved"></i>',
+        content: `
+            <p>Digitalisasi membawa risiko baru:</p>
+            <ul class="list-disc pl-5 space-y-1 mt-2">
+                <li><strong>Keamanan Data:</strong> Risiko kebocoran data pribadi karyawan.</li>
+                <li><strong>Digital Divide:</strong> Kesenjangan antara mereka yang punya akses internet cepat vs yang tidak (tertinggal).</li>
+                <li><strong>Ageism:</strong> Pekerja senior yang gagap teknologi berisiko tersingkir lebih cepat.</li>
+            </ul>`
+    }
+};
+
+window.showTrendDetail = (key) => {
+    const data = digitalTrendsData[key];
+    const modal = document.getElementById('trendModal');
+    
+    if (!data || !modal) return;
+
+    document.getElementById('trendModalTitle').textContent = data.title;
+    document.getElementById('trendModalIcon').innerHTML = data.icon;
+    document.getElementById('trendModalIcon').className = `w-10 h-10 rounded-lg flex items-center justify-center text-xl ${data.iconClass}`;
+    document.getElementById('trendModalContentBody').innerHTML = data.content;
+
+    modal.classList.remove('hidden');
+    setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        const content = document.getElementById('trendModalContent');
+        if(content) content.classList.remove('scale-95');
+    }, 10);
+};
+
+window.closeTrendModal = () => {
+    const modal = document.getElementById('trendModal');
+    if (modal) {
+        modal.classList.add('opacity-0');
+        const content = document.getElementById('trendModalContent');
+        if(content) content.classList.add('scale-95');
+        
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300);
+    }
+};
+
+document.getElementById('trendModal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'trendModal') window.closeTrendModal();
 });

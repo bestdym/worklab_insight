@@ -157,37 +157,50 @@
         </section>
 
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            
-            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 relative z-20">
                 <div class="chart-header flex justify-between items-center mb-4">
                     <span class="chart-title font-semibold text-gray-800">Tren Pertumbuhan Sektor</span>
-                    <select class="sector-select text-sm border-gray-200 rounded-md py-1 px-2 text-gray-600 focus:ring-blue-500" id="sectorSelect">
-                        <option value="Manufacturing">Manufaktur</option>
-                        <option value="Digital & ICT" selected>Digital & TIK</option>
-                        <option value="Agriculture">Pertanian</option>
-                        <option value="Mining">Pertambangan</option>
-                        <option value="Retail">Ritel</option>
-                        <option value="Finance">Keuangan</option> 
-                    </select>
+                    
+                    <div class="relative">
+                        <button id="btnSectorGrowth" class="bg-white border border-gray-200 text-gray-700 py-1.5 px-3 rounded-lg flex items-center gap-2 text-xs font-medium shadow-sm hover:border-blue-400 focus:outline-none transition-all">
+                            <span id="labelSectorGrowth">Digital & TIK</span>
+                            <i class="fas fa-chevron-down text-[10px] text-gray-400"></i>
+                        </button>
+                        <div id="listSectorGrowth" class="hidden absolute right-0 mt-1 w-40 bg-white shadow-xl rounded-lg border border-gray-100 py-1 text-xs z-50">
+                            <div class="option-item-growth cursor-pointer px-3 py-2 hover:bg-blue-50 text-gray-700 transition-colors" data-value="Manufacturing">Manufaktur</div>
+                            <div class="option-item-growth cursor-pointer px-3 py-2 hover:bg-blue-50 text-gray-700 transition-colors font-medium text-blue-600 bg-blue-50" data-value="Digital & ICT">Digital & TIK</div>
+                            <div class="option-item-growth cursor-pointer px-3 py-2 hover:bg-blue-50 text-gray-700 transition-colors" data-value="Agriculture">Pertanian</div>
+                            <div class="option-item-growth cursor-pointer px-3 py-2 hover:bg-blue-50 text-gray-700 transition-colors" data-value="Mining">Pertambangan</div>
+                            <div class="option-item-growth cursor-pointer px-3 py-2 hover:bg-blue-50 text-gray-700 transition-colors" data-value="Retail">Ritel</div>
+                            <div class="option-item-growth cursor-pointer px-3 py-2 hover:bg-blue-50 text-gray-700 transition-colors" data-value="Finance">Keuangan</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="chart-container large-chart-container h-64 w-full relative overflow-hidden">
                     <canvas id="sectorChart"></canvas>
                 </div>
             </div>
 
-            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 relative z-20">
                 <div class="chart-header flex justify-between items-center mb-4">
                     <span class="chart-title font-semibold text-gray-800">Tren Total Pekerja</span>
-                    <div class="flex items-center gap-2">
-                        <span class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded hidden sm:inline-block">dalam Jutaan</span>
-                        <select class="sector-select text-sm border-gray-200 rounded-md py-1 px-2 text-gray-600 focus:ring-blue-500" id="totalWorkersSelect">
-                            <option value="Manufacturing">Manufaktur</option>
-                            <option value="Digital & ICT" selected>Digital & TIK</option>
-                            <option value="Agriculture">Pertanian</option>
-                            <option value="Mining">Pertambangan</option>
-                            <option value="Retail">Ritel</option>
-                            <option value="Finance">Keuangan</option> 
-                        </select>
+                    <div class="flex items-center gap-3">
+                        <span class="text-[10px] font-semibold text-gray-400 bg-gray-50 px-2 py-1 rounded border border-gray-100 hidden sm:inline-block">dalam Jutaan</span>
+                        
+                        <div class="relative">
+                            <button id="btnSectorTotal" class="bg-white border border-gray-200 text-gray-700 py-1.5 px-3 rounded-lg flex items-center gap-2 text-xs font-medium shadow-sm hover:border-blue-400 focus:outline-none transition-all">
+                                <span id="labelSectorTotal">Digital & TIK</span>
+                                <i class="fas fa-chevron-down text-[10px] text-gray-400"></i>
+                            </button>
+                            <div id="listSectorTotal" class="hidden absolute right-0 mt-1 w-40 bg-white shadow-xl rounded-lg border border-gray-100 py-1 text-xs z-50">
+                                <div class="option-item-total cursor-pointer px-3 py-2 hover:bg-blue-50 text-gray-700 transition-colors" data-value="Manufacturing">Manufaktur</div>
+                                <div class="option-item-total cursor-pointer px-3 py-2 hover:bg-blue-50 text-gray-700 transition-colors font-medium text-blue-600 bg-blue-50" data-value="Digital & ICT">Digital & TIK</div>
+                                <div class="option-item-total cursor-pointer px-3 py-2 hover:bg-blue-50 text-gray-700 transition-colors" data-value="Agriculture">Pertanian</div>
+                                <div class="option-item-total cursor-pointer px-3 py-2 hover:bg-blue-50 text-gray-700 transition-colors" data-value="Mining">Pertambangan</div>
+                                <div class="option-item-total cursor-pointer px-3 py-2 hover:bg-blue-50 text-gray-700 transition-colors" data-value="Retail">Ritel</div>
+                                <div class="option-item-total cursor-pointer px-3 py-2 hover:bg-blue-50 text-gray-700 transition-colors" data-value="Finance">Keuangan</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="chart-container large-chart-container h-64 w-full relative overflow-hidden">
@@ -203,103 +216,144 @@
                     <p class="text-gray-500 text-sm mt-1">Bagaimana transformasi digital membentuk ulang lanskap profesional.</p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <div class="info-block hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                        <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-laptop-code text-blue-600 bg-blue-50 p-3 rounded-lg text-lg"></i>
-                            <h4 class="font-bold text-gray-800">Peluang Pekerja Muda</h4>
-                        </div>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            Digitalisasi menciptakan peran baru di bidang teknologi. Permintaan untuk analis data dan pengembang meningkat sebesar 40%.
-                        </p>
-                    </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+    <div onclick="showTrendDetail('youngWorkers')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <i class="fas fa-laptop-code text-lg"></i>
+            </div>
+            <h4 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-blue-600 transition-colors">Peluang Pekerja Muda</h4>
+        </div>
+        <p class="text-xs text-gray-500 leading-relaxed line-clamp-3">
+            Digitalisasi menciptakan peran baru di bidang teknologi. Permintaan untuk analis data dan pengembang meningkat pesat.
+        </p>
+    </div>
 
-                    <div class="info-block hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                        <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-briefcase text-green-600 bg-green-50 p-3 rounded-lg text-lg"></i>
-                            <h4 class="font-bold text-gray-800">Gig Economy</h4>
-                        </div>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            Platform digital memicu kerja lepas (freelance). Meningkatkan fleksibilitas namun berdampak pada keamanan kerja jangka panjang.
-                        </p>
-                    </div>
+    <div onclick="showTrendDetail('gigEconomy')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-colors">
+                <i class="fas fa-briefcase text-lg"></i>
+            </div>
+            <h4 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-green-600 transition-colors">Gig Economy</h4>
+        </div>
+        <p class="text-xs text-gray-500 leading-relaxed line-clamp-3">
+            Platform digital memicu kerja lepas (freelance). Meningkatkan fleksibilitas namun berdampak pada keamanan kerja.
+        </p>
+    </div>
 
-                    <div class="info-block hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                        <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-house-laptop text-indigo-600 bg-indigo-50 p-3 rounded-lg text-lg"></i>
-                            <h4 class="font-bold text-gray-800">Fleksibilitas & Mobilitas</h4>
-                        </div>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            Pekerjaan tidak lagi terikat lokasi fisik. Remote work dan model kerja agile memungkinkan produktivitas dari mana saja.
-                        </p>
-                    </div>
+    <div onclick="showTrendDetail('flexibility')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                <i class="fas fa-house-laptop text-lg"></i>
+            </div>
+            <h4 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-indigo-600 transition-colors">Fleksibilitas & Mobilitas</h4>
+        </div>
+        <p class="text-xs text-gray-500 leading-relaxed line-clamp-3">
+            Pekerjaan tidak lagi terikat lokasi fisik. Remote work dan model kerja agile memungkinkan produktivitas dari mana saja.
+        </p>
+    </div>
 
-                    <div class="info-block hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                        <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-earth-americas text-cyan-600 bg-cyan-50 p-3 rounded-lg text-lg"></i>
-                            <h4 class="font-bold text-gray-800">Kolaborasi Global</h4>
-                        </div>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            Internet menghapus batasan geografis, memfasilitasi kolaborasi real-time antara tim yang berada di berbagai belahan dunia.
-                        </p>
-                    </div>
+    <div onclick="showTrendDetail('globalCollab')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition-colors">
+                <i class="fas fa-earth-americas text-lg"></i>
+            </div>
+            <h4 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-cyan-600 transition-colors">Kolaborasi Global</h4>
+        </div>
+        <p class="text-xs text-gray-500 leading-relaxed line-clamp-3">
+            Internet menghapus batasan geografis, memfasilitasi kolaborasi real-time lintas negara.
+        </p>
+    </div>
 
-                    <div class="info-block hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                        <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-robot text-orange-600 bg-orange-50 p-3 rounded-lg text-lg"></i>
-                            <h4 class="font-bold text-gray-800">Otomatisasi & Efisiensi</h4>
-                        </div>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            Tugas manual kini diambil alih teknologi, meningkatkan efisiensi operasional dan mempercepat penyelesaian pekerjaan.
-                        </p>
-                    </div>
+    <div onclick="showTrendDetail('automation')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors">
+                <i class="fas fa-robot text-lg"></i>
+            </div>
+            <h4 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-orange-600 transition-colors">Otomatisasi & Efisiensi</h4>
+        </div>
+        <p class="text-xs text-gray-500 leading-relaxed line-clamp-3">
+            Tugas manual diambil alih teknologi, meningkatkan efisiensi operasional dan kecepatan kerja.
+        </p>
+    </div>
 
-                    <div class="info-block hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                        <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-lightbulb text-yellow-600 bg-yellow-50 p-3 rounded-lg text-lg"></i>
-                            <h4 class="font-bold text-gray-800">Munculnya Pekerjaan Baru</h4>
-                        </div>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            Lahirnya profesi baru berbasis teknologi yang sebelumnya tidak ada, seperti AI Specialist, Cloud Architect, dan UI/UX Designer.
-                        </p>
-                    </div>
+    <div onclick="showTrendDetail('newJobs')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-yellow-50 flex items-center justify-center text-yellow-600 group-hover:bg-yellow-600 group-hover:text-white transition-colors">
+                <i class="fas fa-lightbulb text-lg"></i>
+            </div>
+            <h4 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-yellow-600 transition-colors">Munculnya Pekerjaan Baru</h4>
+        </div>
+        <p class="text-xs text-gray-500 leading-relaxed line-clamp-3">
+            Lahirnya profesi baru berbasis teknologi seperti AI Specialist, Cloud Architect, dan UI/UX Designer.
+        </p>
+    </div>
 
-                    <div class="info-block hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                        <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-brain text-pink-600 bg-pink-50 p-3 rounded-lg text-lg"></i>
-                            <h4 class="font-bold text-gray-800">Tuntutan Skill Baru</h4>
-                        </div>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            Pekerja dituntut memiliki literasi digital dan kemampuan adaptasi tinggi (reskilling & upskilling) agar tetap relevan.
-                        </p>
-                    </div>
+    <div onclick="showTrendDetail('skillDemand')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center text-pink-600 group-hover:bg-pink-600 group-hover:text-white transition-colors">
+                <i class="fas fa-brain text-lg"></i>
+            </div>
+            <h4 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-pink-600 transition-colors">Tuntutan Skill Baru</h4>
+        </div>
+        <p class="text-xs text-gray-500 leading-relaxed line-clamp-3">
+            Pekerja dituntut memiliki kemampuan adaptasi tinggi (reskilling & upskilling) agar tetap relevan.
+        </p>
+    </div>
 
-                    <div class="info-block hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                        <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-scale-balanced text-teal-600 bg-teal-50 p-3 rounded-lg text-lg"></i>
-                            <h4 class="font-bold text-gray-800">Work-Life Balance</h4>
-                        </div>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            Kaburnya batasan waktu kerja dan pribadi menuntut manajemen waktu yang lebih baik dari individu dan dukungan perusahaan.
-                        </p>
-                    </div>
+    <div onclick="showTrendDetail('workLife')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                <i class="fas fa-scale-balanced text-lg"></i>
+            </div>
+            <h4 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-teal-600 transition-colors">Work-Life Balance</h4>
+        </div>
+        <p class="text-xs text-gray-500 leading-relaxed line-clamp-3">
+            Kaburnya batasan waktu kerja menuntut manajemen waktu yang lebih baik dari individu.
+        </p>
+    </div>
 
-                    <div class="info-block hover:bg-gray-50 p-4 rounded-lg transition-colors">
-                        <div class="flex items-center gap-3 mb-3">
-                            <i class="fas fa-shield-halved text-red-600 bg-red-50 p-3 rounded-lg text-lg"></i>
-                            <h4 class="font-bold text-gray-800">Tantangan Era Digital</h4>
-                        </div>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            Munculnya ancaman keamanan data, isu kesehatan mental digital, serta risiko bagi pekerja dengan keterampilan usang.
-                        </p>
-                    </div>
+    <div onclick="showTrendDetail('digitalRisk')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+        <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-colors">
+                <i class="fas fa-shield-halved text-lg"></i>
+            </div>
+            <h4 class="font-bold text-gray-800 text-sm md:text-base group-hover:text-red-600 transition-colors">Tantangan Era Digital</h4>
+        </div>
+        <p class="text-xs text-gray-500 leading-relaxed line-clamp-3">
+            Munculnya ancaman keamanan data dan risiko bagi pekerja dengan keterampilan usang.
+        </p>
+    </div>
 
-                </div>
+</div>
             </div>
         </section>
 
     </main>
+    <div id="trendModal" class="fixed inset-0 bg-black bg-opacity-60 hidden z-[9999] flex items-center justify-center p-4 backdrop-blur-sm transition-all duration-300 opacity-0">
+    <div class="bg-white rounded-2xl w-full max-w-lg shadow-2xl transform scale-95 transition-all duration-300" id="trendModalContent">
+        
+        <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-gray-50 rounded-t-2xl">
+            <div class="flex items-center gap-3">
+                <div id="trendModalIcon" class="w-10 h-10 rounded-lg flex items-center justify-center text-xl"></div>
+                <h3 id="trendModalTitle" class="text-lg font-bold text-gray-900"></h3>
+            </div>
+            <button onclick="closeTrendModal()" class="text-gray-400 hover:text-red-500 transition-colors w-8 h-8 flex items-center justify-center rounded-full hover:bg-red-50">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="p-6">
+            <div id="trendModalContentBody" class="text-gray-600 text-sm leading-relaxed space-y-4 text-justify">
+                </div>
+        </div>
+
+        <div class="p-4 border-t border-gray-100 flex justify-end bg-gray-50 rounded-b-2xl">
+            <button onclick="closeTrendModal()" class="px-5 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition text-sm font-medium">Tutup</button>
+        </div>
+    </div>
+</div>
 
     <footer>
     </footer>
