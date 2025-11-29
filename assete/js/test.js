@@ -1,187 +1,213 @@
-document.addEventListener("DOMContentLoaded", function() {
-    console.log("Team Solid: Employment JS loaded with Smooth Slide Animation...");
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("System Loaded: Charts with Y-Axis Enabled.");
 
-    // ==========================================
-    // 1. DATA DUMMY
-    // ==========================================
-    const sectorData = {
-        "Manufacturing": [65, 64, 66, 68, 70, 69, 71, 73, 72, 74, 75, 76],
-        "Digital & ICT": [20, 45, 35, 60, 40, 55, 30, 65, 45, 70, 50, 85],
-        "Agriculture":   [50, 55, 60, 80, 85, 90, 85, 60, 55, 50, 45, 40],
-        "Mining":        [40, 38, 35, 32, 30, 35, 45, 55, 60, 58, 55, 50],
-        "Retail":        [30, 35, 40, 42, 45, 40, 38, 45, 55, 65, 80, 95],
-        "Finance":       [55, 58, 60, 62, 65, 70, 72, 75, 74, 78, 80, 82]
-    };
     const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-    // ==========================================
-    // 2. LOGIKA ANIMASI SLIDE
-    // ==========================================
-    function setupChartRevealAnimations() {
-        const charts = document.querySelectorAll('.chart-container canvas');
-        
-        charts.forEach((canvas, index) => {
-            // Memberi jeda (delay) antar grafik agar muncul berurutan
-            setTimeout(() => {
-                canvas.classList.add('slide-active');
-            }, 200 + (index * 250)); 
-        });
-    }
+    const leftChartData = {
+        "Manufacturing": [65, 64, 66, 68, 70, 69, 71, 73, 72, 74, 75, 76],
+        "Digital & ICT": [20, 45, 35, 60, 40, 55, 30, 65, 45, 70, 50, 85],
+        "Agriculture": [50, 55, 60, 80, 85, 90, 85, 60, 55, 50, 45, 40],
+        "Mining": [40, 38, 35, 32, 30, 35, 45, 55, 60, 58, 55, 50],
+        "Retail": [30, 35, 40, 42, 45, 40, 38, 45, 55, 65, 80, 95],
+        "Finance": [55, 58, 60, 62, 65, 70, 72, 75, 74, 78, 80, 82]
+    };
 
-    // ==========================================
-    // 3. KONFIGURASI CHART (ANIMASI INTERNAL MATI)
-    // ==========================================
-    const commonOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        
-        // PENTING: Matikan animasi loading internal Chart.js
-        // Agar tidak bentrok dengan animasi slide CSS
-        animation: {
-            duration: 0 
-        },
-        
-        // Animasi Hover tetap aktif
-        transitions: {
-            active: {
-                animation: { duration: 400, easing: 'easeOutQuart' }
-            }
-        },
+    const rightChartData = {
+        "Manufacturing": [18.2, 18.8, 17.9, 18.5, 18.1, 19.0, 18.3, 18.7, 17.8, 18.4, 18.9, 18.2],
+        "Digital & ICT": [5.5, 5.2, 5.8, 5.4, 6.1, 5.6, 5.9, 5.3, 6.0, 5.7, 6.2, 5.5],
+        "Agriculture": [38.5, 36.2, 39.1, 37.5, 36.8, 38.9, 39.5, 36.5, 37.2, 38.8, 36.0, 37.8],
+        "Mining": [1.25, 1.45, 1.15, 1.35, 1.50, 1.20, 1.40, 1.10, 1.30, 1.48, 1.22, 1.38],
+        "Retail": [13.8, 14.5, 13.2, 14.1, 13.5, 15.0, 13.9, 14.6, 13.4, 14.8, 13.6, 15.2],
+        "Finance": [3.10, 3.25, 2.95, 3.15, 3.30, 3.05, 3.28, 2.98, 3.12, 3.26, 3.00, 3.18]
+    };
 
-        interaction: { mode: 'index', intersect: false },
-        plugins: {
-            legend: { display: false },
-            tooltip: {
-                backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                titleColor: '#1f2937',
-                bodyColor: '#4b5563',
-                borderColor: '#e5e7eb',
-                borderWidth: 1,
-                padding: 10,
-                usePointStyle: true,
-                titleFont: { size: 13, weight: 'bold', family: "'Inter', sans-serif" },
-                bodyFont: { size: 12, family: "'Inter', sans-serif" },
-                callbacks: {
-                    label: function(context) {
-                        let label = context.dataset.label || '';
-                        if (label) label += ': ';
-                        if (context.parsed.y !== null) {
-                            label += context.parsed.y + (context.chart.canvas.id === 'sectorChart' ? '%' : ' mil');
+    const initCharts = () => {
+        if (typeof Chart === 'undefined') return;
+
+        const commonOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: { duration: 0 },
+            transitions: {
+                active: { animation: { duration: 400, easing: 'easeOutQuart' } }
+            },
+            interaction: { mode: 'index', intersect: false },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    titleColor: '#1f2937',
+                    bodyColor: '#4b5563',
+                    borderColor: '#e5e7eb',
+                    borderWidth: 1,
+                    usePointStyle: true,
+                    titleFont: { size: 13, weight: 'bold' },
+                    callbacks: {
+                        label: function(context) {
+                            let val = context.parsed.y;
+                            if (context.chart.canvas.id === 'sectorChart') return val + '% Growth';
+                            if (context.chart.canvas.id === 'sectorTotalChart') return val + ' Juta Pekerja';
+                            return val;
                         }
-                        return label;
                     }
                 }
+            },
+            scales: {
+                x: { grid: { display: false }, ticks: { color: '#9ca3af', font: { size: 10 } } },
+                y: { display: true, grid: { color: '#f3f4f6', drawBorder: false }, ticks: { color: '#9ca3af', maxTicksLimit: 6 } }
+            },
+            elements: {
+                point: { radius: 0, hitRadius: 20, hoverRadius: 8, hoverBorderWidth: 3, hoverBackgroundColor: '#ffffff' },
+                line: { tension: 0.4 }
             }
-        },
-        scales: {
-            x: { grid: { display: false }, ticks: { color: '#9ca3af', font: { size: 10 } } },
-            y: { display: true, grid: { color: '#f3f4f6', drawBorder: false }, ticks: { display: true, color: '#9ca3af', maxTicksLimit: 6 } }
-        },
-        elements: {
-            point: { radius: 0, hitRadius: 20, hoverRadius: 8, hoverBorderWidth: 3, hoverBackgroundColor: '#ffffff' },
-            line: { tension: 0.4, borderCapStyle: 'round', borderJoinStyle: 'round' }
+        };
+
+        const ctx1 = document.getElementById('unemploymentChart');
+        if (ctx1) {
+            new Chart(ctx1.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['2019', '2020', '2021', '2022', '2023', 'Q1 24', 'Q2 24'],
+                    datasets: [{ label: 'Unemployment', data: [3.2, 5.0, 4.2, 3.5, 4.8, 3.0, 2.5], borderColor: '#ef4444', backgroundColor: 'rgba(239, 68, 68, 0.1)', fill: true }]
+                },
+                options: commonOptions
+            });
+        }
+
+        const ctx2 = document.getElementById('laborChart');
+        if (ctx2) {
+            new Chart(ctx2.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: ['2019', '2020', '2021', '2022', '2023', 'Q1 24', 'Q2 24'],
+                    datasets: [{ label: 'Labor Force', data: [4.5, 3.0, 4.2, 3.5, 5.5, 4.0, 6.0], borderColor: '#3b82f6', fill: false }]
+                },
+                options: commonOptions
+            });
+        }
+
+        const ctxLeft = document.getElementById('sectorChart');
+        const selectLeft = document.getElementById('sectorSelect');
+        let leftChart;
+
+        if (ctxLeft) {
+            const gradLeft = ctxLeft.getContext('2d').createLinearGradient(0, 0, 0, 300);
+            gradLeft.addColorStop(0, 'rgba(30, 58, 138, 0.2)');
+            gradLeft.addColorStop(1, 'rgba(30, 58, 138, 0)');
+
+            leftChart = new Chart(ctxLeft.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: 'Growth',
+                        data: leftChartData["Digital & ICT"],
+                        borderColor: '#1e3a8a',
+                        backgroundColor: gradLeft,
+                        borderWidth: 3,
+                        fill: true
+                    }]
+                },
+                
+                options: { 
+                    ...commonOptions, 
+                    scales: { 
+                        x: { display: true, grid: { display: false } }, 
+                        y: { display: true, grid: { color: '#f3f4f6' }, ticks: { color: '#9ca3af' } } 
+                    } 
+                }
+            });
+
+            if (selectLeft) {
+                selectLeft.addEventListener('change', function() {
+                    const val = this.value;
+                    const newData = leftChartData[val];
+                    if (newData) {
+                        leftChart.data.datasets[0].data = newData;
+                        leftChart.update();
+                        ctxLeft.classList.remove('slide-active');
+                        setTimeout(() => ctxLeft.classList.add('slide-active'), 50);
+                    }
+                });
+            }
+        }
+
+        const ctxRight = document.getElementById('sectorTotalChart');
+        const selectRight = document.getElementById('totalWorkersSelect');
+        let rightChart;
+
+        if (ctxRight) {
+            const gradRight = ctxRight.getContext('2d').createLinearGradient(0, 0, 0, 300);
+            gradRight.addColorStop(0, 'rgba(16, 185, 129, 0.2)');
+            gradRight.addColorStop(1, 'rgba(16, 185, 129, 0)');
+
+            rightChart = new Chart(ctxRight.getContext('2d'), {
+                type: 'line',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: 'Workers',
+                        data: rightChartData["Digital & ICT"],
+                        borderColor: '#10b981',
+                        backgroundColor: gradRight,
+                        borderWidth: 3,
+                        fill: true
+                    }]
+                },
+                options: { 
+                    ...commonOptions, 
+                    scales: { 
+                        x: { display: true, grid: { display: false } }, 
+                        y: { display: true, grid: { color: '#f3f4f6' }, ticks: { color: '#9ca3af' } } 
+                    } 
+                }
+            });
+
+            if (selectRight) {
+                selectRight.addEventListener('change', function() {
+                    const val = this.value;
+                    const newData = rightChartData[val];
+                    if (newData) {
+                        rightChart.data.datasets[0].data = newData;
+                        rightChart.update();
+                        ctxRight.classList.remove('slide-active');
+                        setTimeout(() => ctxRight.classList.add('slide-active'), 50);
+                    }
+                });
+            }
         }
     };
 
-    // ==========================================
-    // 4. RENDERING CHART
-    // ==========================================
+    const initOthers = () => {
+        const themeBtn = document.getElementById('themeToggle');
+        if (themeBtn) {
+            themeBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.body.classList.toggle('dark-mode');
+                const icon = document.getElementById('themeIcon');
+                if (icon) {
+                    if (document.body.classList.contains('dark-mode')) {
+                        icon.classList.remove('fa-moon'); icon.classList.add('fa-sun');
+                    } else {
+                        icon.classList.remove('fa-sun'); icon.classList.add('fa-moon');
+                    }
+                }
+            });
+        }
 
-    // Chart 1: Unemployment
-    const ctx1 = document.getElementById('unemploymentChart');
-    if (ctx1) {
-        const gradient1 = ctx1.getContext('2d').createLinearGradient(0, 0, 0, 200);
-        gradient1.addColorStop(0, 'rgba(239, 68, 68, 0.2)');
-        gradient1.addColorStop(1, 'rgba(239, 68, 68, 0)');
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const deskMenu = document.getElementById('desktopMenu');
+        if (mobileBtn && deskMenu) {
+            mobileBtn.addEventListener('click', () => deskMenu.classList.toggle('hidden'));
+        }
 
-        new Chart(ctx1.getContext('2d'), {
-            type: 'line',
-            data: {
-                labels: ['2019', '2020', '2021', '2022', '2023', 'Q1 24', 'Q2 24'],
-                datasets: [{
-                    label: 'Unemployment',
-                    data: [3.2, 5.0, 4.2, 3.5, 4.8, 3.0, 2.5],
-                    borderColor: '#ef4444',
-                    backgroundColor: gradient1,
-                    borderWidth: 2,
-                    fill: true
-                }]
-            },
-            options: { ...commonOptions, scales: { x: {display:true, grid:{display:false}}, y: {display:true, min: 1, max: 6, grid:{display:false}} } }
-        });
-    }
+        setTimeout(() => {
+            document.querySelectorAll('canvas').forEach(c => c.classList.add('slide-active'));
+        }, 500);
+    };
 
-    // Chart 2: Labor Force
-    const ctx2 = document.getElementById('laborChart');
-    if (ctx2) {
-        new Chart(ctx2.getContext('2d'), {
-            type: 'line',
-            data: {
-                labels: ['2019', '2020', '2021', '2022', '2023', 'Q1 24', 'Q2 24'],
-                datasets: [{
-                    label: 'Labor Force',
-                    data: [4.5, 3.0, 4.2, 3.5, 5.5, 4.0, 6.0],
-                    borderColor: '#3b82f6',
-                    borderWidth: 2,
-                    fill: false
-                }]
-            },
-            options: { ...commonOptions, scales: { x: {display:true, grid:{display:false}}, y: {display:true, min: 2, max: 7, grid:{display:false}} } }
-        });
-    }
-
-    // Chart 3: Sector Growth (Interactive)
-    let sectorChart;
-    const ctx3 = document.getElementById('sectorChart');
-    if (ctx3) {
-        const gradient3 = ctx3.getContext('2d').createLinearGradient(0, 0, 0, 300);
-        gradient3.addColorStop(0, 'rgba(30, 58, 138, 0.2)');
-        gradient3.addColorStop(1, 'rgba(30, 58, 138, 0)');
-
-        sectorChart = new Chart(ctx3.getContext('2d'), {
-            type: 'line',
-            data: {
-                labels: months,
-                datasets: [{
-                    label: 'Growth',
-                    data: sectorData["Digital & ICT"],
-                    borderColor: '#1e3a8a',
-                    backgroundColor: gradient3,
-                    borderWidth: 3,
-                    fill: true
-                }]
-            },
-            options: { ...commonOptions, scales: { x: {display:true, grid:{display:false}}, y: {display:false} } }
-        });
-    }
-
-    // ==========================================
-    // 5. EKSEKUSI
-    // ==========================================
-    
-    // Trigger Animasi Slide-In
-    requestAnimationFrame(() => {
-        setupChartRevealAnimations();
-    });
-
-    // Dropdown Logic (Reset Animasi saat ganti data)
-    const selector = document.getElementById('sectorSelect');
-    if (selector && sectorChart) {
-        selector.addEventListener('change', function() {
-            const selectedValue = this.value;
-            const newData = sectorData[selectedValue];
-            if (newData) {
-                // Update Data
-                sectorChart.data.datasets[0].data = newData;
-                sectorChart.update();
-
-                // Opsional: Re-trigger animasi slide jika diinginkan
-                const canvas = document.querySelector('#sectorChart');
-                canvas.classList.remove('slide-active');
-                setTimeout(() => canvas.classList.add('slide-active'), 50);
-            }
-        });
-    }
+    initCharts();
+    initOthers();
 });
 
 
@@ -192,10 +218,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 
-// --- DATABASE DUMMY & SKENARIO ---
+
 const dummyData = {
-    // SKENARIO 2025: RESESI / EKONOMI BURUK
-    // 2025: SKENARIO KRISIS/RESESI (Pengangguran 14.5%)
     '2025': {
         'All': {
             age: [15, 45, 80, 85, 65, 40], 
@@ -227,14 +251,13 @@ const dummyData = {
         }
     },
 
-    // 2024: TAHUN TRANSISI (Mulai Turun - Pengangguran 11.4%)
     '2024': {
         'All': {
-            age: [25, 55, 85, 80, 55, 35], // Usia muda mulai sulit cari kerja
+            age: [25, 55, 85, 80, 55, 35], 
             gender: [51, 49], 
-            total: "145M",    // Turun sedikit dari 150M
+            total: "145M",   
             edu: [50, 70, 40, 15], 
-            unemployment: "11.4%" // Mulai naik dari 8.2%
+            unemployment: "11.4%" 
         },
         'Java': {
             age: [30, 60, 75, 70, 45, 25],
@@ -259,7 +282,6 @@ const dummyData = {
         }
     },
 
-    // 2023: TAHUN NORMAL (Puncak Pemulihan - Pengangguran 8.2%)
     '2023': {
         'All': {
             age: [35, 65, 90, 70, 50, 30],
@@ -291,7 +313,6 @@ const dummyData = {
         }
     },
 
-    // DATA HISTORIS LAMA
     '2022': {
         'All': {
             age: [38, 62, 85, 75, 45, 28],
@@ -312,26 +333,17 @@ const dummyData = {
     }
 };
 
-// ... (Sisa kode JS ke bawah tetap sama, tidak perlu diubah)
-
-// --- INITIAL VARIABEL CHART ---
 let ageChart, genderChart, eduChart;
-
-// Fungsi Helper Data
 function getData(year, region) {
-    // Cek apakah data tahun & region ada
     if (dummyData[year] && dummyData[year][region]) {
         return dummyData[year][region];
     } 
-    // Jika region tidak ada, pakai 'All' dari tahun itu
     else if (dummyData[year] && dummyData[year]['All']) {
         return dummyData[year]['All'];
     }
-    // Fallback terakhir ke 2023 All
     return dummyData['2023']['All'];
 }
 
-// 1. AGE CHART
 function initAgeChart(data) {
     const ctxAge = document.getElementById('ageChart').getContext('2d');
     ageChart = new Chart(ctxAge, {
@@ -357,7 +369,6 @@ function initAgeChart(data) {
     });
 }
 
-// 2. GENDER CHART
 function initGenderChart(data) {
     const ctxGender = document.getElementById('genderChart').getContext('2d');
     genderChart = new Chart(ctxGender, {
@@ -379,7 +390,6 @@ function initGenderChart(data) {
     });
 }
 
-// 3. EDUCATION CHART
 function initEduChart(data) {
     const ctxEdu = document.getElementById('educationChart').getContext('2d');
     eduChart = new Chart(ctxEdu, {
@@ -405,15 +415,11 @@ function initEduChart(data) {
     });
 }
 
-// UPDATE DASHBOARD FUNCTION
 function updateDashboard() {
     const region = document.getElementById('regionFilter').value;
     const year = document.getElementById('yearFilter').value;
-    
-    // Ambil data berdasarkan pilihan user
     const currentData = getData(year, region);
 
-    // Update Data Chart
     ageChart.data.datasets[0].data = currentData.age;
     ageChart.update();
 
@@ -423,22 +429,19 @@ function updateDashboard() {
     eduChart.data.datasets[0].data = currentData.edu;
     eduChart.update();
 
-    // Update Teks HTML
     document.getElementById('totalWorkforce').innerText = currentData.total;
     document.getElementById('malePct').innerText = currentData.gender[0] + "%";
     document.getElementById('femalePct').innerText = currentData.gender[1] + "%";
     document.getElementById('unemploymentRate').innerText = currentData.unemployment;
     
-    // Ubah warna indikator jika pengangguran tinggi (2025)
     const unemploymentEl = document.getElementById('unemploymentRate');
     if (parseFloat(currentData.unemployment) > 10) {
-        unemploymentEl.style.color = "#dc2626"; // Merah (Bahaya)
+        unemploymentEl.style.color = "#dc2626"; 
     } else {
-        unemploymentEl.style.color = "#1e3a8a"; // Biru (Normal)
+        unemploymentEl.style.color = "#1e3a8a"; 
     }
 }
 
-// INITIAL RUN
 document.addEventListener('DOMContentLoaded', () => {
     const ageEl = document.getElementById('ageChart');
     const genderEl = document.getElementById('genderChart');
@@ -465,14 +468,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-// ==========================================
-// File: assete/js/test.js
-// Deskripsi: Logic Dashboard Ekonomi (Data Fluktuatif)
-// ==========================================
 
-// ---------------------------------------------------------
-// 1. DATA STORE (Database Lokal)
-// ---------------------------------------------------------
 const dataStore = {
     GDP: {
         Technology: {
@@ -576,9 +572,6 @@ const dataStore = {
     }
 };
 
-// ---------------------------------------------------------
-// 2. GLOBAL STATE VARIABLES
-// ---------------------------------------------------------
 let currentMetric = 'GDP';
 let currentSector = 'Technology';
 let currentRegion = 'Indonesia';
@@ -586,47 +579,31 @@ let isCompareMode = false;
 let maxYear = 2024;
 let chartInstance = null;
 
-// ---------------------------------------------------------
-// 3. LOGIC UTAMA (Fungsi Update)
-// ---------------------------------------------------------
-
-// Fungsi: Memperbarui tampilan Chart berdasarkan state saat ini
 function updateChart() {
     if (!chartInstance) return;
-
-    // Ambil data utama berdasarkan pilihan user
     const data = dataStore[currentMetric][currentSector][currentRegion];
-    
-    // Filter data berdasarkan slider tahun (Max Year)
     const filteredLabels = data.labels.filter((_, i) => parseInt(data.labels[i]) <= maxYear);
     const filteredData = data.data.slice(0, filteredLabels.length);
 
-    // Update Dataset 0 (Dataset Utama)
     chartInstance.data.labels = filteredLabels;
     chartInstance.data.datasets[0].data = filteredData;
     chartInstance.data.datasets[0].label = `${currentMetric} Growth (${currentSector})`;
-
-    // Logic Mode Compare (Bandingkan dengan Manufacturing)
-    // Syarat: Toggle aktif DAN sektor saat ini bukan Manufacturing
     if (isCompareMode && currentSector !== 'Manufacturing') {
         const compareData = dataStore[currentMetric]['Manufacturing'][currentRegion];
         const compareFilteredData = compareData.data.slice(0, filteredLabels.length);
-        
-        // Tambahkan dataset kedua
         chartInstance.data.datasets[1] = {
             label: `${currentMetric} Growth (Manufacturing)`,
             data: compareFilteredData,
-            borderColor: '#28a745', // Warna hijau untuk pembanding
+            borderColor: '#28a745', 
             backgroundColor: 'rgba(40, 167, 69, 0.05)',
             borderWidth: 2,
-            borderDash: [5, 5], // Garis putus-putus agar beda
+            borderDash: [5, 5], 
             tension: 0.3, 
             pointRadius: 2,
             pointHoverRadius: 5,
             fill: false
         };
     } else {
-        // Jika mode compare mati atau sedang melihat Manufacturing, hapus dataset kedua
         if (chartInstance.data.datasets[1]) {
             chartInstance.data.datasets.splice(1, 1); 
         }
@@ -635,11 +612,8 @@ function updateChart() {
     chartInstance.update();
 }
 
-// Fungsi: Memperbarui Sidebar (Angka & Teks Summary)
 function updateSidebar() {
     const data = dataStore[currentMetric][currentSector][currentRegion];
-    
-    // 1. Update Big Stat (Angka Besar di atas Chart)
     const bigStatEl = document.getElementById('bigStat');
     if (bigStatEl) {
         const lastVal = data.data[data.data.length - 1];
@@ -648,14 +622,12 @@ function updateSidebar() {
         bigStatEl.innerHTML = `${lastVal} ${unit} <span class="growth ${growthClass}">↗ ${data.growth}</span>`;
     }
 
-    // 2. Update Judul Chart
     const chartTitle = document.getElementById('chartTitle');
     const chartSubtitle = document.getElementById('chartSubtitle');
     if (chartTitle) chartTitle.textContent = `${currentMetric} Growth in ${currentSector} Sector`;
     if (chartSubtitle) chartSubtitle.textContent = `Value (in ${currentMetric === 'GDP' ? 'Trillion IDR' : 'Thousands'})`;
-
-    // 3. Update Summary Stats (Looping ke 3 kotak kecil di sidebar)
     const sectors = ['Technology', 'Manufacturing', 'Agriculture'];
+
     sectors.forEach((sector, index) => {
         const sectorData = dataStore[currentMetric][sector][currentRegion];
         const statLabel = document.getElementById(`statLabel${index + 1}`);
@@ -666,47 +638,39 @@ function updateSidebar() {
             statLabel.textContent = sectorData.summary.label;
             statVal.textContent = sectorData.summary.val;
             statPercent.textContent = sectorData.summary.percent;
-            // Ubah warna teks (hijau jika naik, merah jika turun)
             statPercent.className = `stat-percent ${sectorData.summary.percent.includes('↑') ? 'positive' : 'negative'}`;
         }
     });
 
-    // 4. Update Key Takeaways (List point)
     const takeawaysList = document.getElementById('takeawaysList');
     if(takeawaysList) {
         takeawaysList.innerHTML = data.takeaways.map(item => `<li>${item}</li>`).join('');
     }
 }
 
-// ---------------------------------------------------------
-// 4. INISIALISASI (Saat Website Selesai Loading)
-// ---------------------------------------------------------
 document.addEventListener('DOMContentLoaded', function() {
     const ctx = document.getElementById('growthChart');
     
-    // Cek keamanan jika elemen tidak ditemukan
     if (!ctx) {
         console.error('Canvas element #growthChart not found.');
         return;
     }
 
-    // Buat Gradient Background agar Chart terlihat modern
     const gradient = ctx.getContext('2d').createLinearGradient(0, 0, 0, 400);
     gradient.addColorStop(0, 'rgba(0, 123, 255, 0.4)');
     gradient.addColorStop(1, 'rgba(0, 123, 255, 0.0)');
 
-    // Setup Chart Instance Baru
     chartInstance = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: [], // Akan diisi oleh fungsi updateChart()
+            labels: [], 
             datasets: [{
                 label: 'GDP Growth',
                 data: [],
-                borderColor: '#007bff', // Warna Biru Utama
+                borderColor: '#007bff', 
                 backgroundColor: gradient,
                 borderWidth: 3,
-                tension: 0.3, // Membuat garis sedikit melengkung (wavy) agar terlihat dinamis
+                tension: 0.3,
                 pointRadius: 3,
                 pointHoverRadius: 6,
                 fill: true
@@ -721,7 +685,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     mode: 'index', 
                     intersect: false,
                     callbacks: {
-                        // Kustomisasi label tooltip agar ada unitnya
                         label: function(context) {
                             let label = context.dataset.label || '';
                             if (label) {
@@ -737,10 +700,10 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             scales: {
                 x: { 
-                    grid: { display: false } // Hilangkan grid vertikal agar bersih
+                    grid: { display: false } 
                 },
                 y: { 
-                    display: false, // Hilangkan angka axis Y di kiri
+                    display: false, 
                     min: 0 
                 }
             },
@@ -752,11 +715,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // ---------------------------------------------------------
-    // 5. EVENT LISTENERS (Interaksi User)
-    // ---------------------------------------------------------
-    
-    // Listener: Ganti Metric (GDP / Employment)
     const metricSelect = document.getElementById('metricSelect');
     if(metricSelect) {
         metricSelect.addEventListener('change', function() {
@@ -766,7 +724,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Listener: Ganti Sector (Tech / Manu / Agri)
     const sectorSelect = document.getElementById('sectorSelect');
     if(sectorSelect) {
         sectorSelect.addEventListener('change', function() {
@@ -776,7 +733,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Listener: Ganti Region (Indonesia / Asia)
     const regionSelect = document.getElementById('regionSelect');
     if(regionSelect) {
         regionSelect.addEventListener('change', function() {
@@ -786,7 +742,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Listener: Toggle Compare Mode
     const compareToggle = document.getElementById('compareToggle');
     if(compareToggle) {
         compareToggle.addEventListener('change', function() {
@@ -795,18 +750,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Listener: Slider Tahun
     const yearSlider = document.getElementById('yearRange');
     const currentYearDisplay = document.getElementById('currentYear');
     if (yearSlider && currentYearDisplay) {
         yearSlider.addEventListener('input', function() {
             maxYear = parseInt(this.value);
-            currentYearDisplay.textContent = maxYear; // Update teks tahun di sebelah slider
+            currentYearDisplay.textContent = maxYear; 
             updateChart();
         });
     }
 
-    // Panggil fungsi update pertama kali saat halaman dibuka
     updateChart();
     updateSidebar();
 });

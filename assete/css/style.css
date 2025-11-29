@@ -1351,31 +1351,29 @@ body {
     margin-bottom: 1.5rem;
 }
 
+ 
 .grid-bottom {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1.2fr 1.2fr 0.8fr; 
     gap: 1.5rem;
 }
 
-@media (max-width: 1024px) {
-    .grid-cards {
-        grid-template-columns: 1fr 1fr;
-    }
-
+@media (max-width: 1200px) {
     .grid-bottom {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr; 
+    }
+    
+    .card.info-section {
+        grid-column: span 2; 
     }
 }
 
 @media (max-width: 768px) {
-    .dashboard-wrapper {
-        margin: 20px auto;
-        padding: 0 15px 40px 15px;
-    }
-
-    .grid-cards,
-    .grid-charts-mid {
+    .grid-bottom {
         grid-template-columns: 1fr;
+    }
+    .card.info-section {
+        grid-column: span 1;
     }
 }
 
