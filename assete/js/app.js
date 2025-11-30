@@ -2810,24 +2810,62 @@ const initCoreUI = () => {
       document.getElementById("detailModal").classList.add("hidden");
   });
 
-  window.openModalInfo = (type) => {
-    const modal = document.getElementById("infoModal");
-    const content = modalContent[type];
-    if (content && modal) {
-      document.getElementById("modalTitle").textContent = content.title;
-      document.getElementById("modalDesc").textContent = content.desc;
-      document.getElementById("modalList").innerHTML = content.list
-        .map((item) => `<li>${item}</li>`)
-        .join("");
-      modal.classList.remove("hidden");
-    }
-  };
-  window.closeModalInfo = () =>
-    document.getElementById("infoModal")?.classList.add("hidden");
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") window.closeModalInfo();
-  });
+    window.openModalInfo = (type) => {
+        const modal = document.getElementById('infoModal');
+        const content = modalContent[type];
+        
+        if (content && modal) {
+            document.getElementById('modalTitle').textContent = content.title;
+            document.getElementById('modalDesc').textContent = content.desc;
+            document.getElementById('modalList').innerHTML = content.list.map(item => `<li>${item}</li>`).join('');
+            
+            const iconBg = document.getElementById('modalIconBg');
+            const icon = document.getElementById('modalIcon');
+            
+            iconBg.className = `mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full sm:mx-0 sm:h-10 sm:w-10 bg-${content.color}-100`;
+            icon.className = `fas ${content.icon} text-${content.color}-600`;
+            const modalPanel = modal.querySelector('.inline-block'); 
+            modal.classList.remove('hidden');
+            modal.firstElementChild.classList.add('opacity-0', 'duration-700', 'ease-out');
+            if(modalPanel) {
+                modalPanel.classList.remove('opacity-100', 'scale-100');
+                modalPanel.classList.add('opacity-0', 'scale-95');
+            }
 
+            setTimeout(() => {
+                modal.firstElementChild.classList.remove('opacity-0');
+                modal.firstElementChild.classList.add('opacity-100');
+
+                if(modalPanel) {
+                    modalPanel.classList.remove('opacity-0', 'scale-95');
+                    modalPanel.classList.add('opacity-100', 'scale-100');
+                }
+            }, 20);
+        }
+    };
+
+    window.closeModalInfo = () => {
+        const modal = document.getElementById('infoModal');
+        if (modal) {
+            const modalPanel = modal.querySelector('.inline-block');
+            modal.firstElementChild.classList.remove('opacity-100');
+            modal.firstElementChild.classList.add('opacity-0');
+
+            if(modalPanel) {
+                modalPanel.classList.remove('opacity-100', 'scale-100');
+                modalPanel.classList.add('opacity-0', 'scale-95');
+            }
+
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+    };
+
+    document.addEventListener('keydown', (e) => { 
+        if (e.key === "Escape") window.closeModalInfo(); 
+    });
+  
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -3197,3 +3235,18 @@ document.getElementById("trendModal")?.addEventListener("click", (e) => {
   if (e.target.id === "trendModal") window.closeTrendModal();
 });
 
+    const initAnimations = () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    entry.target.classList.remove('exit-up');
+                } else {
+                  if(entry.boundingClientRect.top > 0) entry.target.classList.remove('visible');
+                }
+            });
+        }, { threshold: 0.1 }); 
+
+        document.querySelectorAll('.hero-text, .section-title, .stats-title, .stat-card, .news-card, .hero-images, .animate-fade-in-up, .scroll-reveal').forEach(el => observer.observe(el));
+    };
+    initAnimations();

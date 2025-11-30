@@ -88,14 +88,14 @@
     </nav>
 
  <main class="mx-auto max-w-7xl pt-24 pb-12 px-6">
-    <div class="dashboard-header mb-8">
+    <div class="dashboard-header mb-8 scroll-reveal delay-300">
         <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Statistik Ketenagakerjaan Nasional</h2>
         <p class="subtitle text-gray-500 mt-2">Data tren tenaga kerja 5 tahun terakhir & wawasan berbasis sektor.</p>
     </div>
 
         <section class="grid-cards grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-md transition-all">
-                <div class="metric-header flex justify-between mb-2">
+            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-md scroll-reveal delay-500">
+                <div class="metric-header flex justify-between mb-2 scroll-reveal">
                     <span class="metric-title text-sm text-gray-500 font-medium">Tingkat Pengangguran</span>
                     <i class="fas fa-chart-line text-blue-500 bg-blue-50 p-2 rounded-lg"></i>
                 </div>
@@ -104,7 +104,7 @@
                     <i class="fas fa-arrow-down"></i> 0.2% <span class="text-gray-400">vs tahun lalu</span>
                 </div>
             </div>
-            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-md transition-all">
+            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-md scroll-reveal delay-700">
                 <div class="metric-header flex justify-between mb-2">
                     <span class="metric-title text-sm text-gray-500 font-medium">Partisipasi Angkatan Kerja</span>
                     <i class="fas fa-users text-green-500 bg-green-50 p-2 rounded-lg"></i>
@@ -114,7 +114,7 @@
                     <i class="fas fa-arrow-up"></i> 0.5% <span class="text-gray-400">vs tahun lalu</span>
                 </div>
             </div>
-            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-md transition-all">
+            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-md scroll-reveal delay-700">
                 <div class="metric-header flex justify-between mb-2">
                     <span class="metric-title text-sm text-gray-500 font-medium">Tenaga Kerja Muda</span>
                     <i class="fas fa-graduation-cap text-purple-500 bg-purple-50 p-2 rounded-lg"></i>
@@ -124,7 +124,7 @@
                     <i class="fas fa-arrow-down"></i> 1.1% <span class="text-gray-400">vs tahun lalu</span>
                 </div>
             </div>
-            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-md transition-all">
+            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:-translate-y-1 hover:shadow-md scroll-reveal delay-700">
                 <div class="metric-header flex justify-between mb-2">
                     <span class="metric-title text-sm text-gray-500 font-medium">Pekerja Informal</span>
                     <i class="far fa-id-badge text-orange-500 bg-orange-50 p-2 rounded-lg"></i>
@@ -137,7 +137,7 @@
         </section>
 
         <section class="grid-charts-mid grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 scroll-reveal delay-300">
                 <div class="chart-header flex justify-between items-center mb-4">
                     <span class="chart-title font-semibold text-gray-800">Tren Pengangguran (5 Tahun)</span>
                 </div>
@@ -145,7 +145,7 @@
                     <canvas id="unemploymentChart"></canvas>
                 </div>
             </div>
-            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 scroll-reveal delay-400">
                 <div class="chart-header flex justify-between items-center mb-4">
                     <span class="chart-title font-semibold text-gray-800">Partisipasi Angkatan Kerja</span>
                 </div>
@@ -156,7 +156,7 @@
         </section>
 
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
-            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 relative z-20">
+            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 relative z-20 scroll-reveal delay-400">
                 <div class="chart-header flex justify-between items-center mb-4">
                     <span class="chart-title font-semibold text-gray-800">Tren Pertumbuhan Sektor</span>
                     
@@ -180,7 +180,7 @@
                 </div>
             </div>
 
-            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 relative z-20">
+            <div class="card bg-white p-6 rounded-xl shadow-sm border border-gray-100 relative z-20 scroll-reveal delay-600">
                 <div class="chart-header flex justify-between items-center mb-4">
                     <span class="chart-title font-semibold text-gray-800">Tren Total Pekerja</span>
                     <div class="flex items-center gap-3">
@@ -209,7 +209,7 @@
         </section>
 
       <section class="mb-12">
-            <div class="card info-section bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+            <div class="card info-section bg-white p-8 rounded-xl shadow-sm border border-gray-100 scroll-reveal delay-300">
                 <div class="mb-8 border-b pb-4">
                     <h3 class="font-bold text-gray-800 text-2xl">Dampak & Perubahan Pola Kerja Digital</h3>
                     <p class="text-gray-500 text-sm mt-1">Bagaimana transformasi digital membentuk ulang lanskap profesional.</p>
@@ -217,7 +217,7 @@
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
     
-    <div onclick="showTrendDetail('youngWorkers')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+    <div onclick="showTrendDetail('youngWorkers')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group scroll-reveal delay-300">
         <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                 <i class="fas fa-laptop-code text-lg"></i>
@@ -229,7 +229,7 @@
         </p>
     </div>
 
-    <div onclick="showTrendDetail('gigEconomy')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+    <div onclick="showTrendDetail('gigEconomy')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group scroll-reveal delay-400">
         <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-lg bg-green-50 flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-colors">
                 <i class="fas fa-briefcase text-lg"></i>
@@ -241,7 +241,7 @@
         </p>
     </div>
 
-    <div onclick="showTrendDetail('flexibility')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+    <div onclick="showTrendDetail('flexibility')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group scroll-reveal delay-500">
         <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                 <i class="fas fa-house-laptop text-lg"></i>
@@ -253,7 +253,7 @@
         </p>
     </div>
 
-    <div onclick="showTrendDetail('globalCollab')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+    <div onclick="showTrendDetail('globalCollab')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group scroll-reveal delay-300">
         <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-lg bg-cyan-50 flex items-center justify-center text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white transition-colors">
                 <i class="fas fa-earth-americas text-lg"></i>
@@ -265,7 +265,7 @@
         </p>
     </div>
 
-    <div onclick="showTrendDetail('automation')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+    <div onclick="showTrendDetail('automation')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group scroll-reveal delay-400">
         <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-lg bg-orange-50 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-colors">
                 <i class="fas fa-robot text-lg"></i>
@@ -277,7 +277,7 @@
         </p>
     </div>
 
-    <div onclick="showTrendDetail('newJobs')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+    <div onclick="showTrendDetail('newJobs')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group scroll-reveal delay-500">
         <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-lg bg-yellow-50 flex items-center justify-center text-yellow-600 group-hover:bg-yellow-600 group-hover:text-white transition-colors">
                 <i class="fas fa-lightbulb text-lg"></i>
@@ -289,7 +289,7 @@
         </p>
     </div>
 
-    <div onclick="showTrendDetail('skillDemand')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+    <div onclick="showTrendDetail('skillDemand')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group scroll-reveal delay-300">
         <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-lg bg-pink-50 flex items-center justify-center text-pink-600 group-hover:bg-pink-600 group-hover:text-white transition-colors">
                 <i class="fas fa-brain text-lg"></i>
@@ -301,7 +301,7 @@
         </p>
     </div>
 
-    <div onclick="showTrendDetail('workLife')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+    <div onclick="showTrendDetail('workLife')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group scroll-reveal delay-400">
         <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-lg bg-teal-50 flex items-center justify-center text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition-colors">
                 <i class="fas fa-scale-balanced text-lg"></i>
@@ -313,7 +313,7 @@
         </p>
     </div>
 
-    <div onclick="showTrendDetail('digitalRisk')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group">
+    <div onclick="showTrendDetail('digitalRisk')" class="info-block bg-white p-5 rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer group scroll-reveal delay-500">
         <div class="flex items-center gap-3 mb-3">
             <div class="w-10 h-10 rounded-lg bg-red-50 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition-colors">
                 <i class="fas fa-shield-halved text-lg"></i>

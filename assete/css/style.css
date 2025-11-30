@@ -381,8 +381,8 @@ body.dark-mode .nav-item.nav-active {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     border: 1px solid #eee;
     opacity: 0;
-    transform: translateY(100px);
-    transition: opacity 1s ease, transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease; /* PENTING: Tambahkan transform dan box-shadow transition */
 }
 
 .stat-card.visible {
@@ -697,7 +697,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1;
+    z-index: 0;
     overflow: hidden;
     pointer-events: none;
 }
@@ -2887,3 +2887,20 @@ body.dark-mode .group:hover .grid a:focus h4,
 body.dark-mode .group:hover .grid a:focus p {
     color: #f8fafc !important; 
 }
+
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(50px); 
+    transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0); 
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }

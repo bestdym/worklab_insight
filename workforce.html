@@ -158,7 +158,7 @@
     </nav>
 
     <main class="main-content">
-      <header class="header">
+      <header class="header  scroll-reveal delay-200">
         <h1 class="text-3xl font-bold text-gray-900">
           Demografi Tenaga Kerja & Wawasan Populasi
         </h1>
@@ -260,15 +260,15 @@
         </div>
       </header>
 
-      <div class="dashboard-grid">
-        <div class="card">
+      <div class="dashboard-grid ">
+        <div class="card scroll-reveal delay-300" >
           <h3 class="card-title">Populasi berdasarkan Kelompok Usia</h3>
           <div class="chart-container-bar">
             <canvas id="ageChart"></canvas>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card scroll-reveal delay-500">
           <h3 class="card-title">Distribusi Gender</h3>
           <div class="chart-container-donut">
             <canvas id="genderChart"></canvas>
@@ -289,14 +289,14 @@
           </div>
         </div>
 
-        <div class="card education-section">
+        <div class="card education-section scroll-reveal delay-400">
           <h3 class="card-title">Tingkat Pendidikan Tertinggi</h3>
           <div class="chart-container-bar">
             <canvas id="educationChart"></canvas>
           </div>
         </div>
 
-        <div class="card insight-section">
+        <div class="card insight-section scroll-reveal delay-300">
           <div class="insight-image">
             <i class="fa-solid fa-chart-pie fa-2x"></i>
           </div>
@@ -329,15 +329,12 @@
     </main>
     <div
       id="reportModal"
-      class="fixed inset-0 bg-black bg-opacity-60 hidden z-[9999] flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0"
-    >
+      class="fixed inset-0 bg-black bg-opacity-60 hidden z-[9999] flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0">
       <div
         class="bg-white rounded-2xl max-w-2xl w-full shadow-2xl transform scale-95 transition-transform duration-300"
-        id="reportModalContent"
-      >
+        id="reportModalContent">
         <div
-          class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50 rounded-t-2xl"
-        >
+          class="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50 rounded-t-2xl">
           <div class="flex items-center gap-3">
             <div
               class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600"
