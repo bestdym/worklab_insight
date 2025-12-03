@@ -89,14 +89,11 @@
         </div>
     </nav>
 
-    <main class="container mx-auto px-4 relative z-10 pt-10">
-        <main class="container mx-auto px-4 relative z-10">
-            <div class="flex items-center mb-8 mt-4 animate-fade-in-up">
-            <h2 class="text-3xl font-bold text-gray-800 mr-4">Portal Lowongan Kerja dan Magang</h2>
-        <div class="h-1 w-12 bg-blue-600 rounded-full"></div>
-    </div>
-  
-    </main>
+    <main class="mx-auto max-w-7xl pt-24 pb-12 px-6">
+        <div class="dashboard-header mb-8 animate-fade-in-up">
+            <h2 class="text-3xl font-bold text-gray-900">Portal Lowongan Kerja dan Magang</h2>
+            <p class="subtitle text-gray-500 mt-2">Cari dan jelajahi lowongan kerja dan program magang terbaru.</p>
+        </div>
         <div class="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-100 animate-fade-in-up delay-200">
            <div class="bg-white rounded-xl shadow-lg p-6 mb-8 border border-gray-100">
     <div class="flex flex-col md:flex-row gap-4 mb-6 items-center">
@@ -138,12 +135,42 @@
                     <span id="labelLokasi" class="truncate font-medium">Semua Lokasi</span>
                     <svg class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>
                 </button>
-                    <div id="listLokasi" class="hidden absolute z-50 mt-2 w-full bg-white shadow-xl rounded-lg border border-gray-100 py-1 text-sm overflow-hidden animate-fade-in-down">                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="" data-target="locationFilter">Semua Lokasi</div>
+                <div id="listLokasi" class="hidden absolute z-50 mt-2 w-full bg-white shadow-xl rounded-lg border border-gray-100 py-1 text-sm overflow-y-auto max-h-64 animate-fade-in-down">
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="" data-target="locationFilter">Semua Lokasi</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Seluruh Indonesia" data-target="locationFilter">Seluruh Indonesia</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Jabodetabek" data-target="locationFilter">Jabodetabek</div>
                     <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Jakarta" data-target="locationFilter">Jakarta</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Bandung" data-target="locationFilter">Bandung</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Bekasi" data-target="locationFilter">Bekasi</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Bogor" data-target="locationFilter">Bogor</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Tangerang" data-target="locationFilter">Tangerang</div>
                     <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Yogyakarta" data-target="locationFilter">Yogyakarta</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Solo" data-target="locationFilter">Solo</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Semarang" data-target="locationFilter">Semarang</div>
                     <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Surabaya" data-target="locationFilter">Surabaya</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Malang" data-target="locationFilter">Malang</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Medan" data-target="locationFilter">Medan</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Bali" data-target="locationFilter">Bali</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Lombok" data-target="locationFilter">Lombok</div>
                 </div>
-                <select id="locationFilter" class="hidden"><option value="">Semua</option><option value="Jakarta">Jakarta</option><option value="Yogyakarta">Yogyakarta</option></select>
+                <select id="locationFilter" class="hidden">
+                    <option value="">Semua</option>
+                    <option value="Seluruh Indonesia">Seluruh Indonesia</option>
+                    <option value="Jabodetabek">Jabodetabek</option>
+                    <option value="Jakarta">Jakarta</option>
+                    <option value="Bandung">Bandung</option>
+                    <option value="Bekasi">Bekasi</option>
+                    <option value="Bogor">Bogor</option>
+                    <option value="Tangerang">Tangerang</option>
+                    <option value="Yogyakarta">Yogyakarta</option>
+                    <option value="Solo">Solo</option>
+                    <option value="Semarang">Semarang</option>
+                    <option value="Surabaya">Surabaya</option>
+                    <option value="Malang">Malang</option>
+                    <option value="Medan">Medan</option>
+                    <option value="Bali">Bali</option>
+                    <option value="Lombok">Lombok</option>
+                </select>
             </div>
 
             <button id="searchButton" class="bg-blue-600 text-white px-6 py-2.5 rounded-lg hover:bg-blue-700 transition shadow-md hover:shadow-lg flex items-center justify-center gap-2 font-medium w-full md:w-auto">

@@ -1239,9 +1239,6 @@ const initJobsSystem = () => {
                       job.salary
                     }</span>
                     <div class="flex gap-2">
-                        <button class="bg-gray-100 text-gray-800 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-200 transition btn-detail flex items-center gap-2" data-id="${
-                          job.id
-                        }"><i class="fa-solid fa-eye"></i> Lihat Detail</button>
                         <button class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition btn-apply flex items-center gap-2" data-id="${
                           job.id
                         }"><i class="fa-solid fa-paper-plane"></i> Lamar</button>
@@ -1249,11 +1246,16 @@ const initJobsSystem = () => {
                 </div>
             `;
       container.appendChild(card);
-      const detailBtn = card.querySelector(".btn-detail");
-      if (detailBtn)
-        detailBtn.addEventListener("click", () => openJobModal(job));
+      card.addEventListener("click", (e) => {
+        if (e.target.closest(".btn-apply")) return;
+        openJobModal(job);
+      });
       const applyBtn = card.querySelector(".btn-apply");
-      if (applyBtn) applyBtn.addEventListener("click", () => openApply(job));
+      if (applyBtn)
+        applyBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          openApply(job);
+        });
     });
 
     if (totalPages > 1 && pagination) {
