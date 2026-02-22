@@ -83,7 +83,16 @@
             </div>
             <div id="mobileDropdown" class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50">
                 <a href="index.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Beranda</a>
-                <a href="analisis.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Data Ketenagakerjaan Nasional</a>
+                <button class="w-full text-left px-4 py-3 nav-item hover:bg-blue-50 mobile-sub-toggle flex items-center justify-between">
+                    <div>Data Ketenagakerjaan Nasional</div>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="hidden mobile-submenu">
+                    <a href="employmentdata.html" class="block px-6 py-3 text-sm hover:bg-blue-50">Statistik Ketenagakerjaan</a>
+                    <a href="wageAnalysis.html" class="block px-6 py-3 text-sm hover:bg-green-50">Analisis Upah</a>
+                    <a href="workforce.html" class="block px-6 py-3 text-sm hover:bg-purple-50">Demografi</a>
+                    <a href="laborissues.html" class="block px-6 py-3 text-sm hover:bg-orange-50">Isu Pekerja</a>
+                </div>
                 <a href="lowongan.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Portal lapangan Kerja</a>
                 <a href="economicgrowth.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Analisis Pertumbuhan Ekonomi</a>
             </div>

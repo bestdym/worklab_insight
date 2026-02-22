@@ -1280,19 +1280,33 @@ const initJobsSystem = () => {
   const locationFilter = document.getElementById("locationFilter");
   const searchButton = document.getElementById("searchButton");
 
+  const normalizeSectorName = (name) => {
+    const n = (name || "").toLowerCase().trim();
+    if (!n) return "";
+    if (
+      ["digital & tik", "technology", "teknologi", "ict", "ti", "it"].includes(n)
+    )
+      return "Teknologi Informasi";
+    if (["finance", "keuangan", "jasa & keuangan", "jasa keuangan"].includes(n))
+      return "Jasa Keuangan";
+    if (["manufacturing", "manufaktur"].includes(n)) return "Manufaktur";
+    if (["healthcare", "kesehatan", "health"].includes(n)) return "Kesehatan";
+    if (["education", "pendidikan"].includes(n)) return "Pendidikan";
+    return name;
+  };
+
   const filterJobs = () => {
     const term = searchInput ? searchInput.value.toLowerCase().trim() : "";
     const sector = sectorFilter ? sectorFilter.value : "";
     const loc = locationFilter ? locationFilter.value : "";
 
     const keywordMap = {
-      "Digital & TIK": [
+      "Teknologi Informasi": [
         "developer",
         "react",
         "node",
         "ui",
         "ux",
-        "tech",
         "software",
         "ict",
         "it",
@@ -1304,6 +1318,8 @@ const initJobsSystem = () => {
         "content",
         "designer",
         "game",
+        "data",
+        "cloud",
       ],
       Manufaktur: [
         "manufaktur",
@@ -1313,8 +1329,10 @@ const initJobsSystem = () => {
         "otomotif",
         "mesin",
         "maintenance",
+        "operator",
+        "qc",
       ],
-      Keuangan: [
+      "Jasa Keuangan": [
         "bank",
         "finance",
         "fintech",
@@ -1324,29 +1342,31 @@ const initJobsSystem = () => {
         "pajak",
         "analyst",
         "kredit",
+        "audit",
+        "investasi",
       ],
-      Ritel: [
-        "retail",
-        "ritel",
-        "kasir",
-        "supermarket",
-        "toko",
-        "e-commerce",
-        "kurir",
-        "barista",
-        "resepsionis",
-        "customer service",
-        "logistik",
+      Pendidikan: [
+        "guru",
+        "dosen",
+        "teacher",
+        "instruktur",
+        "trainer",
+        "pengajar",
+        "kurikulum",
+        "edutech",
       ],
-      Pertanian: [
-        "pertanian",
-        "agri",
-        "agriculture",
-        "pangan",
-        "perkebunan",
-        "ternak",
+      Kesehatan: [
+        "perawat",
+        "bidan",
+        "dokter",
+        "apoteker",
+        "rekam medis",
+        "health",
+        "klinik",
+        "rumah sakit",
+        "nurse",
+        "pharmacist",
       ],
-      Pertambangan: ["tambang", "mining", "batubara", "miner", "smelter"],
     };
 
     filteredJobs = jobsData.filter((job) => {
@@ -1357,16 +1377,19 @@ const initJobsSystem = () => {
       const matchLoc = !loc || job.location === loc;
       let matchSector = true;
       if (sector) {
-        if (job.sector) matchSector = job.sector === sector;
+        const selectedCanon = normalizeSectorName(sector);
+        const jobCanon = normalizeSectorName(job.sector || "");
+        if (jobCanon)
+          matchSector = jobCanon === selectedCanon;
         else {
           const content = (
             job.title +
             " " +
             job.company +
             " " +
-            job.description
+            (job.description || "")
           ).toLowerCase();
-          const keys = keywordMap[sector] || [];
+          const keys = keywordMap[selectedCanon] || [];
           matchSector = keys.some((k) => content.includes(k));
         }
       }
@@ -1850,6 +1873,21 @@ const initSectorDashboard = () => {
       chartData: [-2.0, 1.5, 3.5, 4.8, 5.5],
       realData: [8500, 8300, 8600, 9000, 9500],
       chartColor: "#f97316",
+    },
+    Education: {
+      growth: "4.2%",
+      growthBadge: "Naik",
+      growthDesc: "Kebutuhan tenaga pengajar & digital content",
+      wage: "6,000,000",
+      wageBadge: "Medium",
+      jobs: "7,800",
+      jobsBadge: "Sedang",
+      jobsDesc: "Didominasi pengajar dan pelatihan daring",
+      skill: "Teaching & Digital",
+      skillDesc: "Kemampuan pedagogi dan tools e-learning",
+      chartData: [1.5, 2.3, 3.1, 3.8, 4.2],
+      realData: [6800, 7100, 7350, 7600, 7900],
+      chartColor: "#06b6d4",
     },
   };
 
@@ -2788,6 +2826,14 @@ const initCoreUI = () => {
       else if (desktopMenu) desktopMenu.classList.toggle("hidden");
     });
   }
+
+  document.querySelectorAll(".mobile-sub-toggle").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const submenu = btn.nextElementSibling;
+      if (submenu) submenu.classList.toggle("hidden");
+    });
+  });
 
   const themeToggleBtn = document.getElementById("themeToggle");
   const themeIcon = document.getElementById("themeIcon");

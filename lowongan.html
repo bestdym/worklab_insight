@@ -85,7 +85,16 @@
             </div>
             <div id="mobileDropdown" class="md:hidden absolute right-4 top-16 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 hidden z-50">
                 <a href="index.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Beranda</a>
-                <a href="analisis.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Data Ketenagakerjaan Nasional</a>
+                <button class="w-full text-left px-4 py-3 nav-item hover:bg-blue-50 mobile-sub-toggle flex items-center justify-between">
+                    <div>Data Ketenagakerjaan Nasional</div>
+                    <i class="fas fa-chevron-down text-xs"></i>
+                </button>
+                <div class="hidden mobile-submenu">
+                    <a href="employmentdata.html" class="block px-6 py-3 text-sm hover:bg-blue-50">Statistik Ketenagakerjaan</a>
+                    <a href="wageAnalysis.html" class="block px-6 py-3 text-sm hover:bg-green-50">Analisis Upah</a>
+                    <a href="workforce.html" class="block px-6 py-3 text-sm hover:bg-purple-50">Demografi</a>
+                    <a href="laborissues.html" class="block px-6 py-3 text-sm hover:bg-orange-50">Isu Pekerja</a>
+                </div>
                 <a href="lowongan.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Portal lapangan Kerja</a>
                 <a href="economicgrowth.html" class="block px-4 py-3 nav-item hover:bg-blue-50">Analisis Pertumbuhan Ekonomi</a>
             </div>
@@ -115,21 +124,19 @@
                 </button>
                 <div id="listSektor" class="hidden absolute z-50 mt-2 w-full bg-white shadow-xl rounded-lg border border-gray-100 py-1 text-sm overflow-hidden animate-fade-in-down">
                     <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="" data-target="sectorFilter">Semua Sektor</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Teknologi Informasi" data-target="sectorFilter">Teknologi Informasi</div>
                     <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Manufaktur" data-target="sectorFilter">Manufaktur</div>
-                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Digital & TIK" data-target="sectorFilter">Digital & TIK</div>
-                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Pertanian" data-target="sectorFilter">Pertanian</div>
-                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Pertambangan" data-target="sectorFilter">Pertambangan</div>
-                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Ritel" data-target="sectorFilter">Ritel</div>
-                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Keuangan" data-target="sectorFilter">Keuangan</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Jasa Keuangan" data-target="sectorFilter">Jasa Keuangan</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Pendidikan" data-target="sectorFilter">Pendidikan</div>
+                    <div class="option-item cursor-pointer px-4 py-2 hover:bg-blue-50 hover:text-blue-700 text-gray-700 transition-colors" data-value="Kesehatan" data-target="sectorFilter">Kesehatan</div>
                 </div>
                 <select id="sectorFilter" class="hidden">
                     <option value="">Semua</option>
+                    <option value="Teknologi Informasi">Teknologi Informasi</option>
                     <option value="Manufaktur">Manufaktur</option>
-                    <option value="Digital & TIK">Digital & TIK</option>
-                    <option value="Pertanian">Pertanian</option>
-                    <option value="Pertambangan">Pertambangan</option>
-                    <option value="Ritel">Ritel</option>
-                    <option value="Keuangan">Keuangan</option>
+                    <option value="Jasa Keuangan">Jasa Keuangan</option>
+                    <option value="Pendidikan">Pendidikan</option>
+                    <option value="Kesehatan">Kesehatan</option>
                 </select>
             </div>
 
