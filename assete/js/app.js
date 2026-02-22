@@ -2254,6 +2254,13 @@ const initSectorDashboard = () => {
     });
   };
 
+  const getSectorDisplayName = (sectorKey) => {
+    const el = document.querySelector(
+      `#listSektorAnalysis .option-item[data-value="${sectorKey}"]`
+    );
+    return el ? el.textContent.trim() : sectorKey;
+  };
+
   window.updateDashboard = (sector) => {
     const data = sectorData[sector];
     if (!data) return;
@@ -2269,7 +2276,7 @@ const initSectorDashboard = () => {
       { id: "descJobs", val: data.jobsDesc },
       { id: "valSkill", val: data.skill },
       { id: "descSkill", val: data.skillDesc },
-      { id: "sectorTitle", val: sector },
+      { id: "sectorTitle", val: getSectorDisplayName(sector) },
     ];
     ids.forEach((item) => {
       const el = document.getElementById(item.id);
@@ -2296,12 +2303,23 @@ const initSectorDashboard = () => {
       item.addEventListener("click", (e) => {
         e.stopPropagation();
         const val = item.getAttribute("data-value");
-        label.textContent = val;
+        label.textContent = item.textContent;
         list.classList.add("hidden");
         window.updateDashboard(val);
       });
     });
     document.addEventListener("click", () => list.classList.add("hidden"));
+  }
+  // URL parameter preselect: ?sector=Technology|Manufacturing|Finance|Education|Healthcare
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const fromQuery = params.get("sector");
+    const key = fromQuery && sectorData[fromQuery] ? fromQuery : "Technology";
+    const displayName = getSectorDisplayName(key);
+    if (label) label.textContent = displayName;
+    window.updateDashboard(key);
+  } catch (_) {
+    window.updateDashboard("Technology");
   }
   replayAnimations();
 };
