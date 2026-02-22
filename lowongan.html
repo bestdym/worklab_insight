@@ -355,6 +355,14 @@
         </div>
     </footer>
 
+    <script type="module">
+      try {
+        const jobs = await import('./assete/data/jobs.json', { assert: { type: 'json' } }).then(m => m.default || m);
+        window.__JOBS_FALLBACK__ = Array.isArray(jobs) ? jobs : [];
+      } catch (e) {
+        window.__JOBS_FALLBACK__ = window.__JOBS_FALLBACK__ || [];
+      }
+    </script>
     <script src="assete/js/app.js"></script>
 
 </body>

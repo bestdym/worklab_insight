@@ -1565,16 +1565,36 @@ const initJobsSystem = () => {
     });
 
   const loadJobs = async () => {
+    let loaded = false;
     try {
-      const res = await fetch("assete/data/jobs.json");
-      const data = await res.json();
-      jobsData = Array.isArray(data) ? data : [];
-      filteredJobs = [...jobsData];
-      renderDisplay();
-    } catch (e) {
-      filteredJobs = [];
-      renderDisplay();
+      const url = new URL("assete/data/jobs.json", window.location.href);
+      const res = await fetch(url.href, { cache: "no-store" });
+      if (res.ok) {
+        const data = await res.json();
+        jobsData = Array.isArray(data) ? data : [];
+        loaded = true;
+      }
+    } catch (_) {}
+
+    if (!loaded) {
+      try {
+        const url = new URL("./assete/data/jobs.json", window.location.href);
+        const mod = await import(url.href, {
+          assert: { type: "json" },
+        });
+        const data = mod && (mod.default || mod);
+        jobsData = Array.isArray(data) ? data : [];
+        loaded = true;
+      } catch (_) {}
     }
+
+    if (!loaded && Array.isArray(window.__JOBS_FALLBACK__)) {
+      jobsData = window.__JOBS_FALLBACK__;
+      loaded = true;
+    }
+
+    filteredJobs = Array.isArray(jobsData) ? [...jobsData] : [];
+    renderDisplay();
   };
   loadJobs();
 };
