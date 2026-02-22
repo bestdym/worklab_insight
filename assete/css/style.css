@@ -620,12 +620,16 @@ footer {
 
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column;
-        gap: 15px;
+        flex-direction: row;
+        gap: 10px;
     }
 
     .nav-links {
         display: none;
+    }
+
+    .mobile-menu {
+        display: block;
     }
 
     .hero-container {
