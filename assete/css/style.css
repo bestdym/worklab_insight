@@ -339,7 +339,7 @@ body.dark-mode .nav-item.nav-active {
 
 .hero-images {
     width: 60%;
-    min-width: 805px;
+    min-width: 0;
     height: 500px;
     position: relative;
     display: flex;
@@ -636,6 +636,26 @@ footer {
         flex-direction: column;
         text-align: center;
     }
+
+
+/* Tablet landscape and down: cegah overflow lebar */
+@media (max-width: 1024px) {
+    .hero-images {
+        width: 100%;
+        min-width: 0;
+        height: 420px;
+    }
+    .img-building-front {
+        width: 320px;
+        right: 10%;
+        bottom: 30px;
+    }
+    .img-building-back {
+        width: 260px;
+        right: 22%;
+        bottom: 60px;
+    }
+}
 
     .hero-text,
     .hero-images {
@@ -2388,6 +2408,15 @@ input:checked+.slider:before {
         grid-template-columns: 1fr;
         padding: 20px 16px;
     }
+}
+
+/* Safeguard: cegah scroll horizontal global akibat posisi absolut */
+html, body {
+    overflow-x: hidden;
+}
+img, canvas, video {
+    max-width: 100%;
+    height: auto;
 }
 
 body.dark-mode .card {
